@@ -1,0 +1,363 @@
+# 04 — Animation Standard
+
+## Core Principle
+
+CSS transitions and Intersection Observer only. No Framer Motion. No Lenis.
+Animation must be lightweight, progressive, and fully reduced-motion-safe.
+
+---
+
+## The Three Tools — One Responsibility Each
+
+| Tool | Responsibility | Never Use For |
+|---|---|---|
+| CSS transitions + keyframes | Entrance animations, scroll reveals, hover states, section transitions | Complex state machines, counters |
+| Intersection Observer (`useInView` hook) | Triggering entrance animations when elements scroll into view | Framer-Motion-style declarative animation props |
+| Tailwind Animate | Simple UI states: accordion open/close, modal fade, button press, toast slide-in | Scroll-triggered animations |
+
+**Framer Motion is permanently banned.** See `.claude/project/known-issues.md` for the documented reason.
+**Lenis is not installed.** This is a single natural-scroll page — no smooth-scroll library needed.
+
+---
+
+## Why Not Framer Motion
+
+Framer Motion 12.x (deduped from `@sanity/ui → motion`) fails to hydrate correctly
+on React 19 in Next.js App Router production builds on Vercel. Elements rendered with
+`style="opacity:0"` during SSR remain permanently invisible because `useLayoutEffect`
+inside Framer Motion never fires on the client after React 19's adoption of the server DOM.
+
+The fix is CSS animations — they apply at the browser paint level, independent of React
+hydration. There is no React 19 hydration failure possible with pure CSS.
+
+---
+
+## Pattern 1 — CSS Entrance Animations (Scroll Reveals)
+
+Use the `useInView` custom hook to trigger a CSS class addition when an element enters
+the viewport. The animation is defined in Tailwind config or `globals.css`.
+
+```tsx
+// hooks/useInView.ts
+import { useEffect, useRef, useState } from "react"
+
+export function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [isInView, setIsInView] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+          observer.disconnect() // fires once only
+        }
+      },
+      { threshold }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [threshold])
+
+  return { ref, isInView }
+}
+```
+
+```tsx
+// Usage in a section component
+"use client"
+import { useInView } from "@/hooks/useInView"
+
+export function OurStoryCard({ milestone }: { milestone: StoryMilestone }) {
+  const { ref, isInView } = useInView()
+
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "transition-all duration-700 ease-out",
+        isInView
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-6"
+      )}
+    >
+      <p>{milestone.title}</p>
+    </div>
+  )
+}
+```
+
+### Staggered entrance (multiple cards)
+
+Use inline `transitionDelay` for index-based stagger — this is an acceptable
+inline style exception (dynamic runtime value):
+
+```tsx
+{milestones.map((milestone, index) => (
+  <StoryCard
+    key={milestone._id}
+    milestone={milestone}
+    style={{ transitionDelay: `${index * 100}ms` }}
+  />
+))}
+```
+
+Or pass delay as a prop:
+
+```tsx
+interface StoryCardProps {
+  milestone: StoryMilestone
+  delay?: number
+}
+
+export function StoryCard({ milestone, delay = 0 }: StoryCardProps) {
+  const { ref, isInView } = useInView()
+
+  return (
+    <div
+      ref={ref}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={cn(
+        "transition-all duration-700 ease-out",
+        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      )}
+    >
+      ...
+    </div>
+  )
+}
+```
+
+---
+
+## Pattern 2 — CSS Keyframe Animations (Hero Entrance)
+
+Above-the-fold animations (Hero section) should play on mount using CSS keyframes,
+not on scroll. Define keyframes in `tailwind.config.ts` or `globals.css`:
+
+```ts
+// tailwind.config.ts
+export default {
+  theme: {
+    extend: {
+      animation: {
+        "fade-up":       "fade-up 0.8s ease-out forwards",
+        "fade-up-delay": "fade-up 0.8s ease-out 0.3s forwards",
+        "fade-in":       "fade-in 0.6s ease-out forwards",
+      },
+      keyframes: {
+        "fade-up": {
+          "0%":   { opacity: "0", transform: "translateY(24px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "fade-in": {
+          "0%":   { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+      },
+    },
+  },
+}
+```
+
+```tsx
+// HeroSection.tsx — Server Component, CSS-only animations
+export function HeroSection() {
+  return (
+    <section className="relative flex flex-col items-center justify-center min-h-svh">
+      <p className="animate-fade-in font-sans text-sm text-taupe tracking-widest uppercase">
+        You are invited
+      </p>
+      <h1 className="animate-fade-up font-script text-5xl md:text-7xl text-ink">
+        Nii & Naa
+      </h1>
+      <p className="animate-fade-up-delay font-serif text-xl text-taupe">
+        2 January 2027
+      </p>
+    </section>
+  )
+}
+```
+
+Using `forwards` on the animation means the element stays at its final state
+after the animation completes — no need for React state.
+
+---
+
+## Pattern 3 — Tailwind Animate (UI States)
+
+Use `tailwindcss-animate` for simple, discrete UI state transitions that are not
+scroll-triggered — accordion, modal, toast, button feedback.
+
+**FAQ Accordion open/close:**
+```tsx
+<div className={cn(
+  "overflow-hidden transition-all duration-300 ease-in-out",
+  isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+)}>
+  <p className="pb-4 text-taupe">{answer}</p>
+</div>
+```
+
+**Modal fade-in:**
+```tsx
+<div className="animate-in fade-in zoom-in-95 duration-200">
+  <Modal />
+</div>
+```
+
+**Toast slide-in:**
+```tsx
+<div className="animate-in slide-in-from-bottom-4 duration-300">
+  <Toast message="RSVP received!" />
+</div>
+```
+
+**Loading spinner:**
+```tsx
+<div className="animate-spin h-5 w-5 border-2 border-hairline border-t-rose rounded-full" />
+```
+
+---
+
+## Pattern 4 — Canonical: Scroll Reveal with Decorative SVG Inside
+
+The most common component pattern on this site is a section card that both
+scroll-reveals AND contains a decorative SVG illustration. This is the
+reference implementation all section authors should follow.
+
+```tsx
+// EventDetailsCard.tsx — canonical combined pattern
+"use client"
+import { useInView } from "@/hooks/useInView"
+import { FloralCorner } from "@/components/illustrations/FloralCorner"
+import { cn } from "@/lib/utils"
+import type { ItineraryItem } from "@/types/sanity"
+
+interface EventDetailsCardProps {
+  event: ItineraryItem
+  delay?: number
+}
+
+export function EventDetailsCard({ event, delay = 0 }: EventDetailsCardProps) {
+  const { ref, isInView } = useInView()
+
+  return (
+    <div
+      ref={ref}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={cn(
+        "relative rounded-3xl bg-blush p-8 transition-all duration-700 ease-out",
+        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      )}
+    >
+      {/* aria-hidden is a semantic tree property — it is fully independent of
+          the parent's opacity or transform. The SVG stays excluded from the
+          accessibility tree at all times: before, during, and after the
+          transition. opacity:0 on the wrapper does NOT hide content from
+          screen readers, but since this illustration is aria-hidden it is
+          excluded regardless. */}
+      <FloralCorner
+        aria-hidden="true"
+        className="absolute top-4 right-4 w-16 text-rose/30 pointer-events-none"
+      />
+
+      <h3 className="font-serif text-xl text-ink">{event.name}</h3>
+      <p className="font-sans text-sm text-taupe mt-1">{event.time}</p>
+      <p className="font-serif text-base text-ink mt-3">{event.venue}</p>
+    </div>
+  )
+}
+```
+
+### Why this is safe — three axes confirmed independent
+
+**1. aria-hidden vs animation state**
+`aria-hidden="true"` is a DOM attribute — it removes the element from the
+accessibility tree permanently, independent of any CSS property on itself
+or its ancestors. `opacity:0` on the wrapper has no effect on this. The SVG
+is always excluded from the accessibility tree, exactly as intended.
+
+**2. Reduced motion vs aria-hidden**
+When `prefersReducedMotion` is `true`, `useInView` initialises `isInView`
+as `true`, so the wrapper renders at `opacity-100 translate-y-0` immediately.
+The SVG renders immediately too — not because it is decorative, but because
+the whole wrapper is visible from mount. These are independent axes: reduced
+motion controls whether the wrapper animates; `aria-hidden` controls whether
+the SVG is in the accessibility tree. Neither affects the other.
+
+**3. The SVG animates in with the card — intentional**
+Placing the `FloralCorner` inside the animated wrapper means it enters
+visually together with the card content. This is the correct visual design:
+the decoration belongs to the card, not to the section background. If a
+decoration should persist while content fades in (e.g., a fixed background
+floral), position it outside and above the animated div in the server
+component wrapper.
+
+---
+
+## Transition Duration Reference
+
+```
+150ms → tooltip, very fast micro-interaction
+200ms → dropdown, fast UI feedback
+300ms → modal open/close, accordion, standard transitions
+500ms–700ms → section entrance animations
+800ms → hero headline entrance (above the fold)
+```
+
+---
+
+## Reduced Motion — Mandatory
+
+All entrance animations must respect `prefers-reduced-motion`.
+
+**CSS approach (globals.css — covers everything):**
+```css
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+**Tailwind approach (on individual animated elements):**
+```tsx
+className="animate-fade-up motion-reduce:animate-none motion-reduce:opacity-100"
+```
+
+**Intersection Observer approach:**
+For `useInView`-based reveals, the initial `opacity-0 translate-y-6` state
+may still flash before the media query kicks in. Add this to the hook:
+
+```tsx
+// hooks/useInView.ts — enhanced with reduced motion support
+const prefersReducedMotion =
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+export function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement>(null)
+  // If reduced motion, start as visible — no animation at all
+  const [isInView, setIsInView] = useState(prefersReducedMotion)
+  ...
+}
+```
+
+---
+
+## What Never To Do
+
+- Never install or import `framer-motion` — permanently banned
+- Never install or import `lenis` — not needed for this project
+- Never use `motion.*` components from any library
+- Never use `@keyframes` in component files — keyframes belong in `globals.css` or `tailwind.config.ts`
+- Never animate opacity without also handling `prefers-reduced-motion`
+- Never start an Intersection Observer that fires more than once (`disconnect()` after first trigger)
+- Never use scroll-snap — sections flow naturally without forced snap
