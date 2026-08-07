@@ -12,6 +12,21 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Offset for fixed SiteNav so headings aren't hidden beneath it */
+  section[id],
+  footer[id],
+  main[id] {
+    scroll-margin-top: 3.5rem; /* 56px = h-14 mobile nav height */
+  }
+
+  @screen md {
+    section[id],
+    footer[id],
+    main[id] {
+      scroll-margin-top: 4rem; /* 64px = h-16 desktop nav height */
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

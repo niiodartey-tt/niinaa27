@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Dancing_Script, Cormorant_Garamond, Inter } from "next/font/google"
+import { SiteNav } from "@/components/layout/SiteNav"
 import "./globals.css"
 
 const dancingScript = Dancing_Script({
@@ -45,10 +46,11 @@ export default function RootLayout({
       <body>
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-rose focus:text-ivory focus:rounded-lg font-sans text-sm"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-rose focus:text-ivory focus:rounded-lg font-sans text-sm"
         >
           Skip to main content
         </a>
+        <SiteNav />
         {children}
       </body>
     </html>
