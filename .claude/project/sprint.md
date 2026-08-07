@@ -8,37 +8,42 @@
 
 ## Current Sprint
 
-**Sprint:** Sprint 1 — Hero + Our Story + Event Details
+**Sprint:** Sprint 2 — Travel + RSVP + Registry + FAQ + Footer
 **Started:** 07/08/2026
 **Target completion:** TBD
-**Branch:** `sprint-1`
-**Vercel preview:** [to be added once sprint-1 is pushed]
+**Branch:** `sprint-2`
+**Vercel preview:** [to be added once first group is pushed]
 
 ### Active Tasks
 
 | Task | Branch | Status |
 |---|---|---|
-| `components/layout/SectionWrapper.tsx` — reusable section padding primitive | `sprint-1` | ✅ Done |
-| `components/sections/HeroSection.tsx` — names, date, location, FloralArch, scroll CTA | `sprint-1` | ✅ Done |
-| `components/sections/OurStorySection.tsx` — section wrapper (server) | `sprint-1` | ✅ Done |
-| `components/sections/OurStoryTimeline.tsx` — client, maps milestones with IO reveals | `sprint-1` | ✅ Done |
-| `components/sections/StoryMilestoneCard.tsx` — client, individual card with useInView | `sprint-1` | ✅ Done |
-| `components/sections/EventDetailsSection.tsx` — ceremony + reception layout | `sprint-1` | ✅ Done |
-| `app/page.tsx` — replace Sprint 0 preview with live sections | `sprint-1` | ✅ Done |
-| Test at 375px, 390px, 768px, 1280px — no horizontal overflow | `sprint-1` | ⏳ Awaiting visual review |
-| `npm run lint && npx tsc --noEmit && npm run build && npm audit` | `sprint-1` | ✅ Done |
+| `components/sections/TravelStaySection.tsx` — hotel cards from `placeholderHotels` | `sprint-2` | ⏳ Pending |
+| `components/sections/RSVPSection.tsx` — form with name, email, attending, guest count, dietary, message | `sprint-2` | ⏳ Pending |
+| `app/api/rsvp/route.ts` — Zod validation, honeypot, rate limiting (10/IP/24h), Supabase insert, Resend stub | `sprint-2` | ⏳ Pending |
+| `components/sections/RegistrySection.tsx` — link(s) from `placeholderRegistry` | `sprint-2` | ⏳ Pending |
+| `components/sections/FAQSection.tsx` — accordion from `placeholderFaq` | `sprint-2` | ⏳ Pending |
+| `components/sections/FooterSection.tsx` — couple names, date, Monogram illustration | `sprint-2` | ⏳ Pending |
+| Full accessibility pass across all sections | `sprint-2` | ⏳ Pending |
+| Test at 375px, 390px, 768px, 1280px — no horizontal overflow | `sprint-2` | ⏳ Pending |
+| `npm run lint && npx tsc --noEmit && npm run build && npm audit` | `sprint-2` | ⏳ Pending |
 
-### Sprint 1 Definition of Done
+### Sprint 2 Definition of Done
 
-- [ ] HeroSection renders at all breakpoints — no overflow at 375px
-- [ ] OurStorySection reveals cards on scroll — reduced-motion skips animation
-- [ ] EventDetailsSection shows ceremony + reception cards using existing EventDetailsCard
+- [ ] TravelStaySection renders hotel cards — no overflow at 375px
+- [ ] RSVPSection form is fully functional — all fields, validation, error and success states
+- [ ] RSVP API route validates with Zod, inserts to Supabase, stubs Resend
+- [ ] Rate limiting blocks 11th submission from same IP within 24 hours
+- [ ] RegistrySection renders with correct links
+- [ ] FAQSection accordion opens/closes — only one item open at a time
+- [ ] FooterSection renders with Monogram illustration
 - [ ] All sections have correct `id` attributes for anchor navigation
-- [ ] Scroll CTA in Hero links to `#our-story`
+- [ ] All interactive elements (RSVP form, FAQ accordion) keyboard-navigable
+- [ ] All animations respect `prefers-reduced-motion`
 - [ ] `npm run lint` — clean
 - [ ] `npx tsc --noEmit` — clean
 - [ ] `npm run build` — clean
-- [ ] Reviewed on Vercel preview URL (sprint-1 branch auto-deploy)
+- [ ] Reviewed on Vercel preview URL (sprint-2 branch auto-deploy)
 - [ ] Verified on real mobile device at natural breakpoints
 
 **Approved by Nii:** [ ]
@@ -48,6 +53,24 @@
 ---
 
 ## Sprint History
+
+### ✅ Sprint 1 — Hero + Our Story + Event Details
+
+**Branch:** `sprint-1` | **Started:** 07/08/2026 | **Merged to main:** 07/08/2026
+
+**Completed:**
+- `components/layout/SectionWrapper.tsx` — reusable section padding primitive
+- `components/sections/HeroSection.tsx` — FloralArch above names, Dancing Script, formatted date, ChevronDown scroll CTA with `animate-bounce`, `animate-fade-up` on full content block
+- `components/sections/OurStorySection.tsx` — server wrapper, heading, LeafDivider footer
+- `components/sections/OurStoryTimeline.tsx` — `"use client"`, vertical timeline, 120ms stagger
+- `components/sections/StoryMilestoneCard.tsx` — `"use client"`, `useInView` scroll-reveal
+- `components/sections/EventDetailsSection.tsx` — `grid grid-cols-1 md:grid-cols-2`, 150ms stagger
+- `app/page.tsx` — live sections wired to placeholder data, replacing Sprint 0 preview
+- Bug fix: scroll-reveal cards stuck at `opacity-0` — replaced CSS transition with `animate-fade-up` + `animationDelay`; documented in `known-issues.md`
+- Build: lint ✅ · tsc ✅ · build ✅
+- 🚦 Vercel checkpoint passed — reviewed and approved by Nii
+
+---
 
 ### ✅ Sprint 0 — Scaffold + Design Tokens + Illustration Components
 
@@ -82,20 +105,6 @@
 
 ## Upcoming Sprints
 
-### ⏳ Sprint 2 — Travel + RSVP + Registry + FAQ + Footer
-
-**Planned tasks:**
-
-- [ ] TravelStaySection — hotel cards from `placeholderHotels`
-- [ ] RSVPSection — form with name, email, attending toggle, guest count, dietary notes, message
-- [ ] `app/api/rsvp/route.ts` — Zod validation, honeypot check, rate limiting (10/IP/24h), Supabase insert, Resend stub
-- [ ] RegistrySection — link(s) from `placeholderRegistry`
-- [ ] FAQSection — accordion from `placeholderFaq`
-- [ ] FooterSection — couple names, date, Monogram illustration
-- [ ] Full accessibility pass across all sections
-- [ ] Tested at 375px, 390px, 768px, 1280px
-- [ ] `npm run lint && npx tsc --noEmit && npm run build && npm audit` — all clean
-
 ### ⏳ Sprint 3 — Sanity/Supabase Wiring + Polish + SEO + Accessibility Pass
 
 **Planned tasks:**
@@ -114,12 +123,12 @@
 
 ---
 
-## Do Not Touch During Sprint 1
+## Do Not Touch During Sprint 2
 
 - `tailwind.config.ts` — tokens are locked; do not modify
 - `hooks/useInView.ts` — do not modify; it is the canonical hook
 - `components/illustrations/` — all four illustration components are complete
-- `components/sections/EventDetailsCard.tsx` — Pattern 4 reference; do not modify
+- Any Sprint 1 section components (`HeroSection`, `OurStorySection`, `OurStoryTimeline`, `StoryMilestoneCard`, `EventDetailsSection`) — locked; changes require explicit instruction
 - Any `.claude/standards/` file — changes require explicit instruction
 
 ---

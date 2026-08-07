@@ -132,6 +132,8 @@ Claude does this automatically — without being asked.
 
 ## Sprint 2 — Travel + RSVP + Registry + FAQ + Footer
 
+**Branch:** `sprint-2` | **Started:** 07/08/2026 | **Status:** Active
+
 [Claude populates this during the sprint]
 
 ---
