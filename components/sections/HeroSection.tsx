@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { ChevronDown } from "lucide-react"
 import { HeroVideo } from "@/components/sections/HeroVideo"
 import { CountdownTimer } from "@/components/sections/CountdownTimer"
@@ -7,6 +8,7 @@ interface HeroSectionProps {
   couple: CoupleInfo
   videoSrc?: string
   posterSrc?: string
+  heroImageSrc?: string
 }
 
 // Local-time constructor avoids UTC-midnight shift in negative-offset timezones.
@@ -24,13 +26,24 @@ function formatDate(iso: string): string {
   })
 }
 
-export function HeroSection({ couple, videoSrc, posterSrc }: HeroSectionProps) {
+export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroSectionProps) {
   return (
     <section
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center bg-ink px-4 py-20"
     >
       {videoSrc && <HeroVideo src={videoSrc} poster={posterSrc} />}
+      {!videoSrc && heroImageSrc && (
+        <Image
+          src={heroImageSrc}
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          priority
+        />
+      )}
 
       <div
         aria-hidden="true"

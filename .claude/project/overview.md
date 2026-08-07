@@ -180,6 +180,8 @@ Rules specific to this project that extend or override the base standard:
 
    **Scoped exception — Hero background video:** `HeroSection` accepts optional `videoSrc` and `posterSrc` props (passed from `app/page.tsx`). The video is a short ambient loop (not photography of people), rendered in `HeroVideo.tsx` as an `aria-hidden` background element. This is the only video on the site. See `.claude/standards/09-performance.md` Rule 3b for the video budget.
 
+   **Scoped exception — Hero static image placeholder:** While real footage is being sourced, `HeroSection` also accepts an optional `heroImageSrc` prop. When set (and `videoSrc` is absent), a `next/image` with `fill` renders as the Hero background in place of video. This is a temporary placeholder state only — it will be replaced by the video once sourced. It is the only use of `next/image` for a photographic image on the site. Document this as resolved once the video is in place and `heroImageSrc` is removed from `page.tsx`.
+
 2. **Framer Motion is permanently banned.** It caused a React 19 hydration failure on the prior project (Ostendere, Sprint 1). The fix is CSS transitions + Intersection Observer. Do not reintroduce FM under any circumstances.
 
 3. **No Lenis.** Smooth scroll is not appropriate for a single-page invitation site. Standard browser scroll is the correct choice. Do not install Lenis.
