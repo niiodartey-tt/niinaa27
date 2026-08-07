@@ -168,7 +168,7 @@ export function RSVPForm() {
                 aria-pressed={selected}
                 onClick={() => setValue("attending", opt === "yes", { shouldValidate: true })}
                 className={cn(
-                  "flex-1 min-h-[44px] rounded-full border font-sans text-sm transition-colors duration-200",
+                  "flex-1 min-h-[44px] rounded-full border font-sans text-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-ivory",
                   selected
                     ? "border-rose bg-rose text-ivory"
                     : "border-hairline bg-ivory text-taupe hover:border-rose hover:text-rose"
@@ -207,7 +207,7 @@ export function RSVPForm() {
       {/* Dietary notes */}
       <div>
         <label htmlFor="rsvp-dietary" className={labelClass}>
-          Dietary requirements <span className="normal-case tracking-normal text-taupe/70">(optional)</span>
+          Dietary requirements <span className="normal-case tracking-normal text-taupe">(optional)</span>
         </label>
         <textarea
           id="rsvp-dietary"
@@ -221,7 +221,7 @@ export function RSVPForm() {
       {/* Message */}
       <div>
         <label htmlFor="rsvp-message" className={labelClass}>
-          Message <span className="normal-case tracking-normal text-taupe/70">(optional)</span>
+          Message <span className="normal-case tracking-normal text-taupe">(optional)</span>
         </label>
         <textarea
           id="rsvp-message"

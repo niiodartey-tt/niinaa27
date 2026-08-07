@@ -51,7 +51,7 @@ export function HeroSection({ couple }: HeroSectionProps) {
       <a
         href="#our-story"
         aria-label="Scroll to Our Story"
-        className="absolute bottom-8 md:bottom-12 flex flex-col items-center gap-1 text-taupe hover:text-rose transition-colors duration-300 min-h-[44px] justify-end"
+        className="absolute bottom-8 md:bottom-12 flex flex-col items-center gap-1 text-taupe hover:text-rose transition-colors duration-300 min-h-[44px] justify-end focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 rounded-sm"
       >
         <span className="font-sans text-xs tracking-widest uppercase">Scroll</span>
         <ChevronDown size={20} className="animate-bounce" aria-hidden="true" />

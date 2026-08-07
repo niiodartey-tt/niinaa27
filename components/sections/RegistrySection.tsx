@@ -37,7 +37,7 @@ export function RegistrySection({ items }: RegistrySectionProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`View ${item.storeName} registry`}
-                    className="inline-flex items-center gap-1.5 mt-4 min-h-[44px] font-sans text-sm text-rose hover:text-rose-dark transition-colors duration-200"
+                    className="inline-flex items-center gap-1.5 mt-4 min-h-[44px] font-sans text-sm text-rose hover:text-rose-dark transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 rounded-sm"
                   >
                     View registry
                     <ExternalLink size={14} aria-hidden="true" />

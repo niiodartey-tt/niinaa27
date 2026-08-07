@@ -41,7 +41,7 @@ export function HotelCard({ hotel, delay = 0 }: HotelCardProps) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Book ${hotel.name}`}
-        className="mt-auto inline-flex items-center gap-1.5 pt-6 min-h-[44px] font-sans text-sm text-rose hover:text-rose-dark transition-colors duration-200"
+        className="mt-auto inline-flex items-center gap-1.5 pt-6 min-h-[44px] font-sans text-sm text-rose hover:text-rose-dark transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 rounded-sm"
       >
         Book now
         <ExternalLink size={14} aria-hidden="true" />
