@@ -46,8 +46,8 @@ These apply to every task, every session. No exceptions.
 **Type:** Personal project — single scrolling invitation website
 **Domain:** TBD — deployed on Vercel
 **Stack:** Next.js 14 (App Router) · TypeScript · Tailwind CSS · Sanity CMS · Supabase (RSVP) · Resend (stubbed)
-**Current sprint:** Sprint 2 — Travel + RSVP + Registry + FAQ + Footer
-**Active task:** (none yet — awaiting Sprint 2 start)
+**Current sprint:** Sprint 3 — Sanity/Supabase Wiring + Polish + SEO
+**Active task:** (none yet — awaiting Sprint 3 start)
 
 → Full details: `.claude/project/overview.md`
 → File structure: `.claude/project/structure.md`

@@ -8,51 +8,37 @@
 
 ## Current Sprint
 
-**Sprint:** Sprint 2 — Travel + RSVP + Registry + FAQ + Footer
-**Started:** 07/08/2026
-**Target completion:** TBD
-**Branch:** `sprint-2`
-**Vercel preview:** [to be added once first group is pushed]
+**Sprint:** Sprint 3 — Sanity/Supabase Wiring + Polish + SEO
+**Started:** (awaiting Sprint 3 start)
+**Branch:** `sprint-3` (not yet created)
 
 ### Active Tasks
 
-| Task | Branch | Status |
-|---|---|---|
-| `components/sections/TravelStaySection.tsx` — hotel cards from `placeholderHotels` | `sprint-2` | ⏳ Pending |
-| `components/sections/RSVPSection.tsx` — form with name, email, attending, guest count, dietary, message | `sprint-2` | ⏳ Pending |
-| `app/api/rsvp/route.ts` — Zod validation, honeypot, rate limiting (10/IP/24h), Supabase insert, Resend stub | `sprint-2` | ⏳ Pending |
-| `components/sections/RegistrySection.tsx` — link(s) from `placeholderRegistry` | `sprint-2` | ⏳ Pending |
-| `components/sections/FAQSection.tsx` — accordion from `placeholderFaq` | `sprint-2` | ⏳ Pending |
-| `components/sections/FooterSection.tsx` — couple names, date, Monogram illustration | `sprint-2` | ⏳ Pending |
-| Full accessibility pass across all sections | `sprint-2` | ⏳ Pending |
-| Test at 375px, 390px, 768px, 1280px — no horizontal overflow | `sprint-2` | ⏳ Pending |
-| `npm run lint && npx tsc --noEmit && npm run build && npm audit` | `sprint-2` | ⏳ Pending |
-
-### Sprint 2 Definition of Done
-
-- [ ] TravelStaySection renders hotel cards — no overflow at 375px
-- [ ] RSVPSection form is fully functional — all fields, validation, error and success states
-- [ ] RSVP API route validates with Zod, inserts to Supabase, stubs Resend
-- [ ] Rate limiting blocks 11th submission from same IP within 24 hours
-- [ ] RegistrySection renders with correct links
-- [ ] FAQSection accordion opens/closes — only one item open at a time
-- [ ] FooterSection renders with Monogram illustration
-- [ ] All sections have correct `id` attributes for anchor navigation
-- [ ] All interactive elements (RSVP form, FAQ accordion) keyboard-navigable
-- [ ] All animations respect `prefers-reduced-motion`
-- [ ] `npm run lint` — clean
-- [ ] `npx tsc --noEmit` — clean
-- [ ] `npm run build` — clean
-- [ ] Reviewed on Vercel preview URL (sprint-2 branch auto-deploy)
-- [ ] Verified on real mobile device at natural breakpoints
-
-**Approved by Nii:** [ ]
-**Merged to main:** [ ]
-**Merged date:** —
+*(none yet — awaiting Sprint 3 start)*
 
 ---
 
 ## Sprint History
+
+### ✅ Sprint 2 — Travel + RSVP + Registry + FAQ + Footer
+
+**Branch:** `sprint-2` | **Started:** 07/08/2026 | **Merged to main:** 07/08/2026
+
+**Completed:**
+- `components/sections/TravelStaySection.tsx` + `HotelCard.tsx` — scroll-reveal hotel cards, external booking links, 150ms stagger
+- `lib/rsvp-schema.ts` — shared Zod schema (no `.default()` — avoids `exactOptionalPropertyTypes` conflict with zodResolver)
+- `components/sections/RSVPSection.tsx` + `RSVPForm.tsx` — full form with honeypot, 4 error states, `aria-pressed` attending toggle, `aria-live` regions
+- `app/api/rsvp/route.ts` — Zod validation, honeypot (silent 200), 10/IP/24h rate limiting, Supabase insert (anon key + RLS), Resend stub
+- `components/sections/RegistrySection.tsx` — graceful placeholder state when `url === "#"`
+- `components/sections/FAQSection.tsx` + `FAQAccordion.tsx` — CSS transition accordion, single-open-at-a-time, full ARIA
+- `components/sections/FooterSection.tsx` — `bg-ink`, Monogram, Dancing Script names, local-time date formatting
+- `.claude/standards/04-animation.md` — corrected from buggy CSS transition to `animate-fade-up` + `animationDelay` pattern throughout
+- Dedicated a11y pass: 4 focus-visible rings added (HeroSection CTA, HotelCard links, RSVPForm toggle buttons, RegistrySection link); `text-taupe/70` opacity violations corrected; h1→h2→h3 hierarchy and full ARIA audit verified
+- `known-issues.md` — all `npm audit` advisories documented; `next@16` upgrade deferred to post-launch maintenance sprint
+- Build: lint ✅ · tsc ✅ · build ✅ · audit findings documented (accepted — none apply to this project's usage)
+- 🚦 Reviewed and approved by Nii
+
+---
 
 ### ✅ Sprint 1 — Hero + Our Story + Event Details
 
@@ -123,12 +109,13 @@
 
 ---
 
-## Do Not Touch During Sprint 2
+## Do Not Touch During Sprint 3
 
 - `tailwind.config.ts` — tokens are locked; do not modify
 - `hooks/useInView.ts` — do not modify; it is the canonical hook
 - `components/illustrations/` — all four illustration components are complete
-- Any Sprint 1 section components (`HeroSection`, `OurStorySection`, `OurStoryTimeline`, `StoryMilestoneCard`, `EventDetailsSection`) — locked; changes require explicit instruction
+- All Sprint 1 and Sprint 2 section components — locked; changes require explicit instruction
+- `app/api/rsvp/route.ts` — locked; changes require explicit instruction
 - Any `.claude/standards/` file — changes require explicit instruction
 
 ---
