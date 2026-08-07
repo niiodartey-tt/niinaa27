@@ -268,6 +268,42 @@ const prefersReducedMotion =
 const [isInView, setIsInView] = useState(prefersReducedMotion)
 ```
 
+**Background video — CSS media query is NOT enough.** `prefers-reduced-motion` in CSS cannot pause `<video autoplay>`. A JS `matchMedia` check in `useEffect` is required:
+
+```tsx
+// HeroVideo.tsx
+"use client"
+import { useEffect, useRef } from "react"
+
+export function HeroVideo({ src, poster }: { src: string; poster?: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+    if (mq.matches && videoRef.current) {
+      videoRef.current.pause()
+    }
+  }, [])
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      poster={poster}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-hidden="true"
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+  )
+}
+```
+
+The `aria-hidden="true"` on the video element means screen readers skip it entirely — the decorative motion is the only concern, handled by the JS pause.
+
 ---
 
 ## Rule 9 — Skip Navigation Link
@@ -306,5 +342,6 @@ straight to main content.
 - [ ] All interactive elements reachable by keyboard
 - [ ] Focus indicators visible — not removed with `outline-none` alone
 - [ ] CSS animations respect `prefers-reduced-motion`
+- [ ] Background video pauses under `prefers-reduced-motion` (JS `matchMedia` check in `useEffect`)
 - [ ] Skip navigation link present in root layout
 - [ ] RSVP form live region announces success/error to screen readers

@@ -54,8 +54,9 @@ xl:                 → xlarge:  1280px and up
 
 ### Navigation / Anchor Links
 - All section `id` attributes must be present for in-page navigation
-- No traditional hamburger nav — this is a single scrolling page
 - Any floating nav or "back to top" button must have 44px minimum touch target
+
+**Scoped exception — `SiteNav`:** The `components/layout/SiteNav.tsx` component deliberately uses a hamburger mobile overlay and a fixed horizontal desktop nav. This overrides the prior "no hamburger" default and applies only to `SiteNav`. Do not replicate the hamburger pattern in other components.
 
 ### Images and Illustrations
 - SVG illustration components must scale responsively — never fixed pixel sizes

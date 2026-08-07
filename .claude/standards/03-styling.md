@@ -194,6 +194,21 @@ that Tailwind config cannot hold (e.g., multi-step animations).
 
 ---
 
+## Hero Video Overlay Gradient
+
+The Hero section uses a full-bleed background video with a dark gradient overlay for text legibility. Approved values:
+
+```tsx
+// HeroSection.tsx overlay div
+className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/65"
+```
+
+- `from-black/30` at top → `to-black/65` at bottom keeps footage readable while ensuring `text-ivory` passes 4.5:1 AA over the overlaid text zone.
+- These are arbitrary Tailwind opacity values — acceptable per the styling rule since no named token maps to an overlay at these specific opacities.
+- If footage changes and legibility is affected, adjust only these two values.
+
+---
+
 ## Dark Mode
 
 This project does not use dark mode. Do not configure `darkMode` in Tailwind.

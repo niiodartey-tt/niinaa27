@@ -152,6 +152,31 @@ If Sanity schemas are ever extended to include images (not planned), add
 
 ---
 
+## Rule 3b — Hero Video Budget
+
+The Hero section background video is the only video on the site. It must be:
+
+| Constraint | Value | Rationale |
+|---|---|---|
+| Resolution | 720p (1280×720) | Sufficient for background fill; 1080p doubles file size for no visible gain |
+| Codec | H.264 (mp4) | Universal browser support; no WebM fallback needed at this budget |
+| Duration | 6–10 seconds loop | Shorter loops → smaller file; longer loops → more natural |
+| File size | ≤ 3 MB | Keeps total page weight under 500KB budget even with video added |
+| Placement | `/public/hero-video.mp4` | Served as a static asset |
+| Poster | `/public/hero-poster.jpg` | Shown before video loads; must be a single JPEG frame from the video |
+
+**ffmpeg reference command (user handles compression):**
+```bash
+ffmpeg -i input.mp4 -vf scale=1280:720 -c:v libx264 -crf 28 -an -movflags +faststart output.mp4
+```
+- `-crf 28` — quality vs. size trade-off; lower = larger file. Increase to 30 if over 3 MB.
+- `-an` — strips audio (no sound needed for background loop)
+- `-movflags +faststart` — moov atom first, so video starts playing before fully downloaded
+
+**LCP note:** With a video + poster, the LCP element shifts from the `<h1>` text to the poster image. Ensure the poster is ≤ 100 KB and specify `preload="metadata"` on the video element. The `HeroVideo` component already handles this.
+
+---
+
 ## Rule 4 — Bundle Size — Dynamic Imports
 
 The RSVP form is below the fold. It can be dynamically imported to keep
@@ -298,3 +323,6 @@ npx @next/bundle-analyzer  # optional
 - [ ] OG image created and specified (1200x630px)
 - [ ] All pages have title and description metadata
 - [ ] `next/script` used for any third-party scripts (not raw `<script>`)
+- [ ] Hero video: 720p H.264, ≤ 3 MB, `-movflags +faststart`, audio stripped
+- [ ] Hero poster: single JPEG frame, ≤ 100 KB
+- [ ] Hero video LCP: verify poster loads before video on slow mobile

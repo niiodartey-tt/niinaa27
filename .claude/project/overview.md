@@ -178,9 +178,13 @@ Rules specific to this project that extend or override the base standard:
 
 1. **No photography — ever.** `next/image` is not a primary tool. Sanity stores no images. `/public` holds only favicon, OG image, and the like. If a task mentions adding a photo, flag and reject it.
 
+   **Scoped exception — Hero background video:** `HeroSection` accepts optional `videoSrc` and `posterSrc` props (passed from `app/page.tsx`). The video is a short ambient loop (not photography of people), rendered in `HeroVideo.tsx` as an `aria-hidden` background element. This is the only video on the site. See `.claude/standards/09-performance.md` Rule 3b for the video budget.
+
 2. **Framer Motion is permanently banned.** It caused a React 19 hydration failure on the prior project (Ostendere, Sprint 1). The fix is CSS transitions + Intersection Observer. Do not reintroduce FM under any circumstances.
 
 3. **No Lenis.** Smooth scroll is not appropriate for a single-page invitation site. Standard browser scroll is the correct choice. Do not install Lenis.
+
+   **Scoped exception — `SiteNav`:** `components/layout/SiteNav.tsx` uses a fixed header with hamburger mobile overlay and horizontal desktop links. This is the only place in the project where a hamburger nav is used. It is a deliberate override of the single-scroll nav default. See `.claude/standards/02-responsive.md` for the scoped exception note.
 
 4. **No scroll-snap.** Sections flow naturally. Guest should be able to scroll freely without forced snap points.
 
