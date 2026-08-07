@@ -134,7 +134,12 @@ Claude does this automatically — without being asked.
 
 **Branch:** `sprint-2` | **Started:** 07/08/2026 | **Status:** Active
 
-[Claude populates this during the sprint]
+### Group 1 — TravelStaySection + HotelCard
+- `components/sections/HotelCard.tsx`: `"use client"` — `useInView` scroll reveal with `animate-fade-up opacity-0` pattern; `flex flex-col` with `mt-auto` on the booking link keeps it pinned to the card bottom regardless of notes presence; external link with `target="_blank" rel="noopener noreferrer"`, `aria-label` includes hotel name (disambiguates multiple "Book now" links for screen readers), `min-h-[44px]` touch target
+- `components/sections/TravelStaySection.tsx`: server component — `bg-blush` section (alternates with `bg-ivory` from EventDetails); `grid-cols-1 md:grid-cols-2 lg:grid-cols-3`; 150ms stagger per card
+- `app/page.tsx`: added `TravelStaySection` after `EventDetailsSection`, passing `placeholderHotels`
+- `.claude/standards/04-animation.md`: corrected Pattern 1 and Pattern 4 — removed buggy CSS transition approach, updated to `animate-fade-up opacity-0` + `animationDelay` pattern; added explanation of mechanism and "never use CSS transitions for scroll reveals" warning with reference to known-issues.md
+- TypeScript ✅ | Committed ✅ | Pushed ✅
 
 ---
 
