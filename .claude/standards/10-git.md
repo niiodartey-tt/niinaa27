@@ -166,6 +166,16 @@ stuff
 done
 ```
 
+### No AI attribution — ever
+
+Commit messages must contain only the message itself. Never include:
+- `Co-Authored-By: Claude ...`
+- `Generated with Claude Code`
+- `🤖 Generated with ...`
+- Any reference to AI tooling in the commit body or trailer
+
+This applies to every commit Claude makes on this project, in every sprint.
+
 ---
 
 ## Commit Frequency
@@ -247,6 +257,7 @@ task/*           → preview URL (auto-generated)
 - Never push broken code that fails the build
 - Never merge to `main` without explicit confirmation
 - Never rebase shared branches — merge only
+- Never include AI attribution in any commit message (no `Co-Authored-By`, no Claude/AI references)
 
 ---
 
