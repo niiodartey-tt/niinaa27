@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react"
 import { FloralArch } from "@/components/illustrations/FloralArch"
+import { CountdownTimer } from "@/components/sections/CountdownTimer"
 import type { CoupleInfo } from "@/types/sanity"
 
 interface HeroSectionProps {
@@ -46,6 +47,7 @@ export function HeroSection({ couple }: HeroSectionProps) {
         <p className="font-serif text-base md:text-lg text-taupe italic mt-2">
           {couple.locationName}
         </p>
+        <CountdownTimer weddingDate={couple.weddingDate} />
       </div>
 
       <a
