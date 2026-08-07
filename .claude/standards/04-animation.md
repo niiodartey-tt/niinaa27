@@ -229,52 +229,63 @@ scroll-triggered — accordion, modal, toast, button feedback.
 
 ---
 
-## Pattern 4 — Canonical: Scroll Reveal with Decorative SVG Inside
+## Pattern 4 — Canonical: Scroll Reveal with Decorative Element Inside
 
 The most common component pattern on this site is a section card that both
-scroll-reveals AND contains a decorative SVG illustration. This is the
-reference implementation all section authors should follow.
+scroll-reveals AND contains a decorative element (SVG or icon) inside the
+same animated wrapper. This is the reference implementation all section
+authors should follow.
+
+> **Note (design pass, 07/08/2026):** `EventDetailsCard` was the original
+> Pattern 4 reference but was retired when EventDetails was reworked into a
+> single vertical timeline. The canonical reference is now `EventTimelineStep`.
 
 ```tsx
-// EventDetailsCard.tsx — canonical combined pattern
+// EventTimelineStep.tsx — canonical combined pattern
 "use client"
 import { useInView } from "@/hooks/useInView"
-import { FloralCorner } from "@/components/illustrations/FloralCorner"
 import { cn } from "@/lib/utils"
 import type { ItineraryItem } from "@/types/sanity"
 
-interface EventDetailsCardProps {
+interface EventTimelineStepProps {
   event: ItineraryItem
   delay?: number
+  isAnchor?: boolean
+  isLast?: boolean
 }
 
-export function EventDetailsCard({ event, delay = 0 }: EventDetailsCardProps) {
+export function EventTimelineStep({ event, delay = 0, isAnchor = false, isLast = false }: EventTimelineStepProps) {
   const { ref, isInView } = useInView()
 
   return (
-    <div
-      ref={ref}
-      style={{ animationDelay: `${delay}ms` }}
-      className={cn(
-        "relative rounded-3xl bg-blush p-8",
-        isInView ? "animate-fade-up opacity-0" : "opacity-0"
+    <li className={cn("relative pl-12 md:pl-14", !isLast && "pb-10")}>
+      {/* Connector line — aria-hidden decorative, independent of animation state */}
+      {!isLast && (
+        <span
+          aria-hidden="true"
+          className="absolute left-[15px] top-8 bottom-0 w-px bg-gradient-to-b from-rose/50 to-rose/10"
+        />
       )}
-    >
-      {/* aria-hidden is a semantic tree property — it is fully independent of
-          the parent's opacity or transform. The SVG stays excluded from the
-          accessibility tree at all times: before, during, and after the
-          transition. opacity:0 on the wrapper does NOT hide content from
-          screen readers, but since this illustration is aria-hidden it is
-          excluded regardless. */}
-      <FloralCorner
+      {/* Circle icon — aria-hidden, animates in WITH the content (correct: belongs to step) */}
+      <span
         aria-hidden="true"
-        className="absolute top-4 right-4 w-16 text-rose/30 pointer-events-none"
-      />
-
-      <h3 className="font-serif text-xl text-ink">{event.name}</h3>
-      <p className="font-sans text-sm text-taupe mt-1">{event.time}</p>
-      <p className="font-serif text-base text-ink mt-3">{event.venue}</p>
-    </div>
+        className={cn(
+          "absolute left-0 top-0 flex items-center justify-center w-8 h-8 rounded-full border-2",
+          isAnchor ? "bg-rose border-rose" : "bg-ivory border-rose/40"
+        )}
+      >
+        <span className={cn("block w-2 h-2 rounded-full", isAnchor ? "bg-ivory" : "bg-rose/50")} />
+      </span>
+      {/* Animated content wrapper — ref on this div, not the <li> */}
+      <div
+        ref={ref}
+        style={{ animationDelay: `${delay}ms` }}
+        className={cn(isInView ? "animate-fade-up opacity-0" : "opacity-0")}
+      >
+        <h3 className="font-serif text-xl text-ink">{event.name}</h3>
+        <p className="font-sans text-sm text-taupe mt-1">{event.time}</p>
+      </div>
+    </li>
   )
 }
 ```

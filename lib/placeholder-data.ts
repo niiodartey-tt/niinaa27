@@ -66,13 +66,23 @@ export const placeholderItinerary: ItineraryItem[] = [
     order: 1,
   },
   {
-    _id: "itinerary-reception",
+    _id: "itinerary-cocktails",
     _type: "itineraryItem",
-    name: "Reception & Dinner",
-    time: "6:00 PM",
+    name: "Cocktail Reception",
+    time: "5:00 PM",
     venue: "Venue to be confirmed",
     address: "Accra, Ghana",
+    notes: "Light refreshments and music while we capture a few portraits.",
     order: 2,
+  },
+  {
+    _id: "itinerary-reception",
+    _type: "itineraryItem",
+    name: "Dinner & Celebration",
+    time: "6:30 PM",
+    venue: "Venue to be confirmed",
+    address: "Accra, Ghana",
+    order: 3,
   },
 ]
 
