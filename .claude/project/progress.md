@@ -132,7 +132,45 @@ Claude does this automatically — without being asked.
 
 ## Sprint 2 — Travel + RSVP + Registry + FAQ + Footer
 
-[Claude populates this during the sprint]
+**Branch:** `sprint-2` | **Started:** 07/08/2026 | **Status:** Active
+
+### Group 1 — TravelStaySection + HotelCard
+- `components/sections/HotelCard.tsx`: `"use client"` — `useInView` scroll reveal with `animate-fade-up opacity-0` pattern; `flex flex-col` with `mt-auto` on the booking link keeps it pinned to the card bottom regardless of notes presence; external link with `target="_blank" rel="noopener noreferrer"`, `aria-label` includes hotel name (disambiguates multiple "Book now" links for screen readers), `min-h-[44px]` touch target
+- `components/sections/TravelStaySection.tsx`: server component — `bg-blush` section (alternates with `bg-ivory` from EventDetails); `grid-cols-1 md:grid-cols-2 lg:grid-cols-3`; 150ms stagger per card
+- `app/page.tsx`: added `TravelStaySection` after `EventDetailsSection`, passing `placeholderHotels`
+- `.claude/standards/04-animation.md`: corrected Pattern 1 and Pattern 4 — removed buggy CSS transition approach, updated to `animate-fade-up opacity-0` + `animationDelay` pattern; added explanation of mechanism and "never use CSS transitions for scroll reveals" warning with reference to known-issues.md
+- TypeScript ✅ | Committed ✅ | Pushed ✅
+
+### Group 2 — RSVPSection + RSVPForm + app/api/rsvp/route.ts
+- `lib/rsvp-schema.ts`: shared Zod schema imported by both RSVPForm (zodResolver) and the API route — single source of truth; `guestCount` has no `.default()` (react-hook-form defaultValues handles the default; removing `.default()` collapses Zod input/output types to match under `exactOptionalPropertyTypes: true`)
+- `app/api/rsvp/route.ts`: execution order — JSON parse → honeypot check (silent 200) → rate limit (10/IP/24h, in-memory Map, `x-forwarded-for` split on comma for first IP) → Zod safeParse → Supabase insert (anon key + RLS) → Resend TODO stub → 200 success; two distinct 500 paths (insert error vs unexpected throw), neither exposes internals to client
+- `components/sections/RSVPForm.tsx`: `"use client"` — attending toggle as `aria-pressed` buttons (semantic group with `aria-labelledby`); guest count select hidden when `attending === false`; honeypot with `tabIndex={-1}` + `aria-hidden="true"` + `left-[-9999px]`; four distinct error messages keyed by HTTP status (network throw / 400 / 429 / 500); error status keeps form fields intact; `aria-live="polite"` on success and error regions; `aria-describedby` + `aria-invalid` on every input
+- `components/sections/RSVPSection.tsx`: server component wrapper, no props (form manages own state)
+- `app/page.tsx`: RSVPSection added after TravelStaySection
+- **TypeScript fix:** `exactOptionalPropertyTypes: true` + Zod's `.default(1)` creates input/output type split that `zodResolver`'s generics surface as a `Resolver<...>` mismatch; removed `.default(1)`, default provided via react-hook-form `defaultValues` instead
+- TypeScript ✅ | Committed ✅ | Pushed ✅
+
+### Group 3 — RegistrySection, FAQSection + FAQAccordion, FooterSection
+- `components/sections/RegistrySection.tsx`: server component, `bg-blush`; `ul/li` card list; link conditionally rendered only when `url !== "#"` — graceful placeholder state; `aria-label` on every external link
+- `components/sections/FAQSection.tsx`: thin server wrapper, passes `items` to `FAQAccordion`
+- `components/sections/FAQAccordion.tsx`: `"use client"` — `openIndex: number | null` state, single item open at a time; CSS transition Pattern 3 (`max-h-0/max-h-96` + `opacity-0/100`, `transition-all duration-300`); `<h3><button aria-expanded aria-controls>` accordion pattern; `role="region" aria-labelledby` on each panel; `ChevronDown` rotates 180° on open via CSS; `focus-visible:ring-2 focus-visible:ring-rose` on every trigger
+- `components/sections/FooterSection.tsx`: server component, `bg-ink`; Monogram illustration (`aria-hidden`, `opacity-30`); couple names in Dancing Script (`text-ivory`); date formatted via local-time Date constructor (same UTC fix as HeroSection); `text-blush` for date/location (full-opacity token, no opacity modifier); `<footer>` is sibling to `<main>` in page.tsx for correct landmark semantics
+- `app/page.tsx`: wrapped in fragment, footer outside main; `placeholderFaqItems` and `placeholderRegistry` added to imports and passed to new sections
+- Build: `npm run lint ✅ | npx tsc --noEmit ✅ | npm run build ✅` — page: 40.7 kB (128 kB first load JS)
+- Committed ✅ | Pushed ✅
+
+### Accessibility Pass — Full Sprint 2 audit
+- **Heading hierarchy:** h1 (Hero) → h2 (all section headings) → h3 (hotel cards, story milestones, event cards, FAQ questions) — no skipped or out-of-order levels ✅
+- **Tab order:** HeroSection scroll CTA → HotelCard links → RSVPForm inputs → FAQAccordion triggers → (Registry link hidden by `url !== "#"` guard)
+- **Fixes applied:**
+  - `HeroSection.tsx`: "Scroll" CTA link — added `focus-visible:ring-2 focus-visible:ring-rose`
+  - `HotelCard.tsx`: "Book now" links — added `focus-visible:ring-2 focus-visible:ring-rose`
+  - `RegistrySection.tsx`: "View registry" link — added `focus-visible:ring-2 focus-visible:ring-rose` (latent fix — link currently hidden by `url !== "#"` guard, appears in Sprint 3)
+  - `RSVPForm.tsx`: attending toggle buttons — added `focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-ivory`
+  - `RSVPForm.tsx`: `text-taupe/70` on "(optional)" spans — corrected to `text-taupe` (≥80% opacity rule from 08-accessibility.md)
+- **ARIA verified passing:** `aria-expanded`/`aria-controls`/`role="region"`/`aria-labelledby` on FAQ accordion; `role="group"`/`aria-labelledby`/`aria-pressed` on attending toggle; `aria-describedby`/`aria-invalid` on all form inputs; `role="alert"` on inline errors; `role="status"` on success state; skip nav `focus:not-sr-only` ✅
+- **Form labels:** every input/select/textarea has `<label htmlFor>` matched by `id` ✅
+- TypeScript ✅ | Committed ✅ | Pushed ✅
 
 ---
 

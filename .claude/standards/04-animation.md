@@ -78,12 +78,7 @@ export function OurStoryCard({ milestone }: { milestone: StoryMilestone }) {
   return (
     <div
       ref={ref}
-      className={cn(
-        "transition-all duration-700 ease-out",
-        isInView
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-6"
-      )}
+      className={cn(isInView ? "animate-fade-up opacity-0" : "opacity-0")}
     >
       <p>{milestone.title}</p>
     </div>
@@ -91,22 +86,27 @@ export function OurStoryCard({ milestone }: { milestone: StoryMilestone }) {
 }
 ```
 
+**Never use CSS transitions for scroll reveals.** `transition-all` + class toggle
+(`opacity-0 translate-y-6` ↔ `opacity-100 translate-y-0`) silently breaks when the
+IntersectionObserver fires close to the React hydration moment — the browser has no
+stable "before" paint to transition from so the property change is invisible. CSS
+keyframe animations are driven independently of the paint cycle and do not have this
+failure mode. See `known-issues.md` (Sprint 1) for the full diagnosis.
+
 ### Staggered entrance (multiple cards)
 
-Use inline `transitionDelay` for index-based stagger — this is an acceptable
-inline style exception (dynamic runtime value):
+Pass `delay` as a prop and apply it as `animationDelay` inline style — this is an
+acceptable inline style exception (dynamic runtime value that cannot be a Tailwind class):
 
 ```tsx
 {milestones.map((milestone, index) => (
   <StoryCard
     key={milestone._id}
     milestone={milestone}
-    style={{ transitionDelay: `${index * 100}ms` }}
+    delay={index * 150}
   />
 ))}
 ```
-
-Or pass delay as a prop:
 
 ```tsx
 interface StoryCardProps {
@@ -120,17 +120,22 @@ export function StoryCard({ milestone, delay = 0 }: StoryCardProps) {
   return (
     <div
       ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={cn(
-        "transition-all duration-700 ease-out",
-        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-      )}
+      style={{ animationDelay: `${delay}ms` }}
+      className={cn(isInView ? "animate-fade-up opacity-0" : "opacity-0")}
     >
       ...
     </div>
   )
 }
 ```
+
+**How `opacity-0` + `animate-fade-up` works together:**
+- `isInView = false` → class `opacity-0`. Hidden. No animation.
+- `isInView = true` → class `animate-fade-up opacity-0`. During the `animationDelay`
+  period, `opacity-0` keeps the element hidden (fill mode is `forwards`, not `backwards`,
+  so no keyframe fires until the animation starts). When the animation runs, its keyframes
+  override the class. After completion, `forwards` fill retains `opacity: 1` permanently,
+  overriding the `opacity-0` class.
 
 ---
 
@@ -249,10 +254,10 @@ export function EventDetailsCard({ event, delay = 0 }: EventDetailsCardProps) {
   return (
     <div
       ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ animationDelay: `${delay}ms` }}
       className={cn(
-        "relative rounded-3xl bg-blush p-8 transition-all duration-700 ease-out",
-        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        "relative rounded-3xl bg-blush p-8",
+        isInView ? "animate-fade-up opacity-0" : "opacity-0"
       )}
     >
       {/* aria-hidden is a semantic tree property — it is fully independent of

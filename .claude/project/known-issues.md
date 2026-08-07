@@ -120,6 +120,8 @@ SPRINT:  Pre-project — inherited from Ostendere Sprint 1
 |---|---|---|---|---|
 | `next-sanity` | 9.12.3 | Pulls in `@sanity/ui` → `motion@12.43.0` → `framer-motion@12.43.0` as transitive deps — violates the FM ban | Replaced with `@sanity/client` (direct) — same GROQ functionality, no studio deps, no motion. Updated 13-dependencies.md. | 07/08/2026 |
 | `postcss` (nested in next@14.2.35) | 8.4.31 | 5 high severity CVEs (path traversal in source map auto-loading: GHSA-r28c-9q8g-f849, GHSA-fxqj-rqcc-2cmp). Fix requires next@16, a breaking change. | Accepted for Next.js 14 sprint lifecycle — build-tool only, not a runtime attack surface. We control all CSS files so malicious source maps can't be introduced. Re-evaluate when upgrading Next.js post-launch. | 07/08/2026 |
+| `next` | 14.2.35 | ~20 high severity advisories now listed against next@14.x in the npm audit registry (GHSA-9g9p-9gw9-jx7f, GHSA-h25m-26qc-wcjf, GHSA-ggv3-7p47-pfv8, GHSA-3x4c-7xq6-9pq8, GHSA-q4gf-8mx6-v5v3, GHSA-8h8q-6873-q5fj, GHSA-3g8h-86w9-wvmq, GHSA-ffhc-5mcf-pf4q, GHSA-vfv6-92ff-j949, GHSA-gx5p-jg67-6x7h, GHSA-h64f-5h5j-jqjh, GHSA-c4j6-fc7j-m34r, GHSA-wfc6-r584-vfw7, GHSA-36qx-fr4f-26g5, GHSA-m99w-x7hq-7vfj, GHSA-89xv-2m56-2m9x, GHSA-68g3-v927-f742, GHSA-4633-3j49-mh5q, GHSA-4c39-4ccg-62r3, GHSA-p9j2-gv94-2wf4, GHSA-955p-x3mx-jcvp). Fix requires next@16, a breaking change. | **None of these advisories apply to this project's actual usage:** image optimizer CVEs — we use no `next/image`; middleware/rewrite/i18n CVEs — we use no middleware, rewrites, or i18n; Server Actions/Server Function CVEs — we use plain Route Handlers only; DoS via Server Components — low-traffic personal site, not a meaningful target. All fixes require `next@16` (breaking). **Do not apply `npm audit fix --force` during Sprint 2 or Sprint 3.** Scheduled for a dedicated maintenance sprint post-launch. | 07/08/2026 |
+| `glob` (via `eslint-config-next`) | <10.4.5 | GHSA-5j98-mcp5-4vw2 — CLI command injection via `-c/--cmd` with `shell:true`. Fix requires `eslint-config-next@16`. | Dev/lint-tool only — not bundled into any production code or runtime. No `-c/--cmd` flag is used in this project. Not a runtime risk. Resolved alongside `next@16` upgrade in maintenance sprint. | 07/08/2026 |
 
 ---
 
@@ -142,3 +144,7 @@ SPRINT:  Pre-project — inherited from Ostendere Sprint 1
   with `@upstash/ratelimit`.
 - RSVP anti-spam thresholds (3 submissions per IP per 24 hours) are provisional — review
   with Naa before Sprint 2 implementation. See overview.md open question.
+- **next@16 upgrade** — required to clear all current `npm audit` findings. Not a Sprint 2
+  or Sprint 3 task. Schedule as a standalone maintenance sprint post-launch: upgrade Next.js,
+  verify App Router API compatibility, re-run full lint/tsc/build/audit, and re-test on
+  Vercel preview before merging to main.
