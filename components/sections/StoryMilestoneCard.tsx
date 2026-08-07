@@ -17,10 +17,10 @@ export function StoryMilestoneCard({ milestone, delay = 0 }: StoryMilestoneCardP
       {/* ref on inner div — useInView is typed HTMLDivElement, li is HTMLLIElement */}
       <div
         ref={ref}
-        style={{ transitionDelay: `${delay}ms` }}
+        style={{ animationDelay: `${delay}ms` }}
         className={cn(
-          "relative pl-8 transition-all duration-700 ease-out",
-          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          "relative pl-8",
+          isInView ? "animate-fade-up opacity-0" : "opacity-0"
         )}
       >
         <span

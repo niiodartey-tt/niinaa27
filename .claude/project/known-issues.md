@@ -39,6 +39,40 @@ SPRINT:  Sprint N
 > Document every resolved bug here. Newest first.
 
 ---
+BUG:     Scroll-reveal cards (StoryMilestoneCard, EventDetailsCard) stuck at opacity-0
+         and never completing their fade-in on first page load
+CAUSE:   CSS transition approach (`transition-all duration-700 ease-out` + class toggle
+         `opacity-0 translate-y-6` ↔ `opacity-100 translate-y-0`) has two failure modes:
+         (1) The IO uses `getBoundingClientRect()` for intersection math, which includes CSS
+         transforms. `translate-y-6` (translateY 24px) shifts the observed bounding box 24px
+         below the element's layout position, meaning the IO fires later than expected —
+         potentially never if the element reaches the viewport edge but the shifted box
+         hasn't crossed the 15% threshold. (2) CSS transitions require the browser to observe
+         a property VALUE CHANGE between two painted frames. If the IO fires immediately after
+         hydration (before a stable repaint), there is no "before" frame for the browser to
+         transition from, so the transition never fires and the element snaps to its final
+         state without animating — or stays invisible if the snap is missed.
+FIX:     Replace CSS transition approach with CSS animation approach in both components.
+         `transitionDelay` → `animationDelay` in inline style. Remove `transition-all
+         duration-700 ease-out` and `translate-y-6/translate-y-0` classes. New ternary:
+         `isInView ? "animate-fade-up opacity-0" : "opacity-0"`. Mechanism: `opacity-0`
+         class hides element before the IO fires and during any `animationDelay` period
+         (animation fill-mode is `forwards`, not `backwards`, so no keyframe is applied
+         during the delay). When the animation runs, its keyframes override the `opacity-0`
+         class. After the animation ends, `forwards` fill retains `opacity: 1`, overriding
+         the `opacity-0` class permanently. This also eliminates the `translate-y-6`
+         from the initial DOM state, so the IO observes the element's true layout position.
+PREVENT: Do not use CSS transitions for scroll-reveal entrance animations driven by
+         IntersectionObserver. CSS transitions depend on the browser observing a paint-cycle
+         boundary between the "from" and "to" states — IO callbacks don't guarantee this.
+         Use CSS keyframe animations (`animate-fade-up`) with `animationDelay` instead.
+         The IO only needs to flip a boolean; the animation engine drives the reveal.
+         See `.claude/standards/04-animation.md` for the canonical scroll-reveal pattern.
+DATE:    07/08/2026
+SPRINT:  Sprint 1
+---
+
+---
 BUG:     [PRE-LOADED RISK] Framer Motion causes permanent hydration failure
          with React 19 in Next.js App Router production builds on Vercel
 CAUSE:   Framer Motion 12.x is deduped from @sanity/ui → motion. In React 19

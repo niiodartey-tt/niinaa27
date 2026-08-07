@@ -119,6 +119,15 @@ Claude does this automatically — without being asked.
 - Page size: 10.4 kB (97.6 kB first load JS) — static prerender ✅
 - Committed ✅
 
+### Bug Fix — Scroll-reveal animation (StoryMilestoneCard + EventDetailsCard)
+- **Bug:** All scroll-reveal cards stuck at opacity-0 on scroll, never completing fade-in
+- **Cause (1):** `translate-y-6` in initial class shifts the IO bounding box 24px below the element's layout position (`getBoundingClientRect()` includes CSS transforms). IO's 15% threshold calculated against the shifted box, causing late or missed triggers.
+- **Cause (2):** CSS transition requires a paint-cycle boundary between "from" and "to" states. When the IO callback fires close to the hydration moment, no stable repainted "from" state exists for the browser to transition from — the class change is silent.
+- **Fix:** Replace CSS transition approach with CSS keyframe animation in both components. `transitionDelay` → `animationDelay`. Remove `transition-all duration-700 ease-out` and `translate-y-6/translate-y-0`. New ternary: `isInView ? "animate-fade-up opacity-0" : "opacity-0"`. The `opacity-0` class hides the element during the `animationDelay` period (fill mode is `forwards`, not `backwards`, so no keyframe fires during delay). When the animation runs, keyframes override the class. After animation, `forwards` fill retains `opacity: 1`, permanently overriding `opacity-0`.
+- **Verified:** SSR output confirmed — initial class is `opacity-0` only (no `translate-y-6`); all 6 animation-delay values (0/120/240/360ms for milestones, 0/150ms for events) present in HTML.
+- Documented in `known-issues.md` ✅
+- Build: `npm run lint ✅ | npx tsc --noEmit ✅`
+
 ---
 
 ## Sprint 2 — Travel + RSVP + Registry + FAQ + Footer
