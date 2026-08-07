@@ -150,6 +150,15 @@ Claude does this automatically — without being asked.
 - **TypeScript fix:** `exactOptionalPropertyTypes: true` + Zod's `.default(1)` creates input/output type split that `zodResolver`'s generics surface as a `Resolver<...>` mismatch; removed `.default(1)`, default provided via react-hook-form `defaultValues` instead
 - TypeScript ✅ | Committed ✅ | Pushed ✅
 
+### Group 3 — RegistrySection, FAQSection + FAQAccordion, FooterSection
+- `components/sections/RegistrySection.tsx`: server component, `bg-blush`; `ul/li` card list; link conditionally rendered only when `url !== "#"` — graceful placeholder state; `aria-label` on every external link
+- `components/sections/FAQSection.tsx`: thin server wrapper, passes `items` to `FAQAccordion`
+- `components/sections/FAQAccordion.tsx`: `"use client"` — `openIndex: number | null` state, single item open at a time; CSS transition Pattern 3 (`max-h-0/max-h-96` + `opacity-0/100`, `transition-all duration-300`); `<h3><button aria-expanded aria-controls>` accordion pattern; `role="region" aria-labelledby` on each panel; `ChevronDown` rotates 180° on open via CSS; `focus-visible:ring-2 focus-visible:ring-rose` on every trigger
+- `components/sections/FooterSection.tsx`: server component, `bg-ink`; Monogram illustration (`aria-hidden`, `opacity-30`); couple names in Dancing Script (`text-ivory`); date formatted via local-time Date constructor (same UTC fix as HeroSection); `text-blush` for date/location (full-opacity token, no opacity modifier); `<footer>` is sibling to `<main>` in page.tsx for correct landmark semantics
+- `app/page.tsx`: wrapped in fragment, footer outside main; `placeholderFaqItems` and `placeholderRegistry` added to imports and passed to new sections
+- Build: `npm run lint ✅ | npx tsc --noEmit ✅ | npm run build ✅` — page: 40.7 kB (128 kB first load JS)
+- Committed ✅ | Pushed ✅
+
 ---
 
 ## Sprint 3 — Sanity/Supabase Wiring + Polish + SEO + Accessibility
