@@ -159,6 +159,19 @@ Claude does this automatically — without being asked.
 - Build: `npm run lint ✅ | npx tsc --noEmit ✅ | npm run build ✅` — page: 40.7 kB (128 kB first load JS)
 - Committed ✅ | Pushed ✅
 
+### Accessibility Pass — Full Sprint 2 audit
+- **Heading hierarchy:** h1 (Hero) → h2 (all section headings) → h3 (hotel cards, story milestones, event cards, FAQ questions) — no skipped or out-of-order levels ✅
+- **Tab order:** HeroSection scroll CTA → HotelCard links → RSVPForm inputs → FAQAccordion triggers → (Registry link hidden by `url !== "#"` guard)
+- **Fixes applied:**
+  - `HeroSection.tsx`: "Scroll" CTA link — added `focus-visible:ring-2 focus-visible:ring-rose`
+  - `HotelCard.tsx`: "Book now" links — added `focus-visible:ring-2 focus-visible:ring-rose`
+  - `RegistrySection.tsx`: "View registry" link — added `focus-visible:ring-2 focus-visible:ring-rose` (latent fix — link currently hidden by `url !== "#"` guard, appears in Sprint 3)
+  - `RSVPForm.tsx`: attending toggle buttons — added `focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-ivory`
+  - `RSVPForm.tsx`: `text-taupe/70` on "(optional)" spans — corrected to `text-taupe` (≥80% opacity rule from 08-accessibility.md)
+- **ARIA verified passing:** `aria-expanded`/`aria-controls`/`role="region"`/`aria-labelledby` on FAQ accordion; `role="group"`/`aria-labelledby`/`aria-pressed` on attending toggle; `aria-describedby`/`aria-invalid` on all form inputs; `role="alert"` on inline errors; `role="status"` on success state; skip nav `focus:not-sr-only` ✅
+- **Form labels:** every input/select/textarea has `<label htmlFor>` matched by `id` ✅
+- TypeScript ✅ | Committed ✅ | Pushed ✅
+
 ---
 
 ## Sprint 3 — Sanity/Supabase Wiring + Polish + SEO + Accessibility
