@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Dancing_Script, Cormorant_Garamond, Inter } from "next/font/google"
 import { SiteNav } from "@/components/layout/SiteNav"
+import { LenisProvider } from "@/components/providers/LenisProvider"
 import "./globals.css"
 
 const dancingScript = Dancing_Script({
@@ -50,8 +51,10 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <SiteNav />
-        {children}
+        <LenisProvider>
+          <SiteNav />
+          {children}
+        </LenisProvider>
       </body>
     </html>
   )

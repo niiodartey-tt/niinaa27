@@ -36,6 +36,7 @@ Please verify at npmjs.com/package/[name] before installing."
 | Language | typescript | Strict mode |
 | Styling | tailwindcss | With PostCSS |
 | Animation | tailwindcss-animate | Simple UI states only — accordion, modal, toast |
+| Scroll | lenis | Smooth scroll provider — initialized via `LenisProvider` in `layout.tsx`. Use `lenis/react` (`ReactLenis` component). Do not add competing scroll libraries. |
 | Icons | lucide-react | Only icon library allowed |
 | Utilities | clsx | Class merging |
 | Utilities | tailwind-merge | Tailwind class deduplication |
@@ -57,8 +58,7 @@ Please verify at npmjs.com/package/[name] before installing."
 | `next-sanity` | **DO NOT INSTALL.** Pulls in `@sanity/ui` → `motion` (framer-motion) as a peer dep, violating the FM ban. Use `@sanity/client` directly for GROQ queries — it provides the same fetch functionality without studio dependencies. If visual editing is ever needed, evaluate separately. | `@sanity/client` |
 | `framer-motion` | **PERMANENTLY BANNED.** Causes React 19 hydration failure on Vercel production builds. Elements with `style="opacity:0"` from SSR remain permanently invisible. Click handlers fail to attach. Full documented post-mortem in `.claude/project/known-issues.md`. | CSS transitions + Intersection Observer (`useInView` hook) + Tailwind Animate |
 | `motion` | Same package as framer-motion (deduped from `@sanity/ui`). Same ban applies. | Same as above |
-| `lenis` | Not needed. This is a single-page site — standard browser scroll is correct. No smooth scroll library is required. | Standard browser scroll |
-| `@studio-freight/lenis` | Lenis under its old package name. Same ban. | Standard browser scroll |
+| `@studio-freight/lenis` | Deprecated package name for Lenis. Use `lenis` (current package) instead. | `lenis` |
 | `react-spring` | Unnecessary given CSS animation approach. Adds bundle weight. | CSS transitions |
 | `gsap` | Unnecessary, large bundle. | CSS transitions + Intersection Observer |
 

@@ -2,7 +2,7 @@
 
 ## Core Principle
 
-CSS transitions and Intersection Observer only. No Framer Motion. No Lenis.
+CSS transitions, Intersection Observer, and Lenis (smooth scroll). No Framer Motion.
 Animation must be lightweight, progressive, and fully reduced-motion-safe.
 
 ---
@@ -16,7 +16,7 @@ Animation must be lightweight, progressive, and fully reduced-motion-safe.
 | Tailwind Animate | Simple UI states: accordion open/close, modal fade, button press, toast slide-in | Scroll-triggered animations |
 
 **Framer Motion is permanently banned.** See `.claude/project/known-issues.md` for the documented reason.
-**Lenis is not installed.** This is a single natural-scroll page — no smooth-scroll library needed.
+**Lenis is the scroll provider.** Initialized via `LenisProvider` (`lenis/react` → `ReactLenis root`) in `app/layout.tsx`. It intercepts anchor clicks and applies a negative offset matching the fixed nav height so headings clear the nav. Do not set `scroll-behavior: smooth` in CSS — Lenis owns smooth scrolling and the two will double-ease. IntersectionObserver and `useInView` are unaffected because Lenis drives native DOM scroll position, not a CSS transform virtual scroll.
 
 ---
 
@@ -371,7 +371,7 @@ export function useInView(threshold = 0.15) {
 ## What Never To Do
 
 - Never install or import `framer-motion` — permanently banned
-- Never install or import `lenis` — not needed for this project
+- Never add a second smooth-scroll library alongside Lenis — one scroll provider only
 - Never use `motion.*` components from any library
 - Never use `@keyframes` in component files — keyframes belong in `globals.css` or `tailwind.config.ts`
 - Never animate opacity without also handling `prefers-reduced-motion`

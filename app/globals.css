@@ -10,7 +10,8 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    /* Lenis handles smooth scrolling — browser smooth-scroll would double-ease */
+    scroll-behavior: auto;
   }
 
   /* Offset for fixed SiteNav so headings aren't hidden beneath it */

@@ -25,7 +25,7 @@ These apply to every task, every session. No exceptions.
 - `"use client"` on any component using hooks or event handlers
 - Never fetch data in client components for initial page render
 - **NO Framer Motion — ever.** It is permanently banned. See `.claude/project/known-issues.md`
-- **NO Lenis.** Not needed for a single scrolling page without parallax complexity
+- **Lenis is the scroll provider** — `LenisProvider` in `layout.tsx`. Do not add competing scroll libraries or re-add `scroll-behavior: smooth` to CSS
 - **NO `next/image` for photography** — there is no photography on this site
 - **NO scroll-snap** — single natural scroll, no forced snap points
 - **NO SVG from external files for design illustrations** — build all decorative SVGs in code as React components
