@@ -195,6 +195,7 @@ const cspHeader = [
   "img-src 'self' cdn.sanity.io data: blob:", // Sanity CDN (if images ever added) + OG image
   "font-src 'self'",                           // next/font self-hosts fonts
   "connect-src 'self' api.sanity.io cdn.sanity.io",
+  "frame-src https://www.google.com",          // Google Maps embed in Travel & Stay (VenueMap.tsx)
   "frame-ancestors 'none'",
   "upgrade-insecure-requests",
 ].join("; ")
