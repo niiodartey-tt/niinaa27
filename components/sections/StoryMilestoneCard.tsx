@@ -2,7 +2,7 @@
 
 import { useInView } from "@/hooks/useInView"
 import { cn } from "@/lib/utils"
-import { BloomMarker } from "@/components/illustrations/BloomMarker"
+import { GrowthMarker } from "@/components/illustrations/GrowthMarker"
 import type { StoryMilestone } from "@/types/sanity"
 
 interface StoryMilestoneCardProps {
@@ -30,8 +30,8 @@ export function StoryMilestoneCard({
           isInView ? "animate-fade-up opacity-0" : "opacity-0"
         )}
       >
-        {/* Timeline bloom marker */}
-        <BloomMarker
+        {/* Timeline growth marker */}
+        <GrowthMarker
           progress={progress}
           className="absolute -left-2.5 top-4 w-5 h-5 text-rose shrink-0"
         />
