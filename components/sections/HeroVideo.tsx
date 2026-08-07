@@ -28,7 +28,7 @@ export function HeroVideo({ src, poster }: HeroVideoProps) {
       playsInline
       preload="metadata"
       aria-hidden="true"
-      className="absolute inset-0 w-full h-full object-cover"
+      className="absolute inset-0 w-full h-full object-cover object-[75%_50%] md:object-center"
     />
   )
 }

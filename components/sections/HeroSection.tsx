@@ -40,7 +40,7 @@ export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroS
           aria-hidden="true"
           fill
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-[75%_50%] md:object-center"
           priority
         />
       )}
