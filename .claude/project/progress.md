@@ -174,6 +174,59 @@ Claude does this automatically — without being asked.
 
 ---
 
+## Sprint 2 Design Pass
+
+**Branch:** `sprint-2-design-pass` | **Started:** 07/08/2026 | **Status:** Active
+
+### Group A — CountdownTimer contrast fix
+- `CountdownTimer.tsx`: block bg changed from `bg-ink` (invisible on dark hero) to glass-morphism `bg-white/10 backdrop-blur-sm border border-white/20` — works on both video overlay and `bg-ink` fallback without conditional logic
+- Labels changed from proposed `text-ivory/60` (rejected — violates 80% opacity floor rule from 08-accessibility.md) to `text-blush` at full opacity
+- TypeScript ✅ | Committed ✅ | Pushed ✅
+
+### Group B — SiteNav fixed header
+- `components/layout/SiteNav.tsx`: `"use client"` — transparent at top, `bg-ink/75 backdrop-blur-sm` at `scrollY > 80` via passive scroll listener; hamburger menu on mobile (`md:hidden`), horizontal link row on desktop (`hidden md:flex`); `z-50`, mobile menu is `bg-ink/95 backdrop-blur-sm`; all links meet 44px touch target; full `focus-visible:ring-2 focus-visible:ring-rose` treatment
+- `app/layout.tsx`: `SiteNav` added above content; skip nav `z-[60]` (above nav at `z-50`)
+- `app/globals.css`: `scroll-margin-top` for `section[id], footer[id], main[id]` — 3.5rem mobile / 4rem desktop — offsets fixed nav height
+- TypeScript ✅ | Committed ✅ | Pushed ✅
+
+### Group C — HeroSection full rework + HeroVideo
+- `components/sections/HeroVideo.tsx`: `"use client"` — `useRef + useEffect` for `prefers-reduced-motion` JS pause (CSS media query cannot pause `<video autoplay>`); `poster: string | undefined` not `poster?: string` — required by `exactOptionalPropertyTypes: true` which treats `string | undefined` and optional-syntax as distinct types
+- `components/sections/HeroSection.tsx`: accepts `videoSrc?`, `posterSrc?`, `heroImageSrc?`; `bg-ink` fallback; `from-black/30 to-black/65` gradient overlay; `"You are cordially invited"` eyebrow kicker in `text-blush`; couple names in Dancing Script; hairline divider; formatted date + location; bio block; `CountdownTimer`; scroll CTA
+- `heroImageSrc`: uses `next/image` with `fill sizes="100vw" priority aria-hidden="true" alt=""`; documented as temporary scoped exception in `overview.md`
+- `object-position`: `object-[75%_50%] md:object-center` on both image and video — shifts crop strip rightward for right-of-center focal point (rings) on portrait viewports; restores centered crop on wide viewports
+- TypeScript ✅ | Committed ✅ | Pushed ✅
+
+### Group D — Lenis smooth scroll
+- Installed `lenis@1.3.1` (exact version, 76k weekly downloads, actively maintained by darkroom.engineering)
+- `components/providers/LenisProvider.tsx`: `"use client"`, `ReactLenis root`; `duration: 0` when `prefers-reduced-motion`; `anchors: { offset: -56 }` mobile / `offset: -64` desktop — negative offset stops Lenis short of element top by nav height, preventing content disappearing behind fixed nav. **Negative sign confirmed:** `offset: -56` = "stop 56px before the element top" = element sits just below the 56px-tall nav
+- **Correction caught:** anchor handling is OFF by default (`anchors: false`); must be explicitly enabled. `ReactLenis root` required for page-level smooth scroll
+- `app/globals.css`: `scroll-behavior: smooth` → `scroll-behavior: auto` (Lenis is the scroll provider; `smooth` here would double-interpolate)
+- `CLAUDE.md`: "NO Lenis" rule replaced with "Lenis is the scroll provider — do not add competing scroll libraries or re-add `scroll-behavior: smooth`"
+- `.claude/standards/04-animation.md`, `.claude/standards/13-dependencies.md`: Lenis added to approved list; deprecated `@studio-freight/lenis` remains banned
+- TypeScript ✅ | Committed ✅ | Pushed ✅
+
+### Group E — VenueMap + CSP
+- Venue confirmed: Skybox Event Centre, Lashibi, Accra — all itinerary items in `lib/placeholder-data.ts` updated
+- `components/sections/VenueMap.tsx`: responsive `aspect-[4/3]` iframe, `rounded-card overflow-hidden`; text address (`font-sans text-xs text-taupe`); "Get directions" external link with `ExternalLink` icon; `title` attribute on iframe for screen reader users
+- `components/sections/TravelStaySection.tsx`: `<VenueMap />` inserted between heading block and hotel grid; "Where to stay" kicker added above hotel cards
+- `next.config.mjs`: added `frame-src https://www.google.com` — origin verified against literal embed URL `https://www.google.com/maps/embed?...` (not `maps.google.com`)
+- `.claude/standards/12-security.md`: `frame-src` directive documented
+- TypeScript ✅ | Committed ✅ | Pushed ✅
+
+### Group F — BloomMarker botanical progression markers
+- `components/illustrations/BloomMarker.tsx`: server component; `progress: number` prop; `Math.round(progress * 3)` → stage 0/1/2/3; 20×20 viewBox; all stages `currentColor`; stage 0: closed bud oval + center vein (stroke); stage 1: wider bud + two emerging side arcs (stroke); stage 2: 4 teardrop petals + open center circle (stroke); stage 3: same 4 petals + center disc `fill="currentColor"` via `<g fill="currentColor" stroke="none">` overriding root defaults; `aria-hidden="true"` hardcoded on SVG (always decorative, no meaningful-content use case)
+- `components/sections/OurStoryTimeline.tsx`: computes `progress={milestones.length <= 1 ? 1 : index / (milestones.length - 1)}` — edge case: single milestone gets `progress=1` (full bloom, not bud, since it is also the last) 
+- `components/sections/StoryMilestoneCard.tsx`: accepts `progress: number`; `<span>` dot replaced with `<BloomMarker progress={progress} className="absolute -left-2.5 top-4 w-5 h-5 text-rose shrink-0" />`; positioning adjusted from `-left-[5px] top-5 w-2.5 h-2.5` to `-left-2.5 top-4 w-5 h-5` (centred on gradient line, aligned with heading); marker always `text-rose` — sits in the 32px gutter to the left of the card surface, against section background, not overlapping the `bg-rose` last-milestone card
+- Build: `npm run lint ✅ | npx tsc --noEmit ✅ | npm run build ✅` — page: 37.9 kB (135 kB first load JS)
+- Committed ✅ | Pushed ✅
+
+### Open items before Sprint 2 design pass merge
+- 🚦 Vercel preview review — visual check on real device before merging to main
+- User: Download Unsplash placeholder → `/public/hero-bg.jpg` for `heroImageSrc`
+- User: When real footage ready — swap `heroImageSrc` for `videoSrc`/`posterSrc` in `page.tsx`
+
+---
+
 ## Sprint 3 — Sanity/Supabase Wiring + Polish + SEO + Accessibility
 
 [Claude populates this during the sprint]
