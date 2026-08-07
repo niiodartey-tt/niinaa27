@@ -141,6 +141,15 @@ Claude does this automatically — without being asked.
 - `.claude/standards/04-animation.md`: corrected Pattern 1 and Pattern 4 — removed buggy CSS transition approach, updated to `animate-fade-up opacity-0` + `animationDelay` pattern; added explanation of mechanism and "never use CSS transitions for scroll reveals" warning with reference to known-issues.md
 - TypeScript ✅ | Committed ✅ | Pushed ✅
 
+### Group 2 — RSVPSection + RSVPForm + app/api/rsvp/route.ts
+- `lib/rsvp-schema.ts`: shared Zod schema imported by both RSVPForm (zodResolver) and the API route — single source of truth; `guestCount` has no `.default()` (react-hook-form defaultValues handles the default; removing `.default()` collapses Zod input/output types to match under `exactOptionalPropertyTypes: true`)
+- `app/api/rsvp/route.ts`: execution order — JSON parse → honeypot check (silent 200) → rate limit (10/IP/24h, in-memory Map, `x-forwarded-for` split on comma for first IP) → Zod safeParse → Supabase insert (anon key + RLS) → Resend TODO stub → 200 success; two distinct 500 paths (insert error vs unexpected throw), neither exposes internals to client
+- `components/sections/RSVPForm.tsx`: `"use client"` — attending toggle as `aria-pressed` buttons (semantic group with `aria-labelledby`); guest count select hidden when `attending === false`; honeypot with `tabIndex={-1}` + `aria-hidden="true"` + `left-[-9999px]`; four distinct error messages keyed by HTTP status (network throw / 400 / 429 / 500); error status keeps form fields intact; `aria-live="polite"` on success and error regions; `aria-describedby` + `aria-invalid` on every input
+- `components/sections/RSVPSection.tsx`: server component wrapper, no props (form manages own state)
+- `app/page.tsx`: RSVPSection added after TravelStaySection
+- **TypeScript fix:** `exactOptionalPropertyTypes: true` + Zod's `.default(1)` creates input/output type split that `zodResolver`'s generics surface as a `Resolver<...>` mismatch; removed `.default(1)`, default provided via react-hook-form `defaultValues` instead
+- TypeScript ✅ | Committed ✅ | Pushed ✅
+
 ---
 
 ## Sprint 3 — Sanity/Supabase Wiring + Polish + SEO + Accessibility
