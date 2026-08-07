@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Check, Send } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { rsvpSchema, type RSVPFormValues } from "@/lib/rsvp-schema"
 
@@ -174,6 +175,9 @@ export function RSVPForm() {
                     : "border-hairline bg-ivory text-taupe hover:border-rose hover:text-rose"
                 )}
               >
+                {selected && (
+                  <Check size={14} aria-hidden="true" className="shrink-0" />
+                )}
                 {opt === "yes" ? "Joyfully accepts" : "Regretfully declines"}
               </button>
             )
@@ -245,7 +249,14 @@ export function RSVPForm() {
         disabled={status === "loading"}
         className="w-full min-h-[44px] rounded-full bg-rose px-8 py-3 font-sans text-sm text-ivory transition-colors duration-200 hover:bg-rose-dark disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-ivory"
       >
-        {status === "loading" ? "Sending…" : "Send RSVP"}
+        {status === "loading" ? (
+          "Sending…"
+        ) : (
+          <span className="inline-flex items-center gap-2">
+            Send RSVP
+            <Send size={15} aria-hidden="true" />
+          </span>
+        )}
       </button>
     </form>
   )

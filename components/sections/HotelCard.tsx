@@ -1,6 +1,6 @@
 "use client"
 
-import { ExternalLink } from "lucide-react"
+import { ExternalLink, MapPin } from "lucide-react"
 import { useInView } from "@/hooks/useInView"
 import { cn } from "@/lib/utils"
 import type { Hotel } from "@/types/sanity"
@@ -22,7 +22,8 @@ export function HotelCard({ hotel, delay = 0 }: HotelCardProps) {
         isInView ? "animate-fade-up opacity-0" : "opacity-0"
       )}
     >
-      <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
+      <p className="flex items-center gap-1 font-sans text-xs text-taupe tracking-widest uppercase mb-3">
+        <MapPin size={11} aria-hidden="true" className="shrink-0" />
         {hotel.distance}
       </p>
       <h3 className="font-serif text-xl md:text-2xl text-ink mb-2">

@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react"
+import { ExternalLink, Gift } from "lucide-react"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
 import type { RegistryInfo } from "@/types/sanity"
 
@@ -12,9 +12,11 @@ export function RegistrySection({ items }: RegistrySectionProps) {
   return (
     <SectionWrapper id="registry" className="bg-blush">
       <div className="max-w-2xl mx-auto text-center">
-        <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
-          Gifts
-        </p>
+        <Gift
+          size={22}
+          aria-hidden="true"
+          className="text-rose mx-auto mb-3"
+        />
         <h2 className="font-serif text-3xl md:text-4xl text-ink">Registry</h2>
         <p className="font-serif text-base text-taupe italic mt-3">
           Your presence is the greatest gift. Should you wish to honour us

@@ -1,4 +1,5 @@
 import { Monogram } from "@/components/illustrations/Monogram"
+import { LeafDivider } from "@/components/illustrations/LeafDivider"
 import type { CoupleInfo } from "@/types/sanity"
 
 // Use local-time Date constructor (not ISO string) to avoid UTC-midnight
@@ -26,7 +27,11 @@ export function FooterSection({ couple }: FooterSectionProps) {
       <div className="max-w-md mx-auto flex flex-col items-center text-center gap-6">
         <Monogram
           aria-hidden="true"
-          className="w-16 md:w-20 text-ivory opacity-30"
+          className="w-28 md:w-36 text-ivory opacity-45"
+        />
+        <LeafDivider
+          aria-hidden="true"
+          className="text-ivory opacity-20 w-36 md:w-44"
         />
         <p className="font-script text-4xl md:text-5xl text-ivory">
           {couple.names}
