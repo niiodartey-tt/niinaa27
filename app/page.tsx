@@ -1,10 +1,12 @@
 import { HeroSection } from "@/components/sections/HeroSection"
 import { OurStorySection } from "@/components/sections/OurStorySection"
 import { EventDetailsSection } from "@/components/sections/EventDetailsSection"
+import { TravelStaySection } from "@/components/sections/TravelStaySection"
 import {
   placeholderCoupleInfo,
   placeholderMilestones,
   placeholderItinerary,
+  placeholderHotels,
 } from "@/lib/placeholder-data"
 
 export default function HomePage() {
@@ -13,6 +15,7 @@ export default function HomePage() {
       <HeroSection couple={placeholderCoupleInfo} />
       <OurStorySection milestones={placeholderMilestones} />
       <EventDetailsSection items={placeholderItinerary} />
+      <TravelStaySection hotels={placeholderHotels} />
     </main>
   )
 }
