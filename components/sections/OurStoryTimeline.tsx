@@ -21,6 +21,7 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
           milestone={milestone}
           delay={index * 120}
           isLast={index === milestones.length - 1}
+          progress={milestones.length <= 1 ? 1 : index / (milestones.length - 1)}
         />
       ))}
     </ol>

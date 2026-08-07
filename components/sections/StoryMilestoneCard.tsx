@@ -2,18 +2,21 @@
 
 import { useInView } from "@/hooks/useInView"
 import { cn } from "@/lib/utils"
+import { BloomMarker } from "@/components/illustrations/BloomMarker"
 import type { StoryMilestone } from "@/types/sanity"
 
 interface StoryMilestoneCardProps {
   milestone: StoryMilestone
   delay?: number
   isLast?: boolean
+  progress: number
 }
 
 export function StoryMilestoneCard({
   milestone,
   delay = 0,
   isLast = false,
+  progress,
 }: StoryMilestoneCardProps) {
   const { ref, isInView } = useInView()
 
@@ -27,15 +30,10 @@ export function StoryMilestoneCard({
           isInView ? "animate-fade-up opacity-0" : "opacity-0"
         )}
       >
-        {/* Timeline dot */}
-        <span
-          aria-hidden="true"
-          className={cn(
-            "absolute -left-[5px] top-5 block w-2.5 h-2.5 rounded-full ring-2",
-            isLast
-              ? "bg-rose ring-rose"
-              : "bg-blush ring-rose/50"
-          )}
+        {/* Timeline bloom marker */}
+        <BloomMarker
+          progress={progress}
+          className="absolute -left-2.5 top-4 w-5 h-5 text-rose shrink-0"
         />
 
         {/* Card surface */}
