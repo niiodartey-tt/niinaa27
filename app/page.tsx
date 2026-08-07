@@ -25,8 +25,12 @@ export default function HomePage() {
   return (
     <>
       <main id="main-content">
-        <HeroSection couple={placeholderCoupleInfo} />
-        <TornEdgeDivider topColor={ivory} bottomColor={blush} />
+        <HeroSection
+          couple={placeholderCoupleInfo}
+          videoSrc="/hero-video.mp4"
+          posterSrc="/hero-poster.jpg"
+        />
+        <TornEdgeDivider topColor={ink} bottomColor={blush} />
         <OurStorySection milestones={placeholderMilestones} />
         <TornEdgeDivider topColor={blush} bottomColor={ivory} />
         <EventDetailsSection items={placeholderItinerary} />
