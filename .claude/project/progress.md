@@ -97,7 +97,27 @@ Claude does this automatically — without being asked.
 
 ## Sprint 1 — Hero + Our Story + Event Details
 
-[Claude populates this during the sprint]
+**Branch:** `sprint-1` | **Started:** 07/08/2026 | **Status:** All sections built — pending visual review and push
+
+### Group 1 — SectionWrapper + HeroSection
+- `components/layout/SectionWrapper.tsx`: reusable section padding primitive (`py-20 md:py-28 px-4`), optional `id` and `className` override
+- `components/sections/HeroSection.tsx`: server component — FloralArch framing from top, couple names in Dancing Script, hairline divider, formatted date + location, ChevronDown scroll CTA with `animate-bounce`
+- **Decision:** CSS `animate-fade-up` on full content block (no staggered delays) — hero is always above the fold so IO would add no value; CSS animation + `forwards` fill is sufficient
+- **Decision:** Private `formatDate()` uses local-time `Date` constructor (not ISO string) to prevent UTC-midnight shifting the date back one day in negative-offset timezones
+- TypeScript ✅ | Committed ✅
+
+### Group 2 — OurStorySection + OurStoryTimeline + StoryMilestoneCard
+- `components/sections/OurStorySection.tsx`: server component wrapper — section heading, `OurStoryTimeline`, `LeafDivider` footer
+- `components/sections/OurStoryTimeline.tsx`: `"use client"` — `<ol>` with `border-l border-hairline` vertical timeline line, maps milestones with 120ms stagger delay
+- `components/sections/StoryMilestoneCard.tsx`: `"use client"`, `useInView` Pattern 4 — ref on inner `<div>` (not `<li>`) because `useInView` is typed `HTMLDivElement`; hollow ring dot positioned on timeline border; year, title, description
+- TypeScript ✅ | Committed ✅
+
+### Group 3 — EventDetailsSection + app/page.tsx
+- `components/sections/EventDetailsSection.tsx`: server component — `grid grid-cols-1 md:grid-cols-2` layout, renders `EventDetailsCard` for each itinerary item with 150ms stagger delay
+- `app/page.tsx`: replaced Sprint 0 preview with live sections — `HeroSection`, `OurStorySection`, `EventDetailsSection`; passes placeholder data slices; stays a server component
+- Build: `npm run lint ✅ | npx tsc --noEmit ✅ | npm run build ✅`
+- Page size: 10.4 kB (97.6 kB first load JS) — static prerender ✅
+- Committed ✅
 
 ---
 

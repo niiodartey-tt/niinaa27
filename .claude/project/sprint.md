@@ -18,15 +18,15 @@
 
 | Task | Branch | Status |
 |---|---|---|
-| `components/layout/SectionWrapper.tsx` — reusable section padding primitive | `sprint-1` | ⏳ Not started |
-| `components/sections/HeroSection.tsx` — names, date, location, FloralArch, scroll CTA | `sprint-1` | ⏳ Not started |
-| `components/sections/OurStorySection.tsx` — section wrapper (server) | `sprint-1` | ⏳ Not started |
-| `components/sections/OurStoryTimeline.tsx` — client, maps milestones with IO reveals | `sprint-1` | ⏳ Not started |
-| `components/sections/StoryMilestoneCard.tsx` — client, individual card with useInView | `sprint-1` | ⏳ Not started |
-| `components/sections/EventDetailsSection.tsx` — ceremony + reception layout | `sprint-1` | ⏳ Not started |
-| `app/page.tsx` — replace Sprint 0 preview with live sections | `sprint-1` | ⏳ Not started |
-| Test at 375px, 390px, 768px, 1280px — no horizontal overflow | `sprint-1` | ⏳ Not started |
-| `npm run lint && npx tsc --noEmit && npm run build && npm audit` | `sprint-1` | ⏳ Not started |
+| `components/layout/SectionWrapper.tsx` — reusable section padding primitive | `sprint-1` | ✅ Done |
+| `components/sections/HeroSection.tsx` — names, date, location, FloralArch, scroll CTA | `sprint-1` | ✅ Done |
+| `components/sections/OurStorySection.tsx` — section wrapper (server) | `sprint-1` | ✅ Done |
+| `components/sections/OurStoryTimeline.tsx` — client, maps milestones with IO reveals | `sprint-1` | ✅ Done |
+| `components/sections/StoryMilestoneCard.tsx` — client, individual card with useInView | `sprint-1` | ✅ Done |
+| `components/sections/EventDetailsSection.tsx` — ceremony + reception layout | `sprint-1` | ✅ Done |
+| `app/page.tsx` — replace Sprint 0 preview with live sections | `sprint-1` | ✅ Done |
+| Test at 375px, 390px, 768px, 1280px — no horizontal overflow | `sprint-1` | ⏳ Awaiting visual review |
+| `npm run lint && npx tsc --noEmit && npm run build && npm audit` | `sprint-1` | ✅ Done |
 
 ### Sprint 1 Definition of Done
 
