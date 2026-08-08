@@ -177,6 +177,58 @@ ffmpeg -i input.mp4 -vf scale=1280:720 -c:v libx264 -crf 28 -an -movflags +fasts
 
 ---
 
+## Rule 3c — Floral Accent Budget
+
+Decorative floral/drape PNG cutouts are permitted site-wide via `FloralAccent`
+(corner placements) and `FloralBand` (transition-row placements). All instances
+use `next/image`, which converts PNG → WebP at serve time automatically.
+
+### Asset constraints
+
+| Constraint | Limit | Why |
+|---|---|---|
+| Source format | PNG with alpha channel | Transparency required for cutouts; next/image converts to WebP at runtime |
+| Source file size | ≤ 600 KB per PNG | Larger files slow first-request optimization on Vercel cold start |
+| Source dimensions | 600–1000px longest edge | Below 600px looks soft at 2× Retina; above 1000px adds no visible value |
+| Rendered width — band images | 200–280px | Determines actual WebP download size for users |
+| Rendered width — corner accents | 240–360px | Larger accent = more visual weight; scale to match section prominence |
+| Unique source files | ≤ 8 across all uses | Browser caches each file — instance count doesn't drive network requests |
+
+### Page weight impact
+
+`next/image` lazy-loads all images not marked `priority`. Every `FloralAccent`
+and every image in `FloralBand` is below the fold, so they load on scroll —
+they do not affect the initial page load metric.
+
+| Scenario | Weight |
+|---|---|
+| Initial load (what loads before scroll) | ~300 KB — unaffected by florals |
+| Full page (user scrolls entirely) | ~500–600 KB with all florals loaded |
+| Total unique image transfer (8 files × ~45 KB WebP avg) | ~360 KB |
+
+### Revised total page weight target
+
+The original `< 500 KB` total target predated floral photography.
+
+- **Initial load: < 500 KB** (unchanged — florals are lazy, don't affect this)
+- **Full scroll: < 750 KB** (revised — includes all lazy-loaded florals)
+
+### Priority rule
+
+Never set `priority={true}` on a `FloralAccent` or `FloralBand` image unless
+it is genuinely above the fold (viewport height on mobile ≈ 844px — almost
+nothing below the Hero qualifies). Incorrect `priority` forces eager loading
+and penalises LCP.
+
+### Pre-launch checklist additions
+
+- [ ] All floral source PNGs ≤ 600 KB each
+- [ ] No floral image has `priority={true}` unless verified above the fold
+- [ ] Unique floral source files ≤ 8
+- [ ] Full-page weight ≤ 750 KB (measured in Network tab with cache disabled)
+
+---
+
 ## Rule 4 — Bundle Size — Dynamic Imports
 
 The RSVP form is below the fold. It can be dynamically imported to keep

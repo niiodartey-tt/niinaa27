@@ -1,11 +1,29 @@
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
 import { RSVPForm } from "@/components/sections/RSVPForm"
 import { LeafDivider } from "@/components/illustrations/LeafDivider"
+import { FloralAccent } from "@/components/illustrations/FloralAccent"
 
 export function RSVPSection() {
   return (
-    <SectionWrapper id="rsvp" className="bg-ivory">
-      <div className="max-w-lg mx-auto">
+    <SectionWrapper id="rsvp" className="bg-ivory relative overflow-hidden">
+      {/* Placeholder — wire src once floral assets are sourced */}
+      <FloralAccent
+        src=""
+        width={280}
+        height={280}
+        className="absolute left-0 top-[25%]"
+        rotation={-15}
+        opacity={0.35}
+      />
+      <FloralAccent
+        src=""
+        width={280}
+        height={280}
+        className="absolute right-0 top-[25%]"
+        rotation={15}
+        opacity={0.35}
+      />
+      <div className="relative z-[1] max-w-lg mx-auto">
         <div className="text-center mb-6 md:mb-8">
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             Kindly reply by 1 December 2026
@@ -24,3 +42,4 @@ export function RSVPSection() {
     </SectionWrapper>
   )
 }
+
