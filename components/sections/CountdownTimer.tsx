@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { KineticDigit } from "@/components/sections/KineticDigit"
 
 interface CountdownTimerProps {
   weddingDate: string
@@ -39,10 +40,10 @@ export function CountdownTimer({ weddingDate }: CountdownTimerProps) {
   }, [weddingDate])
 
   const units = [
-    { label: "Days", value: time?.days },
-    { label: "Hours", value: time?.hours },
-    { label: "Mins", value: time?.minutes },
-    { label: "Secs", value: time?.seconds },
+    { label: "Days",  value: time?.days    },
+    { label: "Hours", value: time?.hours   },
+    { label: "Mins",  value: time?.minutes },
+    { label: "Secs",  value: time?.seconds },
   ]
 
   return (
@@ -51,17 +52,11 @@ export function CountdownTimer({ weddingDate }: CountdownTimerProps) {
       aria-label="Countdown to the wedding"
     >
       {units.map(({ label, value }) => (
-        <div
+        <KineticDigit
           key={label}
-          className="flex flex-col items-center gap-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-3 py-3 md:px-4 min-w-[60px] md:min-w-[68px]"
-        >
-          <span className="font-serif text-2xl md:text-3xl text-ivory tabular-nums leading-none">
-            {value !== undefined ? String(value).padStart(2, "0") : "--"}
-          </span>
-          <span className="font-sans text-[10px] text-blush tracking-widest uppercase">
-            {label}
-          </span>
-        </div>
+          label={label}
+          value={value !== undefined ? String(value).padStart(2, "0") : "--"}
+        />
       ))}
     </div>
   )
