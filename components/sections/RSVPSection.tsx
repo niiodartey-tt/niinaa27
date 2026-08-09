@@ -1,27 +1,13 @@
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
 import { RSVPForm } from "@/components/sections/RSVPForm"
 import { LeafDivider } from "@/components/illustrations/LeafDivider"
-import { FloralAccent } from "@/components/illustrations/FloralAccent"
 
 export function RSVPSection() {
   return (
     <SectionWrapper id="rsvp" className="bg-ivory relative overflow-hidden">
-      {/* Placeholder — wire src once floral assets are sourced */}
-      <FloralAccent
-        src=""
-        width={280}
-        height={280}
-        className="absolute left-0 top-[25%]"
-        rotation={-15}
-        opacity={0.35}
-      />
-      <FloralAccent
-        src=""
-        width={280}
-        height={280}
-        className="absolute right-0 top-[25%]"
-        rotation={15}
-        opacity={0.35}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-floral-tile bg-repeat [background-size:309px_306px] pointer-events-none select-none filter invert contrast-[500%] brightness-50 opacity-[0.20]"
       />
       <div className="relative z-[1] max-w-lg mx-auto">
         <div className="text-center mb-6 md:mb-8">

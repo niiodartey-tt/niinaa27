@@ -5,7 +5,7 @@ interface MonogramProps {
   "aria-hidden"?: boolean | "true" | "false"
 }
 
-// N & N monogram in line art — used in Hero and Footer.
+// T & L monogram in line art — used in Footer.
 // Letters drawn as geometric strokes; ampersand as a flowing cursive path.
 export function Monogram({
   className,
@@ -21,9 +21,9 @@ export function Monogram({
       {/* Thin circular border */}
       <circle cx="80" cy="80" r="72" stroke="currentColor" strokeWidth="0.75" opacity="0.35" />
 
-      {/* Left N */}
+      {/* Left T — crossbar + vertical stem */}
       <path
-        d="M 28 112 L 28 48 L 58 112 L 58 48"
+        d="M 28 52 L 58 52 M 43 52 L 43 112"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
@@ -41,9 +41,9 @@ export function Monogram({
         strokeLinejoin="round"
       />
 
-      {/* Right N */}
+      {/* Right L — vertical stroke + horizontal foot */}
       <path
-        d="M 102 112 L 102 48 L 132 112 L 132 48"
+        d="M 102 52 L 102 112 L 132 112"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"

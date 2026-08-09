@@ -18,9 +18,9 @@ const config: Config = {
         hairline:     "#E4DFD3",
       },
       fontFamily: {
-        script: ["var(--font-dancing-script)", "cursive"],
-        serif:  ["var(--font-cormorant-garamond)", "Georgia", "serif"],
-        sans:   ["var(--font-inter)", "system-ui", "sans-serif"],
+        script: ["var(--font-imperial-script)", "cursive"],
+        serif:  ["'Elms Sans'", "Georgia", "serif"],
+        sans:   ["'Elms Sans'", "system-ui", "sans-serif"],
       },
       animation: {
         "fade-up":       "fade-up 0.8s ease-out forwards",
@@ -36,6 +36,9 @@ const config: Config = {
           "0%":   { opacity: "0" },
           "100%": { opacity: "1" },
         },
+      },
+      backgroundImage: {
+        "floral-tile": "url('/floral-pattern.png')",
       },
       borderRadius: {
         card: "28px",

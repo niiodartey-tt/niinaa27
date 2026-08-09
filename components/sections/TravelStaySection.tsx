@@ -9,7 +9,7 @@ interface TravelStaySectionProps {
 
 export function TravelStaySection({ hotels }: TravelStaySectionProps) {
   return (
-    <SectionWrapper id="travel-stay" className="bg-blush">
+    <SectionWrapper id="travel-stay">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12 md:mb-16">
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">

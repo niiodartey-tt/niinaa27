@@ -1,35 +1,28 @@
+/* eslint-disable @next/next/no-page-custom-font */
+// Elms Sans is not in next/font/google at Next.js 14.2.35 — loaded via <link> in root layout.
 import type { Metadata } from "next"
-import { Dancing_Script, Cormorant_Garamond, Inter } from "next/font/google"
+import { Imperial_Script } from "next/font/google"
 import { SiteNav } from "@/components/layout/SiteNav"
 import { LenisProvider } from "@/components/providers/LenisProvider"
 import "./globals.css"
 
-const dancingScript = Dancing_Script({
+const imperialScript = Imperial_Script({
   subsets: ["latin"],
-  variable: "--font-dancing-script",
+  variable: "--font-imperial-script",
+  weight: "400",
   display: "swap",
 })
 
-const cormorantGaramond = Cormorant_Garamond({
-  subsets: ["latin"],
-  variable: "--font-cormorant-garamond",
-  weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
-  display: "swap",
-})
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-})
+// Elms Sans is not yet in next/font/google's bundled font list (Next.js 14.2.35).
+// Loaded via <link> in <head> below. TODO Sprint 3: switch to localFont once
+// a self-hosted copy is added to /public/fonts/.
 
 export const metadata: Metadata = {
-  title: "Nii & Naa — Wedding Invitation",
-  description: "You are invited to celebrate the wedding of Nii & Naa on 2 January 2027.",
+  title: "Thomas & Leanne — Wedding Invitation",
+  description: "You are invited to celebrate the wedding of Thomas & Leanne on 2 January 2027.",
   openGraph: {
-    title: "Nii & Naa — Wedding Invitation",
-    description: "You are invited to celebrate the wedding of Nii & Naa on 2 January 2027.",
+    title: "Thomas & Leanne — Wedding Invitation",
+    description: "You are invited to celebrate the wedding of Thomas & Leanne on 2 January 2027.",
     type: "website",
   },
 }
@@ -42,8 +35,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dancingScript.variable} ${cormorantGaramond.variable} ${inter.variable}`}
+      className={imperialScript.variable}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <a
           href="#main-content"

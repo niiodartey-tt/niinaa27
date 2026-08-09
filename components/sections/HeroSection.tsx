@@ -52,7 +52,7 @@ export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroS
 
       <div className="relative z-10 flex flex-col items-center text-center max-w-xl mx-auto animate-fade-up">
         <p className="font-sans text-xs text-blush tracking-widest uppercase mb-4">
-          You are cordially invited
+          You are cordially invited to the wedding of
         </p>
         <h1 className="font-script text-6xl md:text-7xl lg:text-8xl text-ivory leading-none">
           {couple.names}

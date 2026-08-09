@@ -1,6 +1,5 @@
 import { Monogram } from "@/components/illustrations/Monogram"
 import { LeafDivider } from "@/components/illustrations/LeafDivider"
-import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import type { CoupleInfo } from "@/types/sanity"
 
 // Use local-time Date constructor (not ISO string) to avoid UTC-midnight
@@ -25,22 +24,9 @@ interface FooterSectionProps {
 export function FooterSection({ couple }: FooterSectionProps) {
   return (
     <footer id="footer" className="bg-ink py-16 md:py-20 px-4 relative overflow-hidden">
-      {/* Placeholder — wire src once floral assets are sourced */}
-      <FloralAccent
-        src=""
-        width={200}
-        height={200}
-        position="top-left"
-        rotation={-10}
-        opacity={0.5}
-      />
-      <FloralAccent
-        src=""
-        width={200}
-        height={200}
-        position="top-right"
-        rotation={10}
-        opacity={0.5}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-floral-tile bg-repeat [background-size:309px_306px] pointer-events-none select-none opacity-[0.12]"
       />
       <div className="relative z-[1] max-w-md mx-auto flex flex-col items-center text-center gap-6">
         <Monogram

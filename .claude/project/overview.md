@@ -4,8 +4,8 @@
 
 | Field | Value |
 |---|---|
-| Project name | Nii & Naa Wedding Invitation |
-| Type | Personal project — built by Nii for Nii & Naa |
+| Project name | Thomas & Leanne Wedding Invitation |
+| Type | Personal project — single scrolling wedding invitation website |
 | Domain | TBD — Vercel URL used through Sprints 0–2 |
 | Purpose | Single scrolling wedding invitation website — replaces paper invites, manages RSVPs, shares event details |
 | Primary audience | Invited guests — mobile-first (guests will open the link on their phones) |
@@ -21,7 +21,7 @@
 | Framework | Next.js | 14 (App Router) | Single scrolling page — all sections on homepage |
 | Language | TypeScript | Latest stable | Strict mode always |
 | Styling | Tailwind CSS | Latest stable | Utility-first — project tokens in tailwind.config.ts |
-| Illustrations | Custom SVG React components | — | All decorative visuals — NO photography anywhere |
+| Illustrations | Custom SVG React components + decorative PNG florals | — | SVGs for structural/typographic elements; PNG cutouts via FloralAccent for decorative accents |
 | Animation | CSS transitions + Intersection Observer | — | Scroll reveals only. Framer Motion BANNED. |
 | Animation | tailwindcss-animate | Latest stable | Simple UI states: accordion, modals, buttons |
 | CMS | Sanity | Latest stable | Couple info, story milestones, event details, FAQ, registry |
@@ -51,16 +51,28 @@
 
 | Font | Role | Notes |
 |---|---|---|
-| Dancing Script | Script accent — couple's names only | `next/font/google` |
-| Cormorant Garamond | Serif body and headers — all primary copy | `next/font/google` |
-| Inter | UI labels — form fields, buttons, navigation | `next/font/google` |
+| Imperial Script | Script accent — couple's names and Monogram only | `next/font/google` (`Imperial_Script`) |
+| Elms Sans | All body text, headers, UI labels — single typeface site-wide | Google Fonts via `<link>` (not in `next/font` bundle at Next.js 14.2.35); migrate to `localFont` in Sprint 3 |
 
 ### Shape Language
 
 - Card radius: 24–28px (`rounded-3xl` or `rounded-[28px]`)
 - Pill buttons: `rounded-full`
 - Circular icon chips: `rounded-full` (for section icons, amenity chips)
-- No photography anywhere on the site — ever
+
+### Photography Policy
+
+Decorative floral and fabric/drape transparent-background PNG cutouts are permitted site-wide as background accents via the `FloralAccent` component. These are purely decorative — `aria-hidden`, `pointer-events-none`, absolutely positioned, and never placed over text in a way that hurts legibility.
+
+The existing illustration system (`TornEdgeDivider`, `GrowthMarker`, `LeafDivider`, `FloralArch`, `Monogram`) is unchanged — floral photography is additive richness, not a replacement.
+
+What is NOT permitted: portrait photography, guest photos, gallery sections, or any functional/informational image use. `next/image` for photography is limited to Hero background and `FloralAccent` instances only.
+
+### Scoped Design Exceptions
+
+| Exception | Scope | Rationale |
+|---|---|---|
+| Real photography in milestone cards | Our Story section only | Each `StoryMilestone` has an optional `imageUrl` / `imageAlt` field. Displayed as a full-width `<img>` (not `next/image`) at the top of each timeline card. Placeholder is a muted blush block with a Camera icon. Leanne will supply real photos for Sprint 3. This is the only location on the site where editorial photography appears. All other sections remain illustration-only. |
 
 ---
 
@@ -140,7 +152,7 @@ Two layers — both implemented in `app/api/rsvp/route.ts`:
 7. **FAQ** — accordion, sourced from `faqItem`
 8. **Footer** — couple names, wedding date, small floral monogram SVG
 
-> No gallery section. No photography anywhere.
+> No gallery section. No portrait photography or informational image use.
 
 ---
 
@@ -176,17 +188,19 @@ All illustration components:
 
 Rules specific to this project that extend or override the base standard:
 
-1. **No photography — ever.** `next/image` is not a primary tool. Sanity stores no images. `/public` holds only favicon, OG image, and the like. If a task mentions adding a photo, flag and reject it.
+1. **Photography is permitted only for decorative purposes.** `next/image` may be used in two contexts: (a) the Hero background (video or static image placeholder), and (b) `FloralAccent` — a reusable component for transparent-background floral/drape PNG cutouts placed as absolute decorative accents in sections. No gallery sections, no portrait photography, no informational image use.
 
-   **Scoped exception — Hero background video:** `HeroSection` accepts optional `videoSrc` and `posterSrc` props (passed from `app/page.tsx`). The video is a short ambient loop (not photography of people), rendered in `HeroVideo.tsx` as an `aria-hidden` background element. This is the only video on the site. See `.claude/standards/09-performance.md` Rule 3b for the video budget.
+   **Hero background video:** `HeroSection` accepts optional `videoSrc` and `posterSrc` props. The video is a short ambient loop, rendered in `HeroVideo.tsx` as an `aria-hidden` background element. See `.claude/standards/09-performance.md` Rule 3b for the video budget.
 
-   **Scoped exception — Hero static image placeholder:** While real footage is being sourced, `HeroSection` also accepts an optional `heroImageSrc` prop. When set (and `videoSrc` is absent), a `next/image` with `fill` renders as the Hero background in place of video. This is a temporary placeholder state only — it will be replaced by the video once sourced. It is the only use of `next/image` for a photographic image on the site. Document this as resolved once the video is in place and `heroImageSrc` is removed from `page.tsx`.
+   **Hero static image placeholder:** While real footage is being sourced, `HeroSection` accepts an optional `heroImageSrc` prop. This is temporary — it will be replaced by the video once sourced. Document this as resolved once `heroImageSrc` is removed from `page.tsx`.
+
+   **Floral accents (site-wide):** `FloralAccent` in `components/illustrations/FloralAccent.tsx` renders transparent-background PNG/WebP florals as absolutely positioned decorative elements. Always `aria-hidden="true"` and `pointer-events-none`. See performance budget in `.claude/standards/09-performance.md`.
 
 2. **Framer Motion is permanently banned.** It caused a React 19 hydration failure on the prior project (Ostendere, Sprint 1). The fix is CSS transitions + Intersection Observer. Do not reintroduce FM under any circumstances.
 
 3. **No Lenis.** Smooth scroll is not appropriate for a single-page invitation site. Standard browser scroll is the correct choice. Do not install Lenis.
 
-   **Scoped exception — `SiteNav`:** `components/layout/SiteNav.tsx` uses a fixed header with hamburger mobile overlay and horizontal desktop links. This is the only place in the project where a hamburger nav is used. It is a deliberate override of the single-scroll nav default. See `.claude/standards/02-responsive.md` for the scoped exception note.
+   **Scoped exception — `SiteNav`:** `components/layout/SiteNav.tsx` uses a fixed header with hamburger mobile overlay and horizontal desktop links. See `.claude/standards/02-responsive.md`.
 
 4. **No scroll-snap.** Sections flow naturally. Guest should be able to scroll freely without forced snap points.
 

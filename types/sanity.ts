@@ -14,6 +14,8 @@ export interface StoryMilestone {
   title: string
   description: string
   order: number
+  imageUrl?: string
+  imageAlt?: string
 }
 
 export interface ItineraryItem {

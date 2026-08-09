@@ -10,7 +10,7 @@ export function RegistrySection({ items }: RegistrySectionProps) {
   if (items.length === 0) return null
 
   return (
-    <SectionWrapper id="registry" className="bg-blush">
+    <SectionWrapper id="registry">
       <div className="max-w-2xl mx-auto text-center">
         <Gift
           size={22}

@@ -37,7 +37,7 @@ export function SiteNav() {
           href="#hero"
           className="font-script text-xl text-ivory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose rounded-sm"
         >
-          N & N
+          T &amp; L
         </a>
 
         <nav aria-label="Site navigation" className="hidden md:flex items-center gap-6">
