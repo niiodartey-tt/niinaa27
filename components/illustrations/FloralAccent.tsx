@@ -19,6 +19,7 @@ interface FloralAccentProps {
   rotation?: number    // degrees — inline style (dynamic runtime value)
   opacity?: number     // 0–1  — inline style (dynamic runtime value)
   priority?: boolean   // true only for above-fold placement
+  sizes?: string       // responsive sizes hint for next/image srcset selection
 }
 
 export function FloralAccent({
@@ -30,6 +31,7 @@ export function FloralAccent({
   rotation,
   opacity,
   priority = false,
+  sizes,
 }: FloralAccentProps) {
   if (!src) return null
 
@@ -51,7 +53,7 @@ export function FloralAccent({
         alt=""
         width={width}
         height={height}
-        sizes={`${width}px`}
+        sizes={sizes ?? `${width}px`}
         priority={priority}
       />
     </div>

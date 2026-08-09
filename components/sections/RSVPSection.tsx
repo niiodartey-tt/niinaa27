@@ -14,19 +14,21 @@ export function RSVPSection() {
         src="/peony-1.png"
         width={612}
         height={408}
-        position="bottom-left"
-        className="w-[400px] [&_img]:w-full [&_img]:h-auto"
-        rotation={-15}
+        position="top-left"
+        className="w-20 md:w-28 lg:w-40 xl:w-52 [&_img]:w-full [&_img]:h-auto"
+        rotation={-5}
         opacity={0.90}
+        sizes="(min-width: 1280px) 208px, (min-width: 1024px) 160px, (min-width: 768px) 112px, 80px"
       />
       <FloralAccent
         src="/peony-2.png"
         width={1000}
         height={666}
-        position="bottom-right"
-        className="w-[400px] [&_img]:w-full [&_img]:h-auto"
-        rotation={12}
+        position="top-right"
+        className="w-20 md:w-28 lg:w-40 xl:w-52 [&_img]:w-full [&_img]:h-auto"
+        rotation={5}
         opacity={0.90}
+        sizes="(min-width: 1280px) 208px, (min-width: 1024px) 160px, (min-width: 768px) 112px, 80px"
       />
       <div className="relative z-[1] max-w-lg mx-auto">
         <div className="text-center mb-6 md:mb-8">
