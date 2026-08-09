@@ -29,25 +29,24 @@ export function FooterSection({ couple }: FooterSectionProps) {
         aria-hidden="true"
         className="absolute inset-0 bg-floral-tile bg-repeat [background-size:309px_306px] pointer-events-none select-none opacity-[0.12]"
       />
+      {/* Bottom corners, flush — white flowers on dark ink read with more contrast so opacity is lower */}
       <FloralAccent
         src="/peony-1.png"
         width={612}
         height={408}
-        position="top-left"
-        className="w-16 md:w-24 lg:w-36 xl:w-48 [&_img]:w-full [&_img]:h-auto"
-        rotation={-5}
-        opacity={0.80}
-        sizes="(min-width: 1280px) 192px, (min-width: 1024px) 144px, (min-width: 768px) 96px, 64px"
+        position="bottom-left"
+        className="w-32 md:w-40 [&_img]:w-full [&_img]:h-auto"
+        opacity={0.38}
+        sizes="(min-width: 768px) 160px, 128px"
       />
       <FloralAccent
         src="/peony-2.png"
         width={1000}
         height={666}
-        position="top-right"
-        className="w-16 md:w-24 lg:w-36 xl:w-48 [&_img]:w-full [&_img]:h-auto"
-        rotation={5}
-        opacity={0.80}
-        sizes="(min-width: 1280px) 192px, (min-width: 1024px) 144px, (min-width: 768px) 96px, 64px"
+        position="bottom-right"
+        className="w-32 md:w-40 [&_img]:w-full [&_img]:h-auto"
+        opacity={0.38}
+        sizes="(min-width: 768px) 160px, 128px"
       />
       <div className="relative z-[1] max-w-md mx-auto flex flex-col items-center text-center gap-6">
         <Monogram

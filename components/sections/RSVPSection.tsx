@@ -10,25 +10,24 @@ export function RSVPSection() {
         aria-hidden="true"
         className="absolute inset-0 bg-floral-tile bg-repeat [background-size:309px_306px] pointer-events-none select-none filter invert contrast-[500%] brightness-50 opacity-[0.20]"
       />
+      {/* Diagonal pair: top-left + bottom-right — no position preset to avoid left-0 conflict with bleed offset */}
       <FloralAccent
         src="/peony-1.png"
         width={612}
         height={408}
-        position="top-left"
-        className="w-20 sm:w-16 md:w-28 lg:w-40 xl:w-52 [&_img]:w-full [&_img]:h-auto"
-        rotation={-5}
-        opacity={0.90}
-        sizes="(min-width: 1280px) 208px, (min-width: 1024px) 160px, (min-width: 768px) 112px, (min-width: 640px) 64px, 80px"
+        className="absolute -left-2.5 top-0 w-44 md:w-56 [&_img]:w-full [&_img]:h-auto"
+        rotation={-8}
+        opacity={0.50}
+        sizes="(min-width: 768px) 224px, 176px"
       />
       <FloralAccent
         src="/peony-2.png"
         width={1000}
         height={666}
-        position="top-right"
-        className="w-20 sm:w-16 md:w-28 lg:w-40 xl:w-52 [&_img]:w-full [&_img]:h-auto"
+        className="absolute -right-2.5 bottom-0 w-44 md:w-56 [&_img]:w-full [&_img]:h-auto"
         rotation={5}
-        opacity={0.90}
-        sizes="(min-width: 1280px) 208px, (min-width: 1024px) 160px, (min-width: 768px) 112px, (min-width: 640px) 64px, 80px"
+        opacity={0.50}
+        sizes="(min-width: 768px) 224px, 176px"
       />
       <div className="relative z-[1] max-w-lg mx-auto">
         <div className="text-center mb-6 md:mb-8">
