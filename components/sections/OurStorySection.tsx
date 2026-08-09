@@ -19,7 +19,7 @@ export function OurStorySection({ milestones }: OurStorySectionProps) {
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             How it began
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-ink">Our Story</h2>
+          <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">Our Story</h2>
         </div>
 
         <OurStoryTimeline milestones={milestones} />

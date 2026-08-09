@@ -58,7 +58,7 @@ export function EventTimelineStep({
         <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-1">
           {event.time}
         </p>
-        <h3 className="font-serif text-xl md:text-2xl text-ink mb-1">
+        <h3 className="font-serif text-xl md:text-2xl text-ink mb-1 uppercase">
           {event.name}
         </h3>
         <p className="font-serif text-base text-ink">{event.venue}</p>

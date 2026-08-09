@@ -16,7 +16,7 @@ export function FAQSection({ items }: FAQSectionProps) {
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             Questions
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-ink">
+          <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">
             Frequently asked
           </h2>
         </div>

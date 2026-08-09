@@ -77,7 +77,7 @@ export function StoryMilestoneCard({
             </p>
             <h3
               className={cn(
-                "font-serif text-xl md:text-2xl mb-2",
+                "font-serif text-xl md:text-2xl mb-2 uppercase",
                 isLast ? "text-ivory" : "text-ink"
               )}
             >

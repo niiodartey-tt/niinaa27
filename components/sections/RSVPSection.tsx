@@ -14,7 +14,7 @@ export function RSVPSection() {
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             Kindly reply by 1 December 2026
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-ink">RSVP</h2>
+          <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">RSVP</h2>
           <p className="font-serif text-base text-taupe italic mt-3">
             We would love to know if you can join us.
           </p>

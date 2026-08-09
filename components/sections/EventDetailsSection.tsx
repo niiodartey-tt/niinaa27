@@ -14,7 +14,7 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             Save the date
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-ink">Event Details</h2>
+          <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">Event Details</h2>
           <p className="font-serif text-base text-taupe italic mt-3">
             Saturday, 2 January 2027 · Accra, Ghana
           </p>

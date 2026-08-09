@@ -17,7 +17,7 @@ export function RegistrySection({ items }: RegistrySectionProps) {
           aria-hidden="true"
           className="text-rose mx-auto mb-3"
         />
-        <h2 className="font-serif text-3xl md:text-4xl text-ink">Registry</h2>
+        <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">Registry</h2>
         <p className="font-serif text-base text-taupe italic mt-3">
           Your presence is the greatest gift. Should you wish to honour us
           further, we are grateful.

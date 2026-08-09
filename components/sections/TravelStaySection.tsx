@@ -15,7 +15,7 @@ export function TravelStaySection({ hotels }: TravelStaySectionProps) {
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             Getting there
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-ink">
+          <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">
             Travel & Stay
           </h2>
           <p className="font-serif text-base text-taupe italic mt-3">
