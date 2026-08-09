@@ -14,8 +14,10 @@ export default function HeroParticles() {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const testCtx = canvas.getContext("webgl") ?? canvas.getContext("experimental-webgl")
-    if (!testCtx) return
+    // Test on a throwaway canvas — acquiring a webgl1 context on the render canvas
+    // would block Three.js from creating its webgl2 context on the same element.
+    const probe = document.createElement("canvas")
+    if (!probe.getContext("webgl2") && !probe.getContext("webgl")) return
 
     let W = window.innerWidth
     let H = window.innerHeight
