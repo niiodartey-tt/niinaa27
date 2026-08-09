@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Monogram } from "@/components/illustrations/Monogram"
 
 const links = [
   { label: "Our Story", href: "#our-story" },
@@ -35,9 +36,10 @@ export function SiteNav() {
       <div className="mx-auto max-w-6xl px-4 md:px-8 flex items-center justify-between h-14 md:h-16">
         <a
           href="#hero"
-          className="font-script text-xl text-ivory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose rounded-sm"
+          className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose rounded-sm"
         >
-          T &amp; L
+          <Monogram wordmark={false} className="w-10 text-ivory" />
+          <span className="sr-only">Thomas and Leanne — Home</span>
         </a>
 
         <nav aria-label="Site navigation" className="hidden md:flex items-center gap-6">
