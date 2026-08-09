@@ -1,6 +1,8 @@
 "use client"
 
-import { useInView } from "@/hooks/useInView"
+import { useRef } from "react"
+import { useGSAP } from "@gsap/react"
+import { gsap } from "@/lib/gsap"
 import { cn } from "@/lib/utils"
 import type { ItineraryItem } from "@/types/sanity"
 
@@ -11,19 +13,34 @@ interface EventTimelineStepProps {
   isLast?: boolean
 }
 
-// Pattern 4 canonical reference: scroll reveal with aria-hidden decorative element
-// inside the same animated wrapper. See .claude/standards/04-animation.md.
 export function EventTimelineStep({
   event,
   delay = 0,
   isAnchor = false,
   isLast = false,
 }: EventTimelineStepProps) {
-  const { ref, isInView } = useInView()
+  const ref = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    const mm = gsap.matchMedia()
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.from(ref.current, {
+        opacity: 0,
+        y: 24,
+        duration: 0.6,
+        delay: delay / 1000,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top 88%",
+          toggleActions: "play none none none",
+        },
+      })
+    })
+  }, { scope: ref, dependencies: [delay] })
 
   return (
     <li className={cn("relative pl-12 md:pl-14", !isLast && "pb-10")}>
-      {/* Connector line — hidden on last step */}
       {!isLast && (
         <span
           aria-hidden="true"
@@ -31,14 +48,11 @@ export function EventTimelineStep({
         />
       )}
 
-      {/* Step circle icon */}
       <span
         aria-hidden="true"
         className={cn(
           "absolute left-0 top-0 flex items-center justify-center w-8 h-8 rounded-full border-2 shrink-0",
-          isAnchor
-            ? "bg-rose border-rose"
-            : "bg-ivory border-rose/40"
+          isAnchor ? "bg-rose border-rose" : "bg-ivory border-rose/40"
         )}
       >
         <span
@@ -49,12 +63,7 @@ export function EventTimelineStep({
         />
       </span>
 
-      {/* Content */}
-      <div
-        ref={ref}
-        style={{ animationDelay: `${delay}ms` }}
-        className={cn(isInView ? "animate-fade-up opacity-0" : "opacity-0")}
-      >
+      <div ref={ref}>
         <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-1">
           {event.time}
         </p>

@@ -1,6 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
+import { useGSAP } from "@gsap/react"
+import { gsap } from "@/lib/gsap"
 import { ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { FaqItem } from "@/types/sanity"
@@ -10,14 +12,33 @@ interface FAQAccordionProps {
 }
 
 export function FAQAccordion({ items }: FAQAccordionProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+
+  useGSAP(() => {
+    const mm = gsap.matchMedia()
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.from(containerRef.current?.querySelectorAll("article") ?? [], {
+        opacity: 0,
+        y: 16,
+        duration: 0.5,
+        stagger: 0.09,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      })
+    })
+  }, { scope: containerRef })
 
   function toggle(i: number) {
     setOpenIndex(openIndex === i ? null : i)
   }
 
   return (
-    <div className="border-t border-hairline divide-y divide-hairline">
+    <div ref={containerRef} className="border-t border-hairline divide-y divide-hairline">
       {items.map((item, i) => {
         const open = openIndex === i
         return (
