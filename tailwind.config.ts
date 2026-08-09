@@ -19,8 +19,8 @@ const config: Config = {
       },
       fontFamily: {
         script: ["var(--font-imperial-script)", "cursive"],
-        serif:  ["'Elms Sans'", "Georgia", "serif"],
-        sans:   ["'Elms Sans'", "system-ui", "sans-serif"],
+        serif:  ["var(--font-cormorant)", "Georgia", "serif"],
+        sans:   ["var(--font-cormorant)", "Georgia", "serif"],
       },
       animation: {
         "fade-up":       "fade-up 0.8s ease-out forwards",

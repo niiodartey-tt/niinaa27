@@ -1,7 +1,5 @@
-/* eslint-disable @next/next/no-page-custom-font */
-// Elms Sans is not in next/font/google at Next.js 14.2.35 — loaded via <link> in root layout.
 import type { Metadata } from "next"
-import { Imperial_Script } from "next/font/google"
+import { Imperial_Script, Cormorant_Garamond } from "next/font/google"
 import { SiteNav } from "@/components/layout/SiteNav"
 import { LenisProvider } from "@/components/providers/LenisProvider"
 import "./globals.css"
@@ -13,9 +11,13 @@ const imperialScript = Imperial_Script({
   display: "swap",
 })
 
-// Elms Sans is not yet in next/font/google's bundled font list (Next.js 14.2.35).
-// Loaded via <link> in <head> below. TODO Sprint 3: switch to localFont once
-// a self-hosted copy is added to /public/fonts/.
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-cormorant",
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "Thomas & Leanne — Wedding Invitation",
@@ -35,16 +37,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={imperialScript.variable}
+      className={`${imperialScript.variable} ${cormorantGaramond.variable}`}
     >
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body>
         <a
           href="#main-content"

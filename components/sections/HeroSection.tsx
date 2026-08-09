@@ -1,8 +1,15 @@
 import Image from "next/image"
+import dynamic from "next/dynamic"
 import { ChevronDown } from "lucide-react"
 import { HeroVideo } from "@/components/sections/HeroVideo"
 import { CountdownTimer } from "@/components/sections/CountdownTimer"
 import type { CoupleInfo } from "@/types/sanity"
+
+// ── Non-negotiable 3: lazy-loaded — Three.js must not add to First Load JS ──
+const HeroParticles = dynamic(
+  () => import("@/components/sections/HeroParticles"),
+  { ssr: false }
+)
 
 interface HeroSectionProps {
   couple: CoupleInfo
@@ -49,6 +56,9 @@ export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroS
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/65 pointer-events-none"
       />
+
+      {/* Particles above gradient, below z-10 text — pointer-events-none on canvas */}
+      <HeroParticles />
 
       <div className="relative z-10 flex flex-col items-center text-center max-w-xl mx-auto animate-fade-up">
         <p className="font-sans text-xs text-blush tracking-widest uppercase mb-4">
