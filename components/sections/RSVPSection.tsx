@@ -15,20 +15,20 @@ export function RSVPSection() {
         width={612}
         height={408}
         position="top-left"
-        className="w-20 md:w-28 lg:w-40 xl:w-52 [&_img]:w-full [&_img]:h-auto"
+        className="w-20 sm:w-16 md:w-28 lg:w-40 xl:w-52 [&_img]:w-full [&_img]:h-auto"
         rotation={-5}
         opacity={0.90}
-        sizes="(min-width: 1280px) 208px, (min-width: 1024px) 160px, (min-width: 768px) 112px, 80px"
+        sizes="(min-width: 1280px) 208px, (min-width: 1024px) 160px, (min-width: 768px) 112px, (min-width: 640px) 64px, 80px"
       />
       <FloralAccent
         src="/peony-2.png"
         width={1000}
         height={666}
         position="top-right"
-        className="w-20 md:w-28 lg:w-40 xl:w-52 [&_img]:w-full [&_img]:h-auto"
+        className="w-20 sm:w-16 md:w-28 lg:w-40 xl:w-52 [&_img]:w-full [&_img]:h-auto"
         rotation={5}
         opacity={0.90}
-        sizes="(min-width: 1280px) 208px, (min-width: 1024px) 160px, (min-width: 768px) 112px, 80px"
+        sizes="(min-width: 1280px) 208px, (min-width: 1024px) 160px, (min-width: 768px) 112px, (min-width: 640px) 64px, 80px"
       />
       <div className="relative z-[1] max-w-lg mx-auto">
         <div className="text-center mb-6 md:mb-8">
