@@ -1,16 +1,20 @@
 "use client"
 
-import { ReactLenis } from "lenis/react"
+import { ReactLenis, useLenis } from "lenis/react"
 import type { ReactNode } from "react"
+import { ScrollTrigger } from "@/lib/gsap"
 
-// Computed once at module load on the client (false during SSR — Lenis never runs server-side).
-// Duration 0 keeps Lenis active (events, anchors) but makes scrolling instant.
+// Keeps ScrollTrigger in sync with Lenis's per-frame scroll position updates.
+// Must be rendered inside the ReactLenis tree to access the lenis instance.
+function ScrollTriggerSyncer() {
+  useLenis(() => ScrollTrigger.update())
+  return null
+}
+
 const prefersReducedMotion =
   typeof window !== "undefined" &&
   window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
-// Nav heights: h-14 (56px) mobile, h-16 (64px) desktop.
-// Negative offset pulls the scroll target up so content clears the fixed nav.
 const anchorOffset =
   typeof window !== "undefined" && window.innerWidth >= 768 ? -64 : -56
 
@@ -27,6 +31,7 @@ export function LenisProvider({ children }: LenisProviderProps) {
         anchors: { offset: anchorOffset },
       }}
     >
+      <ScrollTriggerSyncer />
       {children}
     </ReactLenis>
   )
