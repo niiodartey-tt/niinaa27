@@ -4,7 +4,6 @@ import { useRef } from "react"
 import { useGSAP } from "@gsap/react"
 import { gsap } from "@/lib/gsap"
 import { ExternalLink, MapPin } from "lucide-react"
-import { cn } from "@/lib/utils"
 import type { Hotel } from "@/types/sanity"
 
 interface HotelCardProps {
