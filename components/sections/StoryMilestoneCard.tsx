@@ -28,19 +28,19 @@ export function StoryMilestoneCard({
         isLast ? "bg-rose border-rose" : "bg-ivory border-hairline"
       )}
     >
-      {/* Photo */}
+      {/* Photo: hidden below sm (140px card too narrow for meaningful photo) */}
       {milestone.imageUrl ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={milestone.imageUrl}
           alt={milestone.imageAlt ?? ""}
-          className="w-full aspect-video object-cover"
+          className="hidden sm:block w-full aspect-video object-cover"
         />
       ) : (
         <div
           aria-hidden="true"
           className={cn(
-            "w-full aspect-video flex items-center justify-center",
+            "hidden sm:flex w-full aspect-video items-center justify-center",
             isLast ? "bg-rose-dark/20" : "bg-blush/40"
           )}
         >
@@ -51,7 +51,7 @@ export function StoryMilestoneCard({
         </div>
       )}
 
-      <div className="p-4 sm:p-5">
+      <div className="p-3 sm:p-5">
         <p
           className={cn(
             "font-sans text-[10px] tracking-widest uppercase mb-1.5",
@@ -62,7 +62,7 @@ export function StoryMilestoneCard({
         </p>
         <h3
           className={cn(
-            "font-serif text-base sm:text-xl uppercase mb-2",
+            "font-serif text-sm sm:text-xl uppercase mb-2",
             isLast ? "text-ivory" : "text-ink"
           )}
         >
@@ -70,7 +70,7 @@ export function StoryMilestoneCard({
         </h3>
         <p
           className={cn(
-            "font-serif text-sm sm:text-base leading-relaxed",
+            "font-serif text-sm sm:text-base leading-relaxed line-clamp-3 sm:line-clamp-none",
             isLast ? "text-ivory" : "text-taupe"
           )}
         >
