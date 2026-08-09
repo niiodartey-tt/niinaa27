@@ -14,7 +14,7 @@ export function OurStorySection({ milestones }: OurStorySectionProps) {
         aria-hidden="true"
         className="absolute inset-0 bg-floral-tile bg-repeat [background-size:309px_306px] pointer-events-none select-none filter invert contrast-[500%] brightness-50 opacity-[0.20]"
       />
-      <div className="max-w-2xl mx-auto relative z-[1]">
+      <div className="max-w-4xl mx-auto relative z-[1]">
         <div className="text-center mb-12 md:mb-16">
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             How it began
