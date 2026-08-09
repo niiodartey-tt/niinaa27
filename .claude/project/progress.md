@@ -230,3 +230,55 @@ Claude does this automatically — without being asked.
 ## Sprint 3 — Sanity/Supabase Wiring + Polish + SEO + Accessibility
 
 [Claude populates this during the sprint]
+
+---
+
+## Cinematic Redesign — GSAP + Three.js Animation Overhaul
+
+**Branch:** `cinematic-redesign` | **Started:** 09/08/2026 | **Status:** G1–G7 complete, passing pre-merge checks
+
+### G1+G2 — Foundation: deps, standards, GSAP/Lenis wiring
+- Installed `gsap@3.15.0`, `@gsap/react@2.1.2`, `three@0.185.1`, `@types/three`
+- `lib/gsap.ts`: central plugin registration (ScrollTrigger, SplitText) + `gsap.ticker.lagSmoothing(0)` to prevent GSAP lag compensation stacking on Lenis easing
+- `components/providers/LenisProvider.tsx`: added `ScrollTriggerSyncer` child component that calls `ScrollTrigger.update()` on every Lenis scroll callback — keeps ScrollTrigger in sync with Lenis's per-frame scroll position
+- `.claude/standards/04-animation.md`: fully rewritten — GSAP as canonical system, all 4 patterns documented, Lenis+ScrollTrigger integration, reduced-motion requirements, retired tools
+- `.claude/standards/13-dependencies.md`: GSAP and Three.js added to approved libraries; GSAP removed from banned list; framer-motion "Use Instead" updated to GSAP+ScrollTrigger
+- TypeScript ✅ | Committed + Pushed ✅
+
+### G3 — Hero entry reveal + Three.js particle layer
+- `components/sections/HeroReveal.tsx`: "use client" — `useGSAP` + `SplitText` stagger reveal: eyebrow words drift up (t=0), names character-by-character (t=0.6), divider+date+location+bio+countdown assemble in sequence; gsap.matchMedia gates reduced-motion
+- `components/sections/HeroParticles.tsx`: "use client", default export (for `next/dynamic`) — Three.js WebGL canvas; 80 particles drifting slowly upward; OrthographicCamera; `PointsMaterial` ivory 32% opacity sizeAttenuation:false; WebGL check + reduced-motion guard inside `useEffect`; resize handler updates camera frustum; full disposal on unmount
+- `components/sections/HeroSection.tsx`: removed old `animate-fade-up` content div; dynamic import `HeroParticles` (ssr:false); renders `HeroReveal`; DOM order: background → gradient → particles → z-10 content
+- **TypeScript fix:** `noUncheckedIndexedAccess` caused `Float32Array[i]` returns `number | undefined`; fixed via local vars (`let px = posArray[i*3] ?? 0`) in the animation loop
+- TypeScript ✅ | Committed + Pushed ✅
+
+### G4 — Our Story horizontal pin (desktop) / vertical fallback (mobile)
+- `components/sections/StoryCardHorizontal.tsx`: fixed 340px card, 360px height, year badge at bottom, `isLast` styling variant
+- `components/sections/OurStoryHorizontal.tsx`: "use client" — `gsap.matchMedia` `(min-width: 768px) and (prefers-reduced-motion: no-preference)`: pins the section and scrubs-translates the strip leftward; `x` and `end` both use functions for `invalidateOnRefresh` support; `overflow-hidden` on the flex-1 container clips the wider-than-viewport strip without blocking the pin; mobile renders plain vertical `<ol>` with no animation (G5 adds reveals)
+- `components/sections/OurStorySection.tsx`: thin passthrough to `OurStoryHorizontal`
+- TypeScript ✅ | Committed + Pushed ✅
+
+### G5 — Site-wide ScrollTrigger reveals — retire useInView hook
+- `EventTimelineStep.tsx`: `useInView` → `useGSAP` ScrollTrigger triggered-once (y:24 opacity:0, start "top 88%", `delay` prop converted ms→s)
+- `HotelCard.tsx`: same pattern (y:28, duration:0.65)
+- `FAQAccordion.tsx`: added `useGSAP` scoped selector targeting `article` elements — stagger 0.09s entrance when accordion section enters viewport
+- Deleted `hooks/useInView.ts` — replaced entirely by ScrollTrigger
+- Deleted `StoryMilestoneCard.tsx` + `OurStoryTimeline.tsx` — unreachable since G4 replaced `OurStoryTimeline` with `OurStoryHorizontal`
+- TypeScript ✅ | Committed + Pushed ✅
+
+### G6 — CountdownTimer kinetic digit transitions
+- `components/sections/KineticDigit.tsx`: "use client" — `useGSAP` with `dependencies: [value]`; fires `gsap.from` (y:14 opacity:0 → natural, 0.28s power2.out) every time the digit value changes; gsap.matchMedia gates reduced-motion
+- `components/sections/CountdownTimer.tsx`: now delegates rendering to `KineticDigit`; retains setInterval timing logic
+- TypeScript ✅ | Committed + Pushed ✅
+
+### G7 — Pre-merge checks + performance report
+- Lint: ✅ (fixed unused `cn` import in HotelCard)
+- TypeScript: ✅
+- Build: ✅
+- npm audit: 5 high vulnerabilities — same pre-existing Next.js 14 issues documented in known-issues.md; require Next.js 16 upgrade (breaking change, out of sprint scope)
+- **Bundle delta vs main:** First Load JS 327 kB (cinematic-redesign) vs 134 kB (main) = +193 kB
+  - GSAP core + ScrollTrigger + SplitText + @gsap/react: ~152 kB uncompressed in synchronous bundle (two chunks: 98 kB + 52 kB)
+  - Three.js: lazy-loaded via `next/dynamic` — 340 kB + 224 kB in separate async chunks, NOT in First Load JS; confirmed not in any app-level eager chunk
+  - Net synchronous cost: GSAP ~152 kB uncompressed (≈55–65 kB gzipped)
+- **Lighthouse impact estimate:** LCP unaffected (Three.js lazy, GSAP deferred by hydration); CLS risk exists if SplitText fires before fonts load — mitigated by Dancing Script preload and `display: swap`. FID/INP neutral — no synchronous click-path JS added.
+- Committed + Pushed ✅
