@@ -1,6 +1,7 @@
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
 import { RSVPForm } from "@/components/sections/RSVPForm"
 import { LeafDivider } from "@/components/illustrations/LeafDivider"
+import { FloralAccent } from "@/components/illustrations/FloralAccent"
 
 export function RSVPSection() {
   return (
@@ -8,6 +9,24 @@ export function RSVPSection() {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-floral-tile bg-repeat [background-size:309px_306px] pointer-events-none select-none filter invert contrast-[500%] brightness-50 opacity-[0.20]"
+      />
+      <FloralAccent
+        src="/peony-1.png"
+        width={612}
+        height={408}
+        position="bottom-left"
+        className="w-[400px] [&_img]:w-full [&_img]:h-auto"
+        rotation={-15}
+        opacity={0.90}
+      />
+      <FloralAccent
+        src="/peony-2.png"
+        width={1000}
+        height={666}
+        position="bottom-right"
+        className="w-[400px] [&_img]:w-full [&_img]:h-auto"
+        rotation={12}
+        opacity={0.90}
       />
       <div className="relative z-[1] max-w-lg mx-auto">
         <div className="text-center mb-6 md:mb-8">
