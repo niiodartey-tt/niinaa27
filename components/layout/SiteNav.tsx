@@ -10,7 +10,7 @@ const links = [
   { label: "Event", href: "#event-details" },
   { label: "Travel", href: "#travel-stay" },
   { label: "RSVP", href: "#rsvp" },
-  { label: "Registry", href: "#registry" },
+  { label: "Gift Guide", href: "#gift-guide" },
   { label: "FAQ", href: "#faq" },
 ]
 

@@ -73,6 +73,7 @@ What is NOT permitted: portrait photography, guest photos, gallery sections, or 
 | Exception | Scope | Rationale |
 |---|---|---|
 | Real photography in milestone cards | Our Story section only | Each `StoryMilestone` has an optional `imageUrl` / `imageAlt` field. Displayed as a full-width `<img>` (not `next/image`) at the top of each timeline card. Placeholder is a muted blush block with a Camera icon. Leanne will supply real photos for Sprint 3. This is the only location on the site where editorial photography appears. All other sections remain illustration-only. |
+| Gift Guide is hardcoded, not Sanity-editable | Gift Guide section only | The Gift Guide section (`RegistrySection.tsx`, anchor `#gift-guide`) has no Sanity prop. Copy and bank details are hardcoded with placeholder strings. The `registryInfo` Sanity schema is still listed in the CMS config for Sprint 3 awareness. **Sprint 3 decision:** either (a) wire the section to a new/renamed Sanity schema for the bank details and copy, or (b) intentionally leave it hardcoded given the content never changes. Confirm with site owner before wiring. |
 
 ---
 
@@ -145,10 +146,10 @@ Two layers — both implemented in `app/api/rsvp/route.ts`:
 
 1. **Hero** — couple names in Dancing Script, wedding date, location, tasteful floral SVG illustration, scroll CTA
 2. **Our Story** — timeline of milestones sourced from Sanity `storyMilestone` documents
-3. **Event Details** — ceremony and reception cards, sourced from `itineraryItem`
+3. **Event Details** — single-column stacked layout (date & time, location, RSVP nudge, dress code), sourced from `itineraryItem`
 4. **Travel & Stay** — hotel recommendations, sourced from `hotel`
 5. **RSVP** — form writing to Supabase `rsvps`, triggers Resend confirmation email (stubbed Sprint 0–1)
-6. **Registry** — link(s) to registry, sourced from `registryInfo`
+6. **Gift Guide** — warm monetary gift message + bank transfer details. Currently hardcoded (see Scoped Exceptions). Nav label: "Gift Guide", anchor: `#gift-guide`.
 7. **FAQ** — accordion, sourced from `faqItem`
 8. **Footer** — couple names, wedding date, small floral monogram SVG
 

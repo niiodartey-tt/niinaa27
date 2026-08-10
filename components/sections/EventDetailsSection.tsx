@@ -9,7 +9,7 @@ const linkClass =
   "inline-flex items-center gap-1.5 mt-3 min-h-[44px] font-sans text-sm text-rose hover:text-rose-dark transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 rounded-sm"
 
 const labelClass =
-  "font-sans text-xs tracking-widest uppercase font-semibold text-rose mb-2.5"
+  "font-sans text-base tracking-widest uppercase font-semibold text-rose mb-3"
 
 interface EventDetailsSectionProps {
   items: ItineraryItem[]
@@ -22,13 +22,16 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
 
   return (
     <SectionWrapper id="event-details" className="bg-blush">
-      <div className="max-w-sm md:max-w-md mx-auto text-center">
+      <div className="max-w-lg mx-auto text-center">
 
-        {/* Script header */}
-        <p className="font-script text-2xl text-taupe leading-none">the</p>
-        <h2 className="font-script text-6xl md:text-7xl text-ink leading-none mt-1 mb-14 md:mb-16">
-          Details
-        </h2>
+        <div className="mb-12 md:mb-16">
+          <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
+            Saturday, 2 January 2027
+          </p>
+          <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">
+            The Details
+          </h2>
+        </div>
 
         {/* DATE & TIME */}
         <div className="mb-10 md:mb-12">

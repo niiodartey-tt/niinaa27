@@ -13,11 +13,11 @@ import {
   placeholderItinerary,
   placeholderHotels,
   placeholderFaqItems,
-  placeholderRegistry,
 } from "@/lib/placeholder-data"
 
 // Design token hex values — must stay in sync with tailwind.config.ts
 const ivory = "#FBF9F4"
+const blush = "#F0DCD0"
 const ink   = "#3A2A22"
 
 export default function HomePage() {
@@ -33,10 +33,10 @@ export default function HomePage() {
         <EventDetailsSection items={placeholderItinerary} />
         <TravelStaySection hotels={placeholderHotels} />
         <RSVPSection />
-        <RegistrySection items={placeholderRegistry} />
+        <RegistrySection />
         <FAQSection items={placeholderFaqItems} />
       </main>
-      <TornEdgeDivider topColor={ivory} bottomColor={ink} />
+      <TornEdgeDivider topColor={ivory} bottomColor={blush} />
       <FooterSection couple={placeholderCoupleInfo} />
     </>
   )
