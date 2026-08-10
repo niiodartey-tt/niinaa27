@@ -229,4 +229,18 @@ Claude does this automatically — without being asked.
 
 ## Sprint 3 — Sanity/Supabase Wiring + Polish + SEO + Accessibility
 
-[Claude populates this during the sprint]
+### Background Exploration — Peony Vine Scroll-Reveal Background
+
+**Branch:** `background-exploration` | **Started:** 10/08/2026
+
+- `components/illustrations/PeonyVineBackground.tsx`: server component; 38 potrace paths from `public/icons/peony-vine.svg` inlined as JSX; single `<defs><g id="vine-unit">` definition + 30 `<use>` references to avoid path duplication; alternating horizontal mirror (`scale(-1,1)`) on odd repeats + 3-step opacity cycle (0.05/0.08/0.065) to break obvious repetition; 6-unit visual period (~2,360px on mobile); SVG uses `h-auto` (not explicit `height` attribute) so width-driven CSS auto-scales height proportionally (280px CSS width → 11,798px rendered height vs 8,227–9,023px page heights across viewports)
+- `app/globals.css`: `vine-reveal` scroll animation — `@supports (animation-timeline: scroll())` guard + `@media (prefers-reduced-motion: no-preference)` inner guard; `clip-path: inset(0 0 100% 0)` → `inset(0 0 0% 0)` driven by `scroll(root block)` — zero JS, GPU-composited; unsupported browsers/reduced-motion show vine fully visible (no clip applied)
+- `app/page.tsx`: `relative overflow-hidden` wrapper div around `<main>` and `<FooterSection>`; `PeonyVineBackground` rendered first (position: absolute, z-index behind content); direct import (not dynamic) — vine is SSR'd into initial HTML as a server component
+- `components/sections/FooterSection.tsx`: Vecteezy attribution line below date/location (`font-sans text-[10px] text-taupe/60`)
+- **Key decision:** `clip-path: inset()` reveal instead of `stroke-dasharray` — the SVG uses fill-based potrace paths (not stroke paths); clipPath reveal achieves identical progressive-reveal visual goal
+- **Key decision:** server component (no `"use client"`) — vine has no hooks; SSR'd into initial HTML eliminates client-side flash; `animation-timeline: scroll()` CSS handles all animation
+- **Key decision:** direct import not `dynamic()` — `dynamic()` with `ssr: false` failed to hydrate in the dev environment; direct import is simpler and correct since the vine is server-renderable
+- **Sizing fix:** initial `width={1367} height={57600}` SVG attributes + `w-[280px]` CSS caused `preserveAspectRatio="xMidYMid meet"` to centre vine content at y≈22,902px (below page bottom). Fixed by removing explicit `height` attribute and adding `h-auto` — auto-scales from viewBox aspect ratio
+- **Repeat count:** 30 repeats × 393px/repeat = 11,798px vine height; actual pages: 8,227–9,023px across all viewports; 31% headroom; increase REPEAT_COUNT threshold: ~12,000px page
+- **Visual verification:** all 4 breakpoints (375/390/768/1280px) × 3 scroll depths; vine visible and delicate; all text legible; repeat pattern not noticeable at normal scroll speed
+- TypeScript ✅

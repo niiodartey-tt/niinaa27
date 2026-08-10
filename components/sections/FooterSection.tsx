@@ -39,6 +39,17 @@ export function FooterSection({ couple }: FooterSectionProps) {
         <p className="font-serif text-base text-taupe">
           {formatDate(couple.weddingDate)} · {couple.locationName}
         </p>
+        <p className="font-sans text-[10px] text-taupe/60 mt-2">
+          Floral illustration via{" "}
+          <a
+            href="https://www.vecteezy.com"
+            className="underline underline-offset-2 hover:text-taupe transition-colors duration-200"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Vecteezy
+          </a>
+        </p>
       </div>
     </footer>
   )
