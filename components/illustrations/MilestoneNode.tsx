@@ -6,47 +6,99 @@ interface MilestoneNodeProps {
   className?: string
 }
 
+// All icons: viewBox 0 0 20 20, strokeWidth 1.75, strokeLinecap round, no bezier curves or ellipses.
+
+function SproutIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75"
+      strokeLinecap="round" aria-hidden="true" className="w-5 h-5">
+      <line x1="10" y1="16" x2="10" y2="12" />
+      <line x1="10" y1="12" x2="7" y2="8" />
+      <line x1="10" y1="12" x2="13" y2="8" />
+      <circle cx="7" cy="7" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="13" cy="7" r="1.5" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+function SaplingIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75"
+      strokeLinecap="round" aria-hidden="true" className="w-5 h-5">
+      <line x1="10" y1="17" x2="10" y2="5" />
+      <line x1="10" y1="11" x2="6.5" y2="8" />
+      <line x1="10" y1="11" x2="13.5" y2="8" />
+      <circle cx="6" cy="7" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="14" cy="7" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="10" cy="4" r="1.5" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+function SparkIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75"
+      strokeLinecap="round" aria-hidden="true" className="w-5 h-5">
+      <line x1="10" y1="10" x2="4" y2="4" />
+      <line x1="10" y1="10" x2="16" y2="4" />
+      <line x1="10" y1="10" x2="16" y2="16" />
+      <line x1="10" y1="10" x2="4" y2="16" />
+    </svg>
+  )
+}
+
+function SunIcon() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75"
+      strokeLinecap="round" aria-hidden="true" className="w-5 h-5">
+      <circle cx="10" cy="10" r="3" />
+      <line x1="10" y1="5.5" x2="10" y2="2" />
+      <line x1="13.9" y1="7.8" x2="16.9" y2="6" />
+      <line x1="13.9" y1="12.2" x2="16.9" y2="14" />
+      <line x1="10" y1="14.5" x2="10" y2="18" />
+      <line x1="6.1" y1="12.2" x2="3.1" y2="14" />
+      <line x1="6.1" y1="7.8" x2="3.1" y2="6" />
+    </svg>
+  )
+}
+
 function HeartIcon() {
   return (
-    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="w-5 h-5">
-      <path d="M10 17C10 17 3 13 3 8.5A4 4 0 0 1 10 5.2A4 4 0 0 1 17 8.5C17 13 10 17 10 17Z" />
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75"
+      strokeLinecap="round" aria-hidden="true" className="w-5 h-5">
+      <circle cx="7.5" cy="8" r="3" />
+      <circle cx="12.5" cy="8" r="3" />
+      <line x1="4.5" y1="9" x2="10" y2="17.5" />
+      <line x1="15.5" y1="9" x2="10" y2="17.5" />
     </svg>
   )
 }
 
-function BloomIcon() {
+function ArrowUpIcon() {
   return (
-    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="w-5 h-5">
-      <ellipse cx="10" cy="5.5" rx="2" ry="3.5" />
-      <ellipse cx="14.5" cy="10" rx="3.5" ry="2" />
-      <ellipse cx="10" cy="14.5" rx="2" ry="3.5" />
-      <ellipse cx="5.5" cy="10" rx="3.5" ry="2" />
-      <circle cx="10" cy="10" r="2.5" />
-    </svg>
-  )
-}
-
-function LeafIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="w-5 h-5">
-      <path d="M10 17C10 17 3 13 3 8.5A6 6 0 0 1 10 3A6 6 0 0 1 17 8.5C17 13 10 17 10 17Z" />
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75"
+      strokeLinecap="round" aria-hidden="true" className="w-5 h-5">
+      <line x1="10" y1="8" x2="10" y2="17" />
+      <line x1="10" y1="4" x2="5.5" y2="9" />
+      <line x1="10" y1="4" x2="14.5" y2="9" />
     </svg>
   )
 }
 
 function RingIcon() {
   return (
-    <svg viewBox="0 0 22 18" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true" className="w-5 h-5">
-      <circle cx="8" cy="9" r="5.5" />
-      <circle cx="14" cy="9" r="5.5" />
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75"
+      strokeLinecap="round" aria-hidden="true" className="w-5 h-5">
+      <circle cx="7" cy="10" r="5" />
+      <circle cx="13" cy="10" r="5" />
     </svg>
   )
 }
 
-const ICONS = [HeartIcon, BloomIcon, LeafIcon, RingIcon] as const
+const ICONS = [SproutIcon, SaplingIcon, SparkIcon, SunIcon, HeartIcon, ArrowUpIcon, RingIcon] as const
 
 export function MilestoneNode({ index, isLast, className }: MilestoneNodeProps) {
-  const Icon = isLast ? BloomIcon : (ICONS[index % 4] ?? HeartIcon)
+  const Icon = ICONS[index % ICONS.length] ?? SproutIcon
 
   return (
     <div

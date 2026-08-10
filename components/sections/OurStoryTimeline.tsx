@@ -12,25 +12,38 @@ interface OurStoryTimelineProps {
 export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
   return (
     <div className="relative">
-      {/* Central line: equal 1fr cols mean left-1/2 is always node-column centre */}
-      <div
+      {/* Organic S-wave line — deviates ±7px from centre, always within the 18px node radius */}
+      <svg
         aria-hidden="true"
-        className="absolute top-0 bottom-0 w-px bg-rose/30 left-1/2 -translate-x-px"
-      />
+        focusable="false"
+        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-10 block pointer-events-none select-none"
+        viewBox="0 0 40 1000"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M 20 0 C 20 80,27 130,27 200 C 27 270,20 320,20 400 C 20 480,13 530,13 600 C 13 670,20 720,20 800 C 20 870,27 920,27 960 C 27 980,20 995,20 1000"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          vectorEffect="non-scaling-stroke"
+          className="text-rose/30"
+        />
+      </svg>
 
       <ol>
         {milestones.map((milestone, index) => {
           const isRight = index % 2 !== 0
           const isLast = index === milestones.length - 1
+          const photoSrc = milestone.imageUrl ?? (index % 2 === 0 ? "/peony-1.png" : "/peony-2.png")
+          const photoAlt = milestone.imageUrl ? (milestone.imageAlt ?? "") : ""
 
           return (
             <li
               key={milestone._id}
               className="grid grid-cols-[1fr_2.5rem_1fr] sm:grid-cols-[1fr_3rem_1fr] pb-10 sm:pb-14 last:pb-0"
             >
-              {/* Node cell: col2 at all widths */}
+              {/* Node — col 2, tick arm toward text */}
               <div className="col-start-2 row-start-1 self-start flex items-start justify-center relative z-10">
-                {/* Tick arm toward card — visible at all widths */}
                 <div
                   aria-hidden="true"
                   className={cn(
@@ -41,20 +54,31 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
                 <MilestoneNode index={index} isLast={isLast} />
               </div>
 
-              {/* Card cell: col1 or col3 at all widths */}
+              {/* Text card — alternates col 1 / col 3, same as before */}
               <div
                 className={cn(
-                  "row-start-1",
-                  isRight
-                    ? "col-start-3 pl-3 sm:pl-6"
-                    : "col-start-1 pr-3 sm:pr-6"
+                  "row-start-1 self-start",
+                  isRight ? "col-start-3 pl-3 sm:pl-6" : "col-start-1 pr-3 sm:pr-6"
                 )}
               >
-                <StoryMilestoneCard
-                  milestone={milestone}
-                  index={index}
-                  isLast={isLast}
-                />
+                <StoryMilestoneCard milestone={milestone} index={index} isLast={isLast} />
+              </div>
+
+              {/* Photo cell — opposite column from text */}
+              <div
+                className={cn(
+                  "row-start-1 self-start",
+                  isRight ? "col-start-1 pr-3 sm:pr-6" : "col-start-3 pl-3 sm:pl-6"
+                )}
+              >
+                <div className="rounded-card overflow-hidden aspect-video bg-blush">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={photoSrc}
+                    alt={photoAlt}
+                    className="w-full h-full object-contain p-2 md:p-3"
+                  />
+                </div>
               </div>
             </li>
           )

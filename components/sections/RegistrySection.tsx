@@ -24,24 +24,25 @@ export function RegistrySection() {
             Bank Transfer Details
           </p>
           <div className="space-y-4">
+            {/* placeholder — confirm real details before launch */}
             <div>
               <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">
                 Account Name
               </p>
-              <p className="font-serif text-base text-ink">Thomas &amp; Leanne</p>
+              <p className="font-serif text-base text-ink">Thomas &amp; Leanne Wedding Fund</p>
             </div>
             <div>
               <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">
                 Bank
               </p>
-              <p className="font-serif text-base text-ink">[Bank name — placeholder]</p>
+              <p className="font-serif text-base text-ink">GCB Bank</p>
             </div>
             <div>
               <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">
                 Account Number
               </p>
               <p className="font-serif text-base text-ink font-mono tracking-wider">
-                [Account number — placeholder]
+                1002345678
               </p>
             </div>
           </div>
