@@ -50,8 +50,8 @@ export function FooterSection({ couple }: FooterSectionProps) {
       />
       <div className="relative z-[1] max-w-md mx-auto flex flex-col items-center text-center gap-6">
         <Monogram
-          aria-hidden="true"
-          className="w-28 md:w-36 text-ivory opacity-45"
+          alt="Thomas and Leanne"
+          className="w-40 md:w-52"
         />
         <LeafDivider
           aria-hidden="true"
