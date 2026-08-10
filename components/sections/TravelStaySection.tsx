@@ -1,3 +1,4 @@
+import { PlaneIcon } from "@/components/illustrations/SiteIconsSection"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
 import { HotelCard } from "@/components/sections/HotelCard"
 import type { Hotel } from "@/types/sanity"
@@ -14,6 +15,7 @@ export function TravelStaySection({ hotels }: TravelStaySectionProps) {
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             Getting there
           </p>
+          <PlaneIcon className="w-[22px] h-[22px] text-rose mx-auto mb-3 block" />
           <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">
             Travel & Stay
           </h2>

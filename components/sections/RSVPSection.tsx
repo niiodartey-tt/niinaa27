@@ -1,3 +1,4 @@
+import { EnvelopeIcon } from "@/components/illustrations/SiteIconsSection"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
 import { RSVPForm } from "@/components/sections/RSVPForm"
 import { LeafDivider } from "@/components/illustrations/LeafDivider"
@@ -34,6 +35,7 @@ export function RSVPSection() {
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             Kindly reply by 1 December 2026
           </p>
+          <EnvelopeIcon className="w-[22px] h-[22px] text-rose mx-auto mb-3 block" />
           <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">RSVP</h2>
           <p className="font-serif text-base text-taupe italic mt-3">
             We would love to know if you can join us.
