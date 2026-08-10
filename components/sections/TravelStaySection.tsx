@@ -1,6 +1,5 @@
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
 import { HotelCard } from "@/components/sections/HotelCard"
-import { VenueMap } from "@/components/sections/VenueMap"
 import type { Hotel } from "@/types/sanity"
 
 interface TravelStaySectionProps {
@@ -22,8 +21,6 @@ export function TravelStaySection({ hotels }: TravelStaySectionProps) {
             We recommend the following hotels for guests joining from out of town.
           </p>
         </div>
-
-        <VenueMap />
 
         <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-8 text-center">
           Where to stay

@@ -7,7 +7,6 @@ const cspHeader = [
   "img-src 'self' cdn.sanity.io data: blob:",
   "font-src 'self'",
   "connect-src 'self' api.sanity.io cdn.sanity.io https://vercel.live wss://ws-us3.pusher.com",
-  "frame-src https://www.google.com",
   "frame-ancestors 'none'",
   "upgrade-insecure-requests",
 ].join("; ")

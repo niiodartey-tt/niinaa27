@@ -24,19 +24,18 @@ interface FooterSectionProps {
 
 export function FooterSection({ couple }: FooterSectionProps) {
   return (
-    <footer id="footer" className="bg-ink py-16 md:py-20 px-4 relative overflow-hidden">
+    <footer id="footer" className="bg-blush py-16 md:py-20 px-4 relative overflow-hidden">
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-floral-tile bg-repeat [background-size:309px_306px] pointer-events-none select-none opacity-[0.12]"
+        className="absolute inset-0 bg-floral-tile bg-repeat [background-size:309px_306px] pointer-events-none select-none [filter:invert(1)_contrast(5)_brightness(0.5)] opacity-20"
       />
-      {/* Bottom corners, flush — white flowers on dark ink read with more contrast so opacity is lower */}
       <FloralAccent
         src="/peony-1.png"
         width={612}
         height={408}
         position="bottom-left"
         className="w-32 md:w-40 [&_img]:w-full [&_img]:h-auto"
-        opacity={0.38}
+        opacity={0.50}
         sizes="(min-width: 768px) 160px, 128px"
       />
       <FloralAccent
@@ -45,7 +44,7 @@ export function FooterSection({ couple }: FooterSectionProps) {
         height={666}
         position="bottom-right"
         className="w-32 md:w-40 [&_img]:w-full [&_img]:h-auto"
-        opacity={0.38}
+        opacity={0.50}
         sizes="(min-width: 768px) 160px, 128px"
       />
       <div className="relative z-[1] max-w-md mx-auto flex flex-col items-center text-center gap-6">
@@ -55,13 +54,13 @@ export function FooterSection({ couple }: FooterSectionProps) {
         />
         <LeafDivider
           aria-hidden="true"
-          className="text-ivory opacity-20 w-36 md:w-44"
+          className="text-hairline w-36 md:w-44"
         />
-        <p className="font-script text-4xl md:text-5xl text-ivory">
+        <p className="font-script text-4xl md:text-5xl text-ink">
           {couple.names}
         </p>
-        <div className="w-12 h-px bg-blush opacity-30" aria-hidden="true" />
-        <p className="font-serif text-base text-blush">
+        <div className="w-12 h-px bg-hairline" aria-hidden="true" />
+        <p className="font-serif text-base text-taupe">
           {formatDate(couple.weddingDate)} · {couple.locationName}
         </p>
       </div>
