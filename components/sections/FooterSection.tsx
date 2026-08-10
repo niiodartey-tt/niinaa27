@@ -1,3 +1,4 @@
+import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { Monogram } from "@/components/illustrations/Monogram"
 import type { CoupleInfo } from "@/types/sanity"
 
@@ -26,6 +27,17 @@ export function FooterSection({ couple }: FooterSectionProps) {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-floral-tile bg-repeat [background-size:309px_306px] pointer-events-none select-none [filter:invert(1)_contrast(5)_brightness(0.5)] opacity-20"
+      />
+      <FloralAccent
+        src="/peony-2.png"
+        width={1000}
+        height={666}
+        position="bottom-right"
+        className="w-[32vw] max-w-[150px] z-0"
+        rotation={8}
+        opacity={0.65}
+        feather
+        sizes="(max-width: 768px) 32vw, 150px"
       />
       <div className="relative z-[1] max-w-md mx-auto flex flex-col items-center text-center gap-6">
         <Monogram

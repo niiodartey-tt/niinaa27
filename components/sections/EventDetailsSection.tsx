@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react"
 import { CalendarIcon } from "@/components/illustrations/SiteIconsSection"
+import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
 import type { ItineraryItem } from "@/types/sanity"
 
@@ -22,7 +23,18 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
   const reception = sorted[1]
 
   return (
-    <SectionWrapper id="event-details" className="bg-blush">
+    <SectionWrapper id="event-details" className="bg-blush relative overflow-hidden">
+      <FloralAccent
+        src="/dahlia.png"
+        width={469}
+        height={426}
+        position="bottom-left"
+        className="w-[28vw] max-w-[130px] z-0"
+        rotation={-12}
+        opacity={0.70}
+        feather
+        sizes="(max-width: 768px) 28vw, 130px"
+      />
       <div className="max-w-lg mx-auto text-center">
 
         <div className="mb-12 md:mb-16">

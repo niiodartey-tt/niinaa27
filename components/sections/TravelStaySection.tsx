@@ -1,4 +1,5 @@
 import { PlaneIcon } from "@/components/illustrations/SiteIconsSection"
+import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
 import { HotelCard } from "@/components/sections/HotelCard"
 import type { Hotel } from "@/types/sanity"
@@ -9,7 +10,18 @@ interface TravelStaySectionProps {
 
 export function TravelStaySection({ hotels }: TravelStaySectionProps) {
   return (
-    <SectionWrapper id="travel-stay">
+    <SectionWrapper id="travel-stay" className="relative overflow-hidden">
+      <FloralAccent
+        src="/allium-double.png"
+        width={365}
+        height={547}
+        position="top-left"
+        className="w-[25vw] max-w-[120px] z-0"
+        rotation={-10}
+        opacity={0.70}
+        feather
+        sizes="(max-width: 768px) 25vw, 120px"
+      />
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12 md:mb-16">
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">

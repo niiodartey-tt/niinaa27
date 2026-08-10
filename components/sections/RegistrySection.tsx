@@ -1,11 +1,23 @@
 import { Gift } from "lucide-react"
+import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
 
 // Gift Guide is currently hardcoded — not wired to Sanity.
 // See overview.md Scoped Exceptions for Sprint 3 context.
 export function RegistrySection() {
   return (
-    <SectionWrapper id="gift-guide">
+    <SectionWrapper id="gift-guide" className="relative overflow-hidden">
+      <FloralAccent
+        src="/rose.png"
+        width={391}
+        height={511}
+        position="bottom-right"
+        className="w-[26vw] max-w-[120px] z-0"
+        rotation={10}
+        opacity={0.70}
+        feather
+        sizes="(max-width: 768px) 26vw, 120px"
+      />
       <div className="max-w-2xl mx-auto text-center">
         <Gift size={22} aria-hidden="true" className="text-rose mx-auto mb-3" />
         <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">
