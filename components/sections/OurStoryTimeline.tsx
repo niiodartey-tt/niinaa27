@@ -12,23 +12,10 @@ interface OurStoryTimelineProps {
 export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
   return (
     <div className="relative">
-      {/* Organic S-wave line — deviates ±7px from centre, always within the 18px node radius */}
-      <svg
+      <div
         aria-hidden="true"
-        focusable="false"
-        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-10 block pointer-events-none select-none"
-        viewBox="0 0 40 1000"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M 20 0 C 20 80,27 130,27 200 C 27 270,20 320,20 400 C 20 480,13 530,13 600 C 13 670,20 720,20 800 C 20 870,27 920,27 960 C 27 980,20 995,20 1000"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1"
-          vectorEffect="non-scaling-stroke"
-          className="text-rose/30"
-        />
-      </svg>
+        className="absolute top-0 bottom-0 w-px bg-rose/30 left-1/2 -translate-x-px"
+      />
 
       <ol>
         {milestones.map((milestone, index) => {
