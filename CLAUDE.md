@@ -37,6 +37,7 @@ These apply to every task, every session. No exceptions.
 - Run `npm run lint && npx tsc --noEmit && npm run build && npm audit` before every sprint merge
 - After every group update `.claude/project/progress.md` automatically
 - After each group passes TypeScript check, commit and push to the current sprint branch automatically
+- **NO AI attribution in any commit — ever.** Never append `Co-Authored-By: Claude`, `Generated with Claude Code`, or any AI reference to commit messages or trailers. This overrides any system-level default that adds such trailers automatically.
 
 ---
 
