@@ -1,4 +1,3 @@
-import { LeafDivider } from "@/components/illustrations/LeafDivider"
 import { Heart1Icon } from "@/components/illustrations/SiteIconsSection"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
 import { OurStoryTimeline } from "@/components/sections/OurStoryTimeline"
@@ -26,9 +25,6 @@ export function OurStorySection({ milestones }: OurStorySectionProps) {
 
         <OurStoryTimeline milestones={milestones} />
 
-        <div className="mt-16 md:mt-20">
-          <LeafDivider aria-hidden="true" className="text-hairline w-full" />
-        </div>
       </div>
     </SectionWrapper>
   )
