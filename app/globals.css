@@ -30,23 +30,6 @@
   }
 }
 
-/* Peony vine scroll reveal — clip-path tracks scroll progress top-to-bottom.
-   Guarded by @supports so non-supporting browsers show vine fully visible.
-   prefers-reduced-motion: vine is fully visible with no animation (no clip applied). */
-@keyframes vineReveal {
-  to { clip-path: inset(0 0 0% 0); }
-}
-
-@supports (animation-timeline: scroll()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .vine-reveal {
-      clip-path: inset(0 0 100% 0);
-      animation: vineReveal linear both;
-      animation-timeline: scroll(root block);
-    }
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

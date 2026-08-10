@@ -6,7 +6,7 @@ import * as THREE from "three"
 // Per-particle sparkle via ShaderMaterial — PointsMaterial has one global opacity,
 // which can't produce independent twinkle cycles per particle.
 
-const COUNT = 90
+const COUNT = 130
 
 const VERT = /* glsl */ `
   attribute float aSize;
@@ -19,7 +19,7 @@ const VERT = /* glsl */ `
     gl_Position  = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     gl_PointSize = aSize;
     // Each particle has its own phase and speed → independent twinkle rhythm
-    vAlpha = 0.45 + 0.40 * sin(uTime * aSpeed + aPhase);
+    vAlpha = 0.55 + 0.40 * sin(uTime * aSpeed + aPhase);
   }
 `
 
@@ -81,7 +81,7 @@ export default function HeroParticles() {
       posArray[i * 3 + 2] = 0
       vx[i]     = (Math.random() - 0.5) * 0.10
       vy[i]     = (Math.random() - 0.5) * 0.06 + 0.025 // gentle upward drift
-      sizes[i]  = 1.5 + Math.random() * 3.0             // 1.5–4.5 px for depth variation
+      sizes[i]  = 2.0 + Math.random() * 3.5             // 2.0–5.5 px for depth variation
       phases[i] = Math.random() * Math.PI * 2            // random start in cycle
       speeds[i] = 0.8 + Math.random() * 1.7              // 0.8–2.5 Hz twinkle frequency
     }

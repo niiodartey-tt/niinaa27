@@ -54,13 +54,13 @@ export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroS
 
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/65 pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/18 pointer-events-none"
       />
 
       {/* Particles above gradient, below z-10 text — pointer-events-none on canvas */}
       <HeroParticles />
 
-      <div className="relative z-10 flex flex-col items-center text-center max-w-xl mx-auto animate-fade-up">
+      <div className="relative z-10 flex flex-col items-center text-center max-w-xl mx-auto animate-fade-up [text-shadow:_0_1px_3px_rgba(0,0,0,0.65),_0_2px_10px_rgba(0,0,0,0.35)]">
         <p className="font-sans text-xs text-blush tracking-widest uppercase mb-4">
           You are cordially invited to the wedding of
         </p>
@@ -96,7 +96,7 @@ export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroS
       <a
         href="#our-story"
         aria-label="Scroll to Our Story"
-        className="absolute bottom-8 md:bottom-12 flex flex-col items-center gap-1 text-blush hover:text-ivory transition-colors duration-300 min-h-[44px] justify-end focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 rounded-sm"
+        className="absolute bottom-8 md:bottom-12 flex flex-col items-center gap-1 text-blush hover:text-ivory transition-colors duration-300 min-h-[44px] justify-end focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 rounded-sm [text-shadow:_0_1px_3px_rgba(0,0,0,0.65),_0_2px_10px_rgba(0,0,0,0.35)]"
       >
         <span className="font-sans text-xs tracking-widest uppercase">Scroll</span>
         <ChevronDown size={20} className="animate-bounce" aria-hidden="true" />

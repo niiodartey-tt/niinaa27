@@ -7,7 +7,6 @@ import { RegistrySection } from "@/components/sections/RegistrySection"
 import { FAQSection } from "@/components/sections/FAQSection"
 import { FooterSection } from "@/components/sections/FooterSection"
 import { VineDivider } from "@/components/illustrations/VineDivider"
-import { PeonyVineBackground } from "@/components/illustrations/PeonyVineBackground"
 import {
   placeholderCoupleInfo,
   placeholderMilestones,
@@ -18,8 +17,7 @@ import {
 
 export default function HomePage() {
   return (
-    <div className="relative overflow-hidden">
-      <PeonyVineBackground />
+    <>
       <main id="main-content">
         <HeroSection
           couple={placeholderCoupleInfo}
@@ -48,6 +46,6 @@ export default function HomePage() {
         <FAQSection items={placeholderFaqItems} />
       </main>
       <FooterSection couple={placeholderCoupleInfo} />
-    </div>
+    </>
   )
 }
