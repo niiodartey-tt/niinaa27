@@ -29,16 +29,12 @@ export function MilestoneNode({ index, isLast, className }: MilestoneNodeProps) 
   const Icon = ICONS[index % ICONS.length] ?? SproutIcon
 
   return (
-    <div
+    <Icon
       className={cn(
-        "w-9 h-9 rounded-full border-2 flex items-center justify-center shrink-0",
-        isLast
-          ? "bg-rose border-rose text-ivory"
-          : "bg-ivory border-rose text-rose",
+        "w-5 h-5 shrink-0",
+        isLast ? "text-rose-dark" : "text-rose",
         className
       )}
-    >
-      <Icon className="w-5 h-5" />
-    </div>
+    />
   )
 }

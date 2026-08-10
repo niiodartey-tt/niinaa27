@@ -29,15 +29,8 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
               key={milestone._id}
               className="grid grid-cols-[1fr_2.5rem_1fr] sm:grid-cols-[1fr_3rem_1fr] pb-10 sm:pb-14 last:pb-0"
             >
-              {/* Node — col 2, tick arm toward text */}
-              <div className="col-start-2 row-start-1 self-start flex items-start justify-center relative z-10">
-                <div
-                  aria-hidden="true"
-                  className={cn(
-                    "absolute top-1/2 -translate-y-px h-px w-4 bg-rose/40",
-                    isRight ? "left-full" : "right-full"
-                  )}
-                />
+              {/* Node — col 2, icon sits directly on the line */}
+              <div className="col-start-2 row-start-1 self-start flex items-start justify-center z-10">
                 <MilestoneNode index={index} isLast={isLast} />
               </div>
 
