@@ -33,10 +33,6 @@ function formatDate(iso: string): string {
   })
 }
 
-// Strong triple-layer shadow: tight dark halo + medium glow + soft ambient.
-// Applied via container inheritance so every text child benefits.
-const SHADOW = "[text-shadow:_0_1px_4px_rgba(0,0,0,0.95),_0_3px_12px_rgba(0,0,0,0.75),_0_6px_24px_rgba(0,0,0,0.4)]"
-
 export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroSectionProps) {
   return (
     <section
@@ -64,37 +60,32 @@ export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroS
       {/* Particles above gradient, below z-10 text — pointer-events-none on canvas */}
       <HeroParticles />
 
-      <div className={`relative z-10 flex flex-col items-center text-center max-w-xl mx-auto animate-fade-up ${SHADOW}`}>
+      {/* White glow on container: edge definition for dark ink text against bright petals.
+          h1 names override this with their own strong dark shadow (CSS specificity). */}
+      <div className="relative z-10 flex flex-col items-center text-center max-w-xl mx-auto animate-fade-up [text-shadow:_0_0_8px_rgba(255,255,255,0.7)]">
+        <p className="font-sans text-xs text-ink tracking-widest uppercase mb-4">
+          You are cordially invited to the wedding of
+        </p>
 
-        {/* Eyebrow — tight dark pill scrim; small text can't rely on shadow alone */}
-        <div className="mb-4 bg-black/20 backdrop-blur-sm rounded-full px-5 py-1.5">
-          <p className="font-sans text-xs text-blush tracking-widest uppercase">
-            You are cordially invited to the wedding of
-          </p>
-        </div>
-
-        {/* Names — large script, strong shadow is sufficient (user confirmed OK) */}
-        <h1 className="font-script text-6xl md:text-7xl lg:text-8xl text-ivory leading-none">
+        {/* Names stay ivory with their own dark shadow — confirmed legible */}
+        <h1 className="font-script text-6xl md:text-7xl lg:text-8xl text-ivory leading-none [text-shadow:_0_2px_8px_rgba(0,0,0,0.9),_0_4px_16px_rgba(0,0,0,0.6)]">
           {couple.names}
         </h1>
 
-        <div className="w-16 h-px bg-white/25 my-6 md:my-8" aria-hidden="true" />
+        <div className="w-16 h-px bg-ink/30 my-6 md:my-8" aria-hidden="true" />
 
-        {/* Date / location / bio — dark frosted scrim; these sit against the */}
-        {/* brightest petal zone where shadow alone can't guarantee legibility */}
-        <div className="bg-black/20 backdrop-blur-sm rounded-2xl px-6 py-4 w-full max-w-sm">
-          <p className="font-serif text-xl md:text-2xl text-ivory">
-            {formatDate(couple.weddingDate)}
+        <p className="font-serif text-xl md:text-2xl text-ink">
+          {formatDate(couple.weddingDate)}
+        </p>
+        <p className="font-serif text-base md:text-lg text-ink italic mt-2">
+          {couple.locationName}
+        </p>
+
+        {couple.bio && (
+          <p className="font-serif text-sm md:text-base text-ink italic mt-5 max-w-sm leading-relaxed">
+            {couple.bio}
           </p>
-          <p className="font-serif text-base md:text-lg text-blush italic mt-2">
-            {couple.locationName}
-          </p>
-          {couple.bio && (
-            <p className="font-serif text-sm md:text-base text-blush italic mt-4 max-w-sm leading-relaxed">
-              {couple.bio}
-            </p>
-          )}
-        </div>
+        )}
 
         <CountdownTimer weddingDate={couple.weddingDate} />
 
@@ -109,7 +100,7 @@ export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroS
       <a
         href="#our-story"
         aria-label="Scroll to Our Story"
-        className={`absolute bottom-8 md:bottom-12 flex flex-col items-center gap-1 text-blush hover:text-ivory transition-colors duration-300 min-h-[44px] justify-end focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 rounded-sm ${SHADOW}`}
+        className="absolute bottom-8 md:bottom-12 flex flex-col items-center gap-1 text-ink hover:text-taupe transition-colors duration-300 min-h-[44px] justify-end focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 rounded-sm [text-shadow:_0_0_8px_rgba(255,255,255,0.7)]"
       >
         <span className="font-sans text-xs tracking-widest uppercase">Scroll</span>
         <ChevronDown size={20} className="animate-bounce" aria-hidden="true" />
