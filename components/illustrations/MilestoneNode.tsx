@@ -31,7 +31,7 @@ export function MilestoneNode({ index, isLast, className }: MilestoneNodeProps) 
   return (
     <Icon
       className={cn(
-        "w-5 h-5 shrink-0",
+        "w-6 h-6 shrink-0",
         isLast ? "text-rose-dark" : "text-rose",
         className
       )}

@@ -12,11 +12,6 @@ interface OurStoryTimelineProps {
 export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
   return (
     <div className="relative">
-      <div
-        aria-hidden="true"
-        className="absolute top-0 bottom-0 w-px bg-rose/30 left-1/2 -translate-x-px"
-      />
-
       <ol>
         {milestones.map((milestone, index) => {
           const isRight = index % 2 !== 0
@@ -27,10 +22,25 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
           return (
             <li
               key={milestone._id}
-              className="grid grid-cols-[1fr_2.5rem_1fr] sm:grid-cols-[1fr_3rem_1fr] pb-10 sm:pb-14 last:pb-0"
+              className="relative grid grid-cols-[1fr_2.5rem_1fr] sm:grid-cols-[1fr_3rem_1fr] pb-10 sm:pb-14 last:pb-0"
             >
-              {/* Node — col 2, icon sits directly on the line */}
-              <div className="col-start-2 row-start-1 self-start flex items-start justify-center z-10">
+              {/* Segmented line: runs from this icon's bottom to the next icon's top only */}
+              {!isLast && (
+                <div
+                  aria-hidden="true"
+                  className="absolute top-6 bottom-0 left-1/2 -translate-x-px w-px bg-rose/30"
+                />
+              )}
+
+              {/* Node — col 2, icon sits on the line with tick arm toward text card */}
+              <div className="col-start-2 row-start-1 self-start flex items-start justify-center relative z-10">
+                <div
+                  aria-hidden="true"
+                  className={cn(
+                    "absolute top-1/2 -translate-y-px h-px w-5 bg-rose/40",
+                    isRight ? "left-full" : "right-full"
+                  )}
+                />
                 <MilestoneNode index={index} isLast={isLast} />
               </div>
 
