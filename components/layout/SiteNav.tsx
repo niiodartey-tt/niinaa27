@@ -38,7 +38,7 @@ export function SiteNav() {
           href="#hero"
           className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose rounded-sm"
         >
-          <Monogram alt="" className="w-12 invert" sizes="48px" />
+          <Monogram alt="" className="w-14 md:w-16 invert" sizes="(min-width: 768px) 64px, 56px" />
           <span className="sr-only">Thomas and Leanne — Home</span>
         </a>
 

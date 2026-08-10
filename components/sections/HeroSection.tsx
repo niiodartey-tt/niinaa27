@@ -84,6 +84,13 @@ export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroS
         )}
 
         <CountdownTimer weddingDate={couple.weddingDate} />
+
+        <a
+          href="#rsvp"
+          className="mt-8 inline-flex items-center rounded-full bg-rose hover:bg-rose-dark text-ivory font-sans text-sm tracking-widest uppercase px-8 py-3 min-h-[44px] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+        >
+          RSVP Now
+        </a>
       </div>
 
       <a

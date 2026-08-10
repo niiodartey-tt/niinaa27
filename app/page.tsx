@@ -6,7 +6,7 @@ import { RSVPSection } from "@/components/sections/RSVPSection"
 import { RegistrySection } from "@/components/sections/RegistrySection"
 import { FAQSection } from "@/components/sections/FAQSection"
 import { FooterSection } from "@/components/sections/FooterSection"
-import { TornEdgeDivider } from "@/components/illustrations/TornEdgeDivider"
+import { VineDivider } from "@/components/illustrations/VineDivider"
 import {
   placeholderCoupleInfo,
   placeholderMilestones,
@@ -14,11 +14,6 @@ import {
   placeholderHotels,
   placeholderFaqItems,
 } from "@/lib/placeholder-data"
-
-// Design token hex values — must stay in sync with tailwind.config.ts
-const ivory = "#FBF9F4"
-const blush = "#F0DCD0"
-const ink   = "#3A2A22"
 
 export default function HomePage() {
   return (
@@ -28,15 +23,28 @@ export default function HomePage() {
           couple={placeholderCoupleInfo}
           heroImageSrc="/hero-bg.jpg"
         />
-        <TornEdgeDivider topColor={ink} bottomColor={ivory} />
         <OurStorySection milestones={placeholderMilestones} />
+        <div className="flex justify-center py-6 md:py-8" aria-hidden="true">
+          <VineDivider className="w-64 md:w-80 text-taupe" />
+        </div>
         <EventDetailsSection items={placeholderItinerary} />
+        <div className="flex justify-center py-6 md:py-8" aria-hidden="true">
+          <VineDivider className="w-64 md:w-80 text-taupe" />
+        </div>
         <TravelStaySection hotels={placeholderHotels} />
+        <div className="flex justify-center py-6 md:py-8" aria-hidden="true">
+          <VineDivider className="w-64 md:w-80 text-taupe" />
+        </div>
         <RSVPSection />
+        <div className="flex justify-center py-6 md:py-8" aria-hidden="true">
+          <VineDivider className="w-64 md:w-80 text-taupe" />
+        </div>
         <RegistrySection />
+        <div className="flex justify-center py-6 md:py-8" aria-hidden="true">
+          <VineDivider className="w-64 md:w-80 text-taupe" />
+        </div>
         <FAQSection items={placeholderFaqItems} />
       </main>
-      <TornEdgeDivider topColor={ivory} bottomColor={blush} />
       <FooterSection couple={placeholderCoupleInfo} />
     </>
   )
