@@ -10,12 +10,14 @@ const presetPositions: Record<AccentPosition, string> = {
   "bottom-right": "absolute bottom-0 right-0",
 }
 
-// Corner-anchored feather masks — bloom is richest at the edge, dissolves inward
+// Corner-anchored feather masks.
+// 120% ellipse (extends beyond container) + white 40%/transparent 90% ensures single-globe
+// blooms (alliums) whose mass centres at ~50% of canvas are legible, not masked to a sliver.
 const featherMasks: Record<AccentPosition, string> = {
-  "top-left":     "radial-gradient(ellipse 85% 85% at top left,    white 30%, transparent 75%)",
-  "top-right":    "radial-gradient(ellipse 85% 85% at top right,   white 30%, transparent 75%)",
-  "bottom-left":  "radial-gradient(ellipse 85% 85% at bottom left,  white 30%, transparent 75%)",
-  "bottom-right": "radial-gradient(ellipse 85% 85% at bottom right, white 30%, transparent 75%)",
+  "top-left":     "radial-gradient(ellipse 120% 120% at top left,    white 40%, transparent 90%)",
+  "top-right":    "radial-gradient(ellipse 120% 120% at top right,   white 40%, transparent 90%)",
+  "bottom-left":  "radial-gradient(ellipse 120% 120% at bottom left,  white 40%, transparent 90%)",
+  "bottom-right": "radial-gradient(ellipse 120% 120% at bottom right, white 40%, transparent 90%)",
 }
 
 interface FloralAccentProps {
