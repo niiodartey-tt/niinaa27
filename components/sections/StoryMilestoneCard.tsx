@@ -46,7 +46,7 @@ export function StoryMilestoneCard({
           {milestone.title}
         </h3>
         <p className={cn(
-          "font-serif text-sm sm:text-base leading-relaxed line-clamp-3 sm:line-clamp-none",
+          "font-serif text-sm sm:text-base leading-relaxed",
           isLast ? "text-ivory" : "text-taupe"
         )}>
           {milestone.description}
