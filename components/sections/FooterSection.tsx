@@ -29,15 +29,26 @@ export function FooterSection({ couple }: FooterSectionProps) {
         className="absolute inset-0 bg-floral-tile bg-repeat [background-size:309px_306px] pointer-events-none select-none [filter:invert(1)_contrast(5)_brightness(0.5)] opacity-20"
       />
       <FloralAccent
+        src="/peony-1.png"
+        width={612}
+        height={408}
+        position="bottom-left"
+        className="w-[28vw] max-w-[440px] z-0"
+        rotation={-15}
+        opacity={0.68}
+        feather
+        sizes="(max-width: 1280px) 28vw, 440px"
+      />
+      <FloralAccent
         src="/peony-2.png"
         width={1000}
         height={666}
         position="bottom-right"
-        className="w-[55vw] max-w-[300px] z-0"
+        className="w-[30vw] max-w-[460px] z-0"
         rotation={8}
         opacity={0.65}
         feather
-        sizes="(max-width: 768px) 55vw, 300px"
+        sizes="(max-width: 1280px) 30vw, 460px"
       />
       <div className="relative z-[1] max-w-md mx-auto flex flex-col items-center text-center gap-6">
         <Monogram

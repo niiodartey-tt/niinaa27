@@ -11,43 +11,38 @@ export function RSVPSection() {
         className="absolute inset-0 bg-floral-tile bg-repeat [background-size:309px_306px] pointer-events-none select-none filter invert contrast-[500%] brightness-50 opacity-[0.20]"
       />
 
-      {/* Peony — top-left, statement bloom flanking the heading */}
       <FloralAccent
         src="/peony-1.png"
         width={612}
         height={408}
         position="top-left"
-        className="w-[50vw] max-w-[230px] z-0"
+        className="w-[26vw] max-w-[400px] z-0"
         rotation={-15}
-        opacity={0.65}
+        opacity={0.68}
         feather
-        sizes="(max-width: 768px) 50vw, 230px"
+        sizes="(max-width: 1280px) 26vw, 400px"
       />
-
-      {/* Rose — top-right, lighter complement to the peony */}
       <FloralAccent
         src="/rose.png"
         width={391}
         height={511}
         position="top-right"
-        className="w-[40vw] max-w-[190px] z-0"
+        className="w-[22vw] max-w-[340px] z-0"
         rotation={15}
         opacity={0.72}
         feather
-        sizes="(max-width: 768px) 40vw, 190px"
+        sizes="(max-width: 1280px) 22vw, 340px"
       />
-
-      {/* Allium — bottom-right, small accent near the note/message field */}
       <FloralAccent
         src="/allium-single.png"
         width={480}
         height={640}
-        position="bottom-right"
-        className="w-[30vw] max-w-[130px] bottom-[10%] z-0"
-        rotation={-5}
-        opacity={0.65}
+        position="bottom-left"
+        className="w-[20vw] max-w-[300px] z-0"
+        rotation={8}
+        opacity={0.62}
         feather
-        sizes="(max-width: 768px) 30vw, 130px"
+        sizes="(max-width: 1280px) 20vw, 300px"
       />
 
       <div className="relative z-[1] max-w-lg mx-auto">

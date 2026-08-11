@@ -16,26 +16,26 @@ export function OurStorySection({ milestones }: OurStorySectionProps) {
         className="absolute inset-0 bg-floral-tile bg-repeat [background-size:309px_306px] pointer-events-none select-none filter invert contrast-[500%] brightness-50 opacity-[0.20]"
       />
       <FloralAccent
-        src="/peony-2.png"
-        width={1000}
-        height={666}
+        src="/allium-double.png"
+        width={365}
+        height={547}
         position="top-right"
-        className="w-[48vw] max-w-[260px] z-0"
+        className="w-[15vw] max-w-[260px] z-0"
         rotation={12}
-        opacity={0.72}
+        opacity={0.68}
         feather
-        sizes="(max-width: 768px) 48vw, 260px"
+        sizes="(max-width: 1280px) 15vw, 260px"
       />
       <FloralAccent
         src="/peony-1.png"
         width={612}
         height={408}
         position="bottom-left"
-        className="w-[42vw] max-w-[210px] z-0"
+        className="w-[14vw] max-w-[240px] z-0"
         rotation={-18}
-        opacity={0.65}
+        opacity={0.70}
         feather
-        sizes="(max-width: 768px) 42vw, 210px"
+        sizes="(max-width: 1280px) 14vw, 240px"
       />
       <div className="max-w-4xl mx-auto relative z-[1]">
         <div className="text-center mb-12 md:mb-16">

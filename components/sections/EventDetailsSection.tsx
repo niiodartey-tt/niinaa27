@@ -25,15 +25,26 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
   return (
     <SectionWrapper id="event-details" className="bg-blush relative overflow-hidden">
       <FloralAccent
+        src="/peony-2.png"
+        width={1000}
+        height={666}
+        position="top-right"
+        className="w-[24vw] max-w-[360px] z-0"
+        rotation={15}
+        opacity={0.65}
+        feather
+        sizes="(max-width: 1280px) 24vw, 360px"
+      />
+      <FloralAccent
         src="/dahlia.png"
         width={469}
         height={426}
         position="bottom-left"
-        className="w-[42vw] max-w-[230px] z-0"
+        className="w-[26vw] max-w-[400px] z-0"
         rotation={-12}
-        opacity={0.70}
+        opacity={0.72}
         feather
-        sizes="(max-width: 768px) 42vw, 230px"
+        sizes="(max-width: 1280px) 26vw, 400px"
       />
       <div className="max-w-lg mx-auto text-center">
 

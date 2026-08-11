@@ -8,15 +8,26 @@ export function RegistrySection() {
   return (
     <SectionWrapper id="gift-guide" className="relative overflow-hidden">
       <FloralAccent
-        src="/rose.png"
-        width={391}
-        height={511}
-        position="bottom-right"
-        className="w-[46vw] max-w-[240px] z-0"
-        rotation={10}
-        opacity={0.70}
+        src="/allium-single.png"
+        width={480}
+        height={640}
+        position="top-left"
+        className="w-[22vw] max-w-[350px] z-0"
+        rotation={-8}
+        opacity={0.65}
         feather
-        sizes="(max-width: 768px) 46vw, 240px"
+        sizes="(max-width: 1280px) 22vw, 350px"
+      />
+      <FloralAccent
+        src="/peony-2.png"
+        width={1000}
+        height={666}
+        position="bottom-right"
+        className="w-[24vw] max-w-[370px] z-0"
+        rotation={10}
+        opacity={0.68}
+        feather
+        sizes="(max-width: 1280px) 24vw, 370px"
       />
       <div className="max-w-2xl mx-auto text-center">
         <Gift size={22} aria-hidden="true" stroke="url(#gold-shimmer)" className="mx-auto mb-3" />

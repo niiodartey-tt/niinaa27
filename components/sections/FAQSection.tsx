@@ -14,15 +14,26 @@ export function FAQSection({ items }: FAQSectionProps) {
   return (
     <SectionWrapper id="faq" className="bg-ivory relative overflow-hidden">
       <FloralAccent
-        src="/allium-single.png"
-        width={480}
-        height={640}
-        position="top-left"
-        className="w-[35vw] max-w-[180px] z-0"
-        rotation={-8}
-        opacity={0.52}
+        src="/dahlia.png"
+        width={469}
+        height={426}
+        position="top-right"
+        className="w-[22vw] max-w-[340px] z-0"
+        rotation={15}
+        opacity={0.68}
         feather
-        sizes="(max-width: 768px) 35vw, 180px"
+        sizes="(max-width: 1280px) 22vw, 340px"
+      />
+      <FloralAccent
+        src="/rose.png"
+        width={391}
+        height={511}
+        position="bottom-left"
+        className="w-[20vw] max-w-[320px] z-0"
+        rotation={-12}
+        opacity={0.62}
+        feather
+        sizes="(max-width: 1280px) 20vw, 320px"
       />
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-10 md:mb-12">

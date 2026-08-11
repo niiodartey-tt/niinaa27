@@ -16,11 +16,22 @@ export function TravelStaySection({ hotels }: TravelStaySectionProps) {
         width={365}
         height={547}
         position="top-left"
-        className="w-[40vw] max-w-[210px] z-0"
+        className="w-[13vw] max-w-[200px] z-0"
         rotation={-10}
-        opacity={0.58}
+        opacity={0.60}
         feather
-        sizes="(max-width: 768px) 40vw, 210px"
+        sizes="(max-width: 1280px) 13vw, 200px"
+      />
+      <FloralAccent
+        src="/rose.png"
+        width={391}
+        height={511}
+        position="bottom-right"
+        className="w-[12vw] max-w-[185px] z-0"
+        rotation={10}
+        opacity={0.60}
+        feather
+        sizes="(max-width: 1280px) 12vw, 185px"
       />
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12 md:mb-16">
