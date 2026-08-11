@@ -176,7 +176,7 @@ export function RSVPForm() {
                 aria-pressed={selected}
                 onClick={() => setValue("attending", opt === "yes", { shouldValidate: true })}
                 className={cn(
-                  "flex-1 min-h-[44px] rounded-full border font-sans text-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-ivory",
+                  "inline-flex items-center justify-center gap-1.5 flex-1 min-h-[44px] rounded-full border font-sans text-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-ivory",
                   selected
                     ? "border-gold-base bg-gold-highlight/20 text-ink"
                     : "border-hairline bg-ivory text-taupe hover:border-gold-base hover:text-ink"
