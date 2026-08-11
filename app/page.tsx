@@ -10,7 +10,6 @@ import { VineDivider } from "@/components/illustrations/VineDivider"
 import {
   placeholderCoupleInfo,
   placeholderMilestones,
-  placeholderItinerary,
   placeholderFaqItems,
 } from "@/lib/placeholder-data"
 
@@ -26,7 +25,7 @@ export default function HomePage() {
         <div className="flex justify-center py-6 md:py-8" aria-hidden="true">
           <VineDivider className="w-64 md:w-80 text-taupe" />
         </div>
-        <EventDetailsSection items={placeholderItinerary} />
+        <EventDetailsSection />
         <div className="flex justify-center py-6 md:py-8" aria-hidden="true">
           <VineDivider className="w-64 md:w-80 text-taupe" />
         </div>

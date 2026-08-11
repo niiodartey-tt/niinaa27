@@ -19,37 +19,42 @@ export function RegistrySection() {
           would be warmly and gratefully received.
         </p>
 
-        {/* Bank transfer details — placeholder, confirm real details before launch */}
         <div className="mt-10 md:mt-12 p-px rounded-card bg-gold-shimmer max-w-xs mx-auto">
         <div className="rounded-[27px] bg-ivory p-6 text-left">
           <p className="font-sans text-xs tracking-widest uppercase text-taupe mb-4">
             Bank Transfer Details
           </p>
           <div className="space-y-4">
-            {/* placeholder — confirm real details before launch */}
             <div>
               <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">
                 Account Name
               </p>
-              <p className="font-serif text-base text-ink">Thomas &amp; Leanne Wedding Fund</p>
+              <p className="font-serif text-base text-ink">Thomas Nii Odartey Thompson</p>
             </div>
             <div>
               <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">
                 Bank
               </p>
-              <p className="font-serif text-base text-ink">GCB Bank</p>
+              <p className="font-serif text-base text-ink">Access Bank Plc</p>
             </div>
             <div>
               <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">
                 Account Number
               </p>
               <p className="font-serif text-base text-ink font-mono tracking-wider">
-                1002345678
+                0381625513101
               </p>
             </div>
           </div>
+          <p className="font-serif text-sm text-taupe italic leading-relaxed mt-5 border-t border-hairline pt-4">
+            Please include your name as the payment reference so we can send our thanks.
+          </p>
         </div>
         </div>
+
+        <p className="font-serif text-sm text-taupe italic leading-relaxed mt-5 max-w-xs mx-auto">
+          Physical gifts will be warmly received at the event.
+        </p>
       </RevealWrapper>
     </SectionWrapper>
   )

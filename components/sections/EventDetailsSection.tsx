@@ -3,10 +3,7 @@ import { CalendarIcon } from "@/components/illustrations/SiteIconsSection"
 import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
 import { RevealWrapper } from "@/components/layout/RevealWrapper"
-import type { ItineraryItem } from "@/types/sanity"
-
-const DIRECTIONS_URL =
-  "https://www.google.com/maps/dir/?api=1&destination=5.6506614326887075,-0.07227142411697524"
+const DIRECTIONS_URL = "https://maps.app.goo.gl/AG2VCBrt5tz5nQa1A"
 
 const linkClass =
   "inline-flex items-center justify-center gap-1.5 mt-4 min-h-[44px] rounded-full border border-gold-base bg-transparent px-6 py-2.5 font-sans text-sm text-ink transition-colors duration-200 hover:bg-gold-highlight/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-blush"
@@ -14,15 +11,7 @@ const linkClass =
 const labelClass =
   "font-sans text-base tracking-widest uppercase font-semibold text-gold-base mb-3"
 
-interface EventDetailsSectionProps {
-  items: ItineraryItem[]
-}
-
-export function EventDetailsSection({ items }: EventDetailsSectionProps) {
-  const sorted = [...items].sort((a, b) => a.order - b.order)
-  const ceremony = sorted[0]
-  const reception = sorted[1]
-
+export function EventDetailsSection() {
   return (
     <SectionWrapper id="event-details" className="bg-blush relative overflow-hidden">
       <FloralAccent
@@ -51,13 +40,20 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
         {/* DATE & TIME */}
         <div className="mb-10 md:mb-12">
           <p className={labelClass}>Date &amp; Time</p>
-          <p className="font-serif text-base text-ink">Saturday, 2 January 2027</p>
-          <p className="font-serif text-base text-ink mt-1">
-            Ceremony at {ceremony?.time ?? "3:00 PM"}
-          </p>
-          <p className="font-serif text-base text-ink mt-1">
-            Reception from {reception?.time ?? "5:00 PM"}
-          </p>
+          <p className="font-serif text-base text-ink mb-4">Saturday, 2 January 2027</p>
+          <div className="space-y-2 inline-flex flex-col items-start text-left">
+            {[
+              { time: "8:00 AM", event: "Engagement" },
+              { time: "2:00 PM", event: "Blessing of the Marriage" },
+              { time: "4:00 PM", event: "Reception" },
+            ].map(({ time, event }) => (
+              <div key={event} className="flex items-baseline gap-3">
+                <span className="font-sans text-xs text-taupe tabular-nums w-16 shrink-0">{time}</span>
+                <span className="font-serif text-base text-ink">{event}</span>
+              </div>
+            ))}
+          </div>
+          <p className="font-serif text-sm text-taupe italic mt-3">All at the same venue.</p>
         </div>
 
         {/* LOCATION */}
@@ -88,12 +84,11 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
           </a>
         </div>
 
-        {/* DRESS CODE — placeholder, confirm before launch */}
+        {/* DRESS CODE */}
         <div>
           <p className={labelClass}>Dress Code</p>
           <p className="font-serif text-base text-ink leading-relaxed">
-            Smart / Elegant Attire — florals and prints are welcome.{" "}
-            Please avoid all white.
+            Elegant &amp; Classy.
           </p>
         </div>
 
