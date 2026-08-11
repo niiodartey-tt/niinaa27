@@ -5,6 +5,13 @@ import { MilestoneNode } from "@/components/illustrations/MilestoneNode"
 import { StoryMilestoneCard } from "@/components/sections/StoryMilestoneCard"
 import type { StoryMilestone } from "@/types/sanity"
 
+// Temporary static photo map — keyed by milestone order (1-based).
+// Drop the file in public/our-story/ and add one line here to wire a new photo.
+// TODO: replace with Sanity image field + GROQ projection when CMS wiring is done.
+const MILESTONE_PHOTOS: Record<number, string> = {
+  2: "/our-story/2022.png",
+}
+
 interface OurStoryTimelineProps {
   milestones: StoryMilestone[]
 }
@@ -16,7 +23,10 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
         {milestones.map((milestone, index) => {
           const isRight = index % 2 !== 0
           const isLast = index === milestones.length - 1
-          const photoSrc = milestone.imageUrl ?? (index % 2 === 0 ? "/peony-1.png" : "/peony-2.png")
+          const photoSrc =
+            milestone.imageUrl ??
+            MILESTONE_PHOTOS[milestone.order] ??
+            (index % 2 === 0 ? "/peony-1.png" : "/peony-2.png")
           const photoAlt = milestone.imageUrl ? (milestone.imageAlt ?? "") : ""
 
           return (
