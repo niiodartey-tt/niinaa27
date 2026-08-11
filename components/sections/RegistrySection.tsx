@@ -31,7 +31,8 @@ export function RegistrySection() {
         </p>
 
         {/* Bank transfer details — placeholder, confirm real details before launch */}
-        <div className="mt-10 md:mt-12 rounded-card bg-ivory border border-hairline p-6 text-left max-w-xs mx-auto">
+        <div className="mt-10 md:mt-12 p-px rounded-card bg-gold-shimmer max-w-xs mx-auto">
+        <div className="rounded-[27px] bg-ivory p-6 text-left">
           <p className="font-sans text-xs tracking-widest uppercase text-taupe mb-4">
             Bank Transfer Details
           </p>
@@ -58,6 +59,7 @@ export function RegistrySection() {
               </p>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </SectionWrapper>
