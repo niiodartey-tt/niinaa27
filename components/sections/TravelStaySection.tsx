@@ -2,14 +2,8 @@ import { ExternalLink } from "lucide-react"
 import { PlaneIcon } from "@/components/illustrations/SiteIconsSection"
 import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
-import { HotelCard } from "@/components/sections/HotelCard"
-import type { Hotel } from "@/types/sanity"
 
-interface TravelStaySectionProps {
-  hotels: Hotel[]
-}
-
-export function TravelStaySection({ hotels }: TravelStaySectionProps) {
+export function TravelStaySection() {
   return (
     <SectionWrapper id="travel-stay" className="relative overflow-hidden">
       <FloralAccent
@@ -55,21 +49,11 @@ export function TravelStaySection({ hotels }: TravelStaySectionProps) {
             Travel & Stay
           </h2>
           <p className="font-serif text-base text-taupe italic mt-3">
-            We recommend the following hotels for guests joining from out of town.
+            A few things to help you plan your journey to Accra.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {hotels.map((hotel, index) => (
-            <HotelCard
-              key={hotel._id}
-              hotel={hotel}
-              delay={index * 150}
-            />
-          ))}
-        </div>
-
-        <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           <div className="p-px rounded-card bg-gold-shimmer">
             <div className="rounded-[27px] bg-ivory p-6 md:p-8 flex flex-col h-full">
               <p className="font-sans text-xs tracking-widest uppercase text-taupe mb-4">
