@@ -29,11 +29,11 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
         width={469}
         height={426}
         position="bottom-left"
-        className="w-[28vw] max-w-[130px] z-0"
+        className="w-[42vw] max-w-[230px] z-0"
         rotation={-12}
         opacity={0.70}
         feather
-        sizes="(max-width: 768px) 28vw, 130px"
+        sizes="(max-width: 768px) 42vw, 230px"
       />
       <div className="max-w-lg mx-auto text-center">
 

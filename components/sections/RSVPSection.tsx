@@ -17,11 +17,11 @@ export function RSVPSection() {
         width={612}
         height={408}
         position="top-left"
-        className="w-[38vw] max-w-[160px] z-0"
+        className="w-[50vw] max-w-[230px] z-0"
         rotation={-15}
-        opacity={0.80}
+        opacity={0.65}
         feather
-        sizes="(max-width: 768px) 38vw, 160px"
+        sizes="(max-width: 768px) 50vw, 230px"
       />
 
       {/* Rose — top-right, lighter complement to the peony */}
@@ -30,11 +30,11 @@ export function RSVPSection() {
         width={391}
         height={511}
         position="top-right"
-        className="w-[28vw] max-w-[120px] z-0"
+        className="w-[40vw] max-w-[190px] z-0"
         rotation={15}
         opacity={0.72}
         feather
-        sizes="(max-width: 768px) 28vw, 120px"
+        sizes="(max-width: 768px) 40vw, 190px"
       />
 
       {/* Allium — bottom-right, small accent near the note/message field */}
@@ -43,11 +43,11 @@ export function RSVPSection() {
         width={480}
         height={640}
         position="bottom-right"
-        className="w-[22vw] max-w-[90px] bottom-[10%] z-0"
+        className="w-[30vw] max-w-[130px] bottom-[10%] z-0"
         rotation={-5}
         opacity={0.65}
         feather
-        sizes="(max-width: 768px) 22vw, 90px"
+        sizes="(max-width: 768px) 30vw, 130px"
       />
 
       <div className="relative z-[1] max-w-lg mx-auto">

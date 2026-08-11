@@ -20,11 +20,22 @@ export function OurStorySection({ milestones }: OurStorySectionProps) {
         width={1000}
         height={666}
         position="top-right"
-        className="w-[35vw] max-w-[160px] z-0"
+        className="w-[48vw] max-w-[260px] z-0"
         rotation={12}
         opacity={0.72}
         feather
-        sizes="(max-width: 768px) 35vw, 160px"
+        sizes="(max-width: 768px) 48vw, 260px"
+      />
+      <FloralAccent
+        src="/peony-1.png"
+        width={612}
+        height={408}
+        position="bottom-left"
+        className="w-[42vw] max-w-[210px] z-0"
+        rotation={-18}
+        opacity={0.65}
+        feather
+        sizes="(max-width: 768px) 42vw, 210px"
       />
       <div className="max-w-4xl mx-auto relative z-[1]">
         <div className="text-center mb-12 md:mb-16">

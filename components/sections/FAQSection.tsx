@@ -18,11 +18,11 @@ export function FAQSection({ items }: FAQSectionProps) {
         width={480}
         height={640}
         position="top-left"
-        className="w-[22vw] max-w-[110px] z-0"
+        className="w-[35vw] max-w-[180px] z-0"
         rotation={-8}
-        opacity={0.68}
+        opacity={0.52}
         feather
-        sizes="(max-width: 768px) 22vw, 110px"
+        sizes="(max-width: 768px) 35vw, 180px"
       />
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-10 md:mb-12">

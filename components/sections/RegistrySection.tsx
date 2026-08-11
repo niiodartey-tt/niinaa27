@@ -12,11 +12,11 @@ export function RegistrySection() {
         width={391}
         height={511}
         position="bottom-right"
-        className="w-[26vw] max-w-[120px] z-0"
+        className="w-[46vw] max-w-[240px] z-0"
         rotation={10}
         opacity={0.70}
         feather
-        sizes="(max-width: 768px) 26vw, 120px"
+        sizes="(max-width: 768px) 46vw, 240px"
       />
       <div className="max-w-2xl mx-auto text-center">
         <Gift size={22} aria-hidden="true" stroke="url(#gold-shimmer)" className="mx-auto mb-3" />

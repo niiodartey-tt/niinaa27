@@ -16,11 +16,11 @@ export function TravelStaySection({ hotels }: TravelStaySectionProps) {
         width={365}
         height={547}
         position="top-left"
-        className="w-[25vw] max-w-[120px] z-0"
+        className="w-[40vw] max-w-[210px] z-0"
         rotation={-10}
-        opacity={0.70}
+        opacity={0.58}
         feather
-        sizes="(max-width: 768px) 25vw, 120px"
+        sizes="(max-width: 768px) 40vw, 210px"
       />
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12 md:mb-16">
