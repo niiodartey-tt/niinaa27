@@ -8,7 +8,7 @@ export function VineDivider({ className }: VineDividerProps) {
       viewBox="0 185 512 150"
       width={512}
       height={150}
-      fill="currentColor"
+      fill="url(#gold-shimmer)"
       stroke="none"
       aria-hidden="true"
       className={className}

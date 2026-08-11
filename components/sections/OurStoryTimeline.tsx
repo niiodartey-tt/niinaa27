@@ -28,7 +28,7 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
               {!isLast && (
                 <div
                   aria-hidden="true"
-                  className="absolute top-6 bottom-0 left-1/2 -translate-x-px w-px bg-rose/30"
+                  className="absolute top-6 bottom-0 left-1/2 -translate-x-px w-px bg-gold-base/30"
                 />
               )}
 
@@ -37,7 +37,7 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
                 <div
                   aria-hidden="true"
                   className={cn(
-                    "absolute top-1/2 -translate-y-px h-px w-5 bg-rose/40",
+                    "absolute top-1/2 -translate-y-px h-px w-5 bg-gold-base/40",
                     isRight ? "left-full" : "right-full"
                   )}
                 />
@@ -61,7 +61,7 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
                   isRight ? "col-start-1 pr-3 sm:pr-6" : "col-start-3 pl-3 sm:pl-6"
                 )}
               >
-                <div className="rounded-card overflow-hidden aspect-video bg-blush">
+                <div className="rounded-card overflow-hidden aspect-video bg-gold-highlight/20">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={photoSrc}

@@ -29,7 +29,7 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
                 aria-expanded={open}
                 aria-controls={`faq-panel-${item._id}`}
                 onClick={() => toggle(i)}
-                className="w-full flex items-center justify-between gap-4 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2"
+                className="w-full flex items-center justify-between gap-4 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2"
               >
                 <span className="font-serif text-lg md:text-xl text-ink leading-snug">
                   {item.question}

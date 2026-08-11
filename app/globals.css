@@ -12,7 +12,8 @@
   }
 
   body {
-    @apply bg-ivory text-ink font-serif;
+    background-color: #FDFCF9;
+    @apply text-ink font-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

@@ -18,7 +18,7 @@ export function HotelCard({ hotel, delay = 0 }: HotelCardProps) {
       ref={ref}
       style={{ animationDelay: `${delay}ms` }}
       className={cn(
-        "flex flex-col rounded-card bg-ivory p-6 md:p-8",
+        "flex flex-col rounded-card bg-gold-highlight/15 p-6 md:p-8",
         isInView ? "animate-fade-up opacity-0" : "opacity-0"
       )}
     >
@@ -42,7 +42,7 @@ export function HotelCard({ hotel, delay = 0 }: HotelCardProps) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Book ${hotel.name}`}
-        className="mt-auto inline-flex items-center gap-1.5 pt-6 min-h-[44px] font-sans text-sm text-rose hover:text-rose-dark transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 rounded-sm"
+        className="mt-auto inline-flex items-center gap-1.5 pt-6 min-h-[44px] font-sans text-sm text-ink hover:opacity-70 transition-opacity duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 rounded-sm"
       >
         Book now
         <ExternalLink size={14} aria-hidden="true" />

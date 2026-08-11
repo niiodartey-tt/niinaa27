@@ -8,10 +8,10 @@ const DIRECTIONS_URL =
   "https://www.google.com/maps/dir/?api=1&destination=5.6506614326887075,-0.07227142411697524"
 
 const linkClass =
-  "inline-flex items-center gap-1.5 mt-3 min-h-[44px] font-sans text-sm text-rose hover:text-rose-dark transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 rounded-sm"
+  "inline-flex items-center gap-1.5 mt-3 min-h-[44px] font-sans text-sm text-ink hover:opacity-70 transition-opacity duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 rounded-sm"
 
 const labelClass =
-  "font-sans text-base tracking-widest uppercase font-semibold text-rose mb-3"
+  "font-sans text-base tracking-widest uppercase font-semibold text-ink mb-3"
 
 interface EventDetailsSectionProps {
   items: ItineraryItem[]
@@ -23,7 +23,7 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
   const reception = sorted[1]
 
   return (
-    <SectionWrapper id="event-details" className="bg-blush relative overflow-hidden">
+    <SectionWrapper id="event-details" className="relative overflow-hidden">
       <FloralAccent
         src="/dahlia.png"
         width={469}
@@ -41,7 +41,7 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             Saturday, 2 January 2027
           </p>
-          <CalendarIcon className="w-[22px] h-[22px] text-rose mx-auto mb-3 block" />
+          <CalendarIcon className="w-[22px] h-[22px] mx-auto mb-3 block" />
           <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">
             The Details
           </h2>

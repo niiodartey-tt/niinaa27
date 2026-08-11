@@ -25,16 +25,12 @@ const ICONS = [
   RingsIcon,
 ] as const
 
-export function MilestoneNode({ index, isLast, className }: MilestoneNodeProps) {
+export function MilestoneNode({ index, className }: MilestoneNodeProps) {
   const Icon = ICONS[index % ICONS.length] ?? SproutIcon
 
   return (
     <Icon
-      className={cn(
-        "w-6 h-6 shrink-0",
-        isLast ? "text-rose-dark" : "text-rose",
-        className
-      )}
+      className={cn("w-6 h-6 shrink-0", className)}
     />
   )
 }

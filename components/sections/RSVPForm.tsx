@@ -19,7 +19,7 @@ function isApiError(val: unknown): val is { error: string } {
 }
 
 const inputClass =
-  "w-full rounded-xl border border-hairline bg-ivory px-4 py-3 font-sans text-sm text-ink placeholder:text-taupe/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-ivory min-h-[44px]"
+  "w-full rounded-xl border border-hairline bg-ivory px-4 py-3 font-sans text-sm text-ink placeholder:text-taupe/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDFCF9] min-h-[44px]"
 
 const labelClass = "block font-sans text-xs text-taupe tracking-widest uppercase mb-2"
 
@@ -120,11 +120,11 @@ export function RSVPForm() {
           aria-describedby={errors.name ? "rsvp-name-error" : undefined}
           aria-invalid={!!errors.name}
           {...register("name")}
-          className={cn(inputClass, errors.name && "border-rose")}
+          className={cn(inputClass, errors.name && "border-gold-base")}
           placeholder="Your full name"
         />
         {errors.name && (
-          <p id="rsvp-name-error" role="alert" className="mt-1 font-sans text-xs text-rose">
+          <p id="rsvp-name-error" role="alert" className="mt-1 font-sans text-xs text-ink font-medium">
             {errors.name.message}
           </p>
         )}
@@ -140,11 +140,11 @@ export function RSVPForm() {
           aria-describedby={errors.email ? "rsvp-email-error" : undefined}
           aria-invalid={!!errors.email}
           {...register("email")}
-          className={cn(inputClass, errors.email && "border-rose")}
+          className={cn(inputClass, errors.email && "border-gold-base")}
           placeholder="your@email.com"
         />
         {errors.email && (
-          <p id="rsvp-email-error" role="alert" className="mt-1 font-sans text-xs text-rose">
+          <p id="rsvp-email-error" role="alert" className="mt-1 font-sans text-xs text-ink font-medium">
             {errors.email.message}
           </p>
         )}
@@ -169,10 +169,10 @@ export function RSVPForm() {
                 aria-pressed={selected}
                 onClick={() => setValue("attending", opt === "yes", { shouldValidate: true })}
                 className={cn(
-                  "flex-1 min-h-[44px] rounded-full border font-sans text-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-ivory",
+                  "flex-1 min-h-[44px] rounded-full border font-sans text-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDFCF9]",
                   selected
-                    ? "border-rose bg-rose text-ivory"
-                    : "border-hairline bg-ivory text-taupe hover:border-rose hover:text-rose"
+                    ? "border-gold-base bg-gold-highlight/20 text-ink"
+                    : "border-hairline bg-ivory text-taupe hover:border-gold-base"
                 )}
               >
                 {selected && (
@@ -184,7 +184,7 @@ export function RSVPForm() {
           })}
         </div>
         {errors.attending && (
-          <p id="rsvp-attending-error" role="alert" className="mt-1 font-sans text-xs text-rose">
+          <p id="rsvp-attending-error" role="alert" className="mt-1 font-sans text-xs text-ink font-medium">
             Please let us know if you can attend
           </p>
         )}
@@ -238,8 +238,8 @@ export function RSVPForm() {
 
       {/* Error banner */}
       {status === "error" && (
-        <div role="alert" aria-live="polite" className="rounded-xl border border-rose/30 bg-rose/5 px-4 py-3">
-          <p className="font-sans text-sm text-rose">{errorMsg}</p>
+        <div role="alert" aria-live="polite" className="rounded-xl border border-gold-base/30 bg-gold-highlight/10 px-4 py-3">
+          <p className="font-sans text-sm text-ink font-medium">{errorMsg}</p>
         </div>
       )}
 
@@ -247,7 +247,7 @@ export function RSVPForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full min-h-[44px] rounded-full bg-rose px-8 py-3 font-sans text-sm text-ivory transition-colors duration-200 hover:bg-rose-dark disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-ivory"
+        className="w-full min-h-[44px] rounded-full border-2 border-gold-base bg-transparent px-8 py-3 font-sans text-sm text-ink transition-colors duration-200 hover:bg-gold-highlight/20 disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-[#FDFCF9]"
       >
         {status === "loading" ? (
           "Sending…"

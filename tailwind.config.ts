@@ -10,12 +10,19 @@ const config: Config = {
     extend: {
       colors: {
         ivory:        "#FBF9F4",
+        "ivory-new":  "#FDFCF9",
         blush:        "#F0DCD0",
         rose:         "#B56A52",
         "rose-dark":  "#8A4E3C",
-        ink:          "#3A2A22",
+        ink:          "#000000",
         taupe:        "#8A7267",
         hairline:     "#E4DFD3",
+        gold: {
+          dark:      "#7A5C2E",
+          base:      "#C9A45E",
+          light:     "#D4AF6A",
+          highlight: "#F5E1A4",
+        },
       },
       fontFamily: {
         script: ["var(--font-imperial-script)", "cursive"],
@@ -38,7 +45,8 @@ const config: Config = {
         },
       },
       backgroundImage: {
-        "floral-tile": "url('/floral-pattern.png')",
+        "floral-tile":   "url('/floral-pattern.png')",
+        "gold-shimmer":  "linear-gradient(135deg, #7A5C2E 0%, #D4AF6A 25%, #F5E1A4 50%, #D4AF6A 75%, #7A5C2E 100%)",
       },
       borderRadius: {
         card: "28px",

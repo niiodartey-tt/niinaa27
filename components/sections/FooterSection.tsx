@@ -23,7 +23,7 @@ interface FooterSectionProps {
 
 export function FooterSection({ couple }: FooterSectionProps) {
   return (
-    <footer id="footer" className="bg-blush py-16 md:py-20 px-4 relative overflow-hidden">
+    <footer id="footer" className="py-16 md:py-20 px-4 relative overflow-hidden">
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-floral-tile bg-repeat [background-size:309px_306px] pointer-events-none select-none [filter:invert(1)_contrast(5)_brightness(0.5)] opacity-20"

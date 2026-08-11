@@ -12,7 +12,7 @@ export function FAQSection({ items }: FAQSectionProps) {
   if (items.length === 0) return null
 
   return (
-    <SectionWrapper id="faq" className="bg-ivory relative overflow-hidden">
+    <SectionWrapper id="faq" className="relative overflow-hidden">
       <FloralAccent
         src="/allium-single.png"
         width={480}
@@ -29,7 +29,7 @@ export function FAQSection({ items }: FAQSectionProps) {
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             Questions
           </p>
-          <QuestionCircleIcon className="w-[22px] h-[22px] text-rose mx-auto mb-3 block" />
+          <QuestionCircleIcon className="w-[22px] h-[22px] mx-auto mb-3 block" />
           <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">
             Frequently asked
           </h2>
