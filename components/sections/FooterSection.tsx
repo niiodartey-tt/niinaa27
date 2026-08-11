@@ -1,28 +1,8 @@
 import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { Monogram } from "@/components/illustrations/Monogram"
 import { RevealWrapper } from "@/components/layout/RevealWrapper"
-import type { CoupleInfo } from "@/types/sanity"
 
-// Use local-time Date constructor (not ISO string) to avoid UTC-midnight
-// shifting the date back one day in negative-offset timezones.
-function formatDate(iso: string): string {
-  const parts = iso.split("-")
-  const year = Number(parts[0])
-  const month = Number(parts[1])
-  const day = Number(parts[2])
-  if (!year || !month || !day) return iso
-  return new Date(year, month - 1, day).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  })
-}
-
-interface FooterSectionProps {
-  couple: CoupleInfo
-}
-
-export function FooterSection({ couple }: FooterSectionProps) {
+export function FooterSection() {
   return (
     <footer id="footer" className="bg-blush py-16 md:py-20 px-4 relative overflow-hidden">
       <div
@@ -45,13 +25,10 @@ export function FooterSection({ couple }: FooterSectionProps) {
           alt="Thomas and Leanne laurel wreath"
           className="w-44 md:w-56"
         />
-        <p className="font-script text-2xl md:text-3xl text-ink tracking-wide">
+        <p className="font-sans font-bold text-xl md:text-2xl text-ink tracking-wide">
           #thomasandleanne2027
         </p>
         <div className="w-12 h-px bg-hairline" aria-hidden="true" />
-        <p className="font-serif text-base text-taupe">
-          {formatDate(couple.weddingDate)} · {couple.locationName}
-        </p>
         {/* Contact placeholder — swap email and phone before launch */}
         <p className="font-serif text-sm text-taupe/80 leading-relaxed">
           Questions?{" "}

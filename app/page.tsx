@@ -43,7 +43,7 @@ export default function HomePage() {
         </div>
         <FAQSection items={placeholderFaqItems} />
       </main>
-      <FooterSection couple={placeholderCoupleInfo} />
+      <FooterSection />
     </>
   )
 }
