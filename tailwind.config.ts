@@ -9,13 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ivory:        "#FBF9F4",
-        blush:        "#F0DCD0",
-        rose:         "#B56A52",
-        "rose-dark":  "#8A4E3C",
-        ink:          "#3A2A22",
-        taupe:        "#8A7267",
-        hairline:     "#E4DFD3",
+        ivory:          "#FBF9F4",
+        blush:          "#F0DCD0",
+        rose:           "#B56A52",
+        "rose-dark":    "#8A4E3C",
+        ink:            "#3A2A22",
+        taupe:          "#8A7267",
+        hairline:       "#E4DFD3",
+        "gold-base":    "#D4AF6A",
+        "gold-highlight": "#F5E1A4",
       },
       fontFamily: {
         script: ["var(--font-imperial-script)", "cursive"],

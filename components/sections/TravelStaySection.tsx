@@ -1,3 +1,4 @@
+import { ExternalLink } from "lucide-react"
 import { PlaneIcon } from "@/components/illustrations/SiteIconsSection"
 import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
@@ -59,7 +60,7 @@ export function TravelStaySection({ hotels }: TravelStaySectionProps) {
         </div>
 
         <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-8 text-center">
-          Where to stay
+          Recommended hotels
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -70,6 +71,59 @@ export function TravelStaySection({ hotels }: TravelStaySectionProps) {
               delay={index * 150}
             />
           ))}
+        </div>
+
+        <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="p-px rounded-card bg-gold-shimmer">
+            <div className="rounded-[27px] bg-ivory p-6 md:p-8 flex flex-col h-full">
+              <p className="font-sans text-xs tracking-widest uppercase text-taupe mb-4">
+                Where to stay
+              </p>
+              <div className="w-8 h-px bg-gold-base mb-5" aria-hidden="true" />
+              <p className="font-serif text-base text-ink leading-relaxed flex-1">
+                We recommend looking in Osu, Spintex, East Legon, and Tse Addo — each a
+                short drive from Skybox Event Centre. A good range of hotels and serviced
+                apartments is available across each area. Browse and book directly on
+                Booking.com.
+              </p>
+              <div className="w-8 h-px bg-gold-base mt-5 mb-5" aria-hidden="true" />
+              <a
+                href="https://www.booking.com/city/gh/accra.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Search for hotels in Accra on Booking.com"
+                className="inline-flex items-center justify-center gap-1.5 min-h-[44px] rounded-full border border-gold-base bg-transparent px-6 py-2.5 font-sans text-sm text-ink transition-colors duration-200 hover:bg-gold-highlight/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2"
+              >
+                Search on Booking.com
+                <ExternalLink size={13} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+
+          <div className="p-px rounded-card bg-gold-shimmer">
+            <div className="rounded-[27px] bg-ivory p-6 md:p-8 flex flex-col h-full">
+              <p className="font-sans text-xs tracking-widest uppercase text-taupe mb-4">
+                Visa information
+              </p>
+              <div className="w-8 h-px bg-gold-base mb-5" aria-hidden="true" />
+              <p className="font-serif text-base text-ink leading-relaxed flex-1">
+                Most international guests will need a visa to enter Ghana. Requirements and
+                processing times vary by nationality, so we recommend applying through the
+                official Ghana Immigration Service e-Visa portal well ahead of your trip.
+              </p>
+              <div className="w-8 h-px bg-gold-base mt-5 mb-5" aria-hidden="true" />
+              <a
+                href="https://evisa.immigration.gov.gh"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit the Ghana Immigration Service e-Visa portal"
+                className="inline-flex items-center justify-center gap-1.5 min-h-[44px] rounded-full border border-gold-base bg-transparent px-6 py-2.5 font-sans text-sm text-ink transition-colors duration-200 hover:bg-gold-highlight/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2"
+              >
+                Visit Ghana e-Visa Portal
+                <ExternalLink size={13} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </SectionWrapper>
