@@ -41,7 +41,7 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             Saturday, 2 January 2027
           </p>
-          <CalendarIcon className="w-[22px] h-[22px] text-rose mx-auto mb-3 block" />
+          <CalendarIcon className="w-[22px] h-[22px] mx-auto mb-3 block" />
           <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">
             The Details
           </h2>

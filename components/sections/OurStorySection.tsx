@@ -31,7 +31,7 @@ export function OurStorySection({ milestones }: OurStorySectionProps) {
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             How it began
           </p>
-          <Heart1Icon className="w-[22px] h-[22px] text-rose mx-auto mb-3 block" />
+          <Heart1Icon className="w-[22px] h-[22px] mx-auto mb-3 block" />
           <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">Our Story</h2>
         </div>
 
