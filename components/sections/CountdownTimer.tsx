@@ -53,14 +53,16 @@ export function CountdownTimer({ weddingDate }: CountdownTimerProps) {
       {units.map(({ label, value }) => (
         <div
           key={label}
-          className="flex flex-col items-center gap-1.5 bg-white/30 backdrop-blur-sm border border-ink/10 rounded-xl px-3 py-3 md:px-4 min-w-[60px] md:min-w-[68px]"
+          className="p-px bg-gold-shimmer rounded-xl min-w-[60px] md:min-w-[68px]"
         >
-          <span className="font-serif text-2xl md:text-3xl text-ink tabular-nums leading-none">
-            {value !== undefined ? String(value).padStart(2, "0") : "--"}
-          </span>
-          <span className="font-sans text-[10px] text-taupe tracking-widest uppercase">
-            {label}
-          </span>
+          <div className="flex flex-col items-center gap-1.5 bg-black/30 backdrop-blur-sm rounded-[11px] px-3 py-3 md:px-4 h-full">
+            <span className="font-serif text-2xl md:text-3xl text-ivory tabular-nums leading-none">
+              {value !== undefined ? String(value).padStart(2, "0") : "--"}
+            </span>
+            <span className="font-sans text-[10px] text-gold-highlight tracking-widest uppercase">
+              {label}
+            </span>
+          </div>
         </div>
       ))}
     </div>
