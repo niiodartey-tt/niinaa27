@@ -29,14 +29,14 @@ export function FooterSection() {
           #thomasandleanne2027
         </p>
         <div className="w-12 h-px bg-hairline" aria-hidden="true" />
-        {/* Contact placeholder — swap email and phone before launch */}
+        {/* Phone number still TBD — swap before launch */}
         <p className="font-serif text-sm text-taupe/80 leading-relaxed">
           Questions?{" "}
           <a
-            href="mailto:placeholder@email.com"
+            href="mailto:niinaathompson@outlook.com"
             className="underline underline-offset-2 hover:text-ink transition-colors duration-200"
           >
-            placeholder@email.com
+            niinaathompson@outlook.com
           </a>
           {" · "}
           <a
