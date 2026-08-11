@@ -64,19 +64,21 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
                 <StoryMilestoneCard milestone={milestone} index={index} isLast={isLast} />
               </div>
 
-              {/* Photo cell — opposite column from text */}
+              {/* Photo cell — opposite column from text.
+                  No self-start: defaults to stretch so this div fills
+                  the full grid row height (set by the taller text card). */}
               <div
                 className={cn(
-                  "row-start-1 self-start",
+                  "row-start-1",
                   isRight ? "col-start-1 pr-3 sm:pr-6" : "col-start-3 pl-3 sm:pl-6"
                 )}
               >
-                <div className="rounded-card overflow-hidden aspect-video bg-blush">
+                <div className="rounded-card overflow-hidden h-full min-h-[160px] bg-blush">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={photoSrc}
                     alt={photoAlt}
-                    className="w-full h-full object-contain p-2 md:p-3"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </div>
