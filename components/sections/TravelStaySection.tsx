@@ -59,10 +59,6 @@ export function TravelStaySection({ hotels }: TravelStaySectionProps) {
           </p>
         </div>
 
-        <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-8 text-center">
-          Recommended hotels
-        </p>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {hotels.map((hotel, index) => (
             <HotelCard
