@@ -33,12 +33,12 @@ export function SiteNav() {
         scrolled ? "bg-ink/75 backdrop-blur-sm" : "bg-transparent"
       )}
     >
-      <div className="mx-auto max-w-6xl px-4 md:px-8 flex items-center justify-between h-14 md:h-16">
+      <div className="mx-auto max-w-6xl px-4 md:px-8 flex items-center justify-between h-[72px] md:h-[84px]">
         <a
           href="#hero"
           className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base rounded-sm"
         >
-          <Monogram alt="" className="w-14 md:w-16 invert" sizes="(min-width: 768px) 64px, 56px" />
+          <Monogram alt="" className="w-[72px] md:w-[84px] invert" sizes="(min-width: 768px) 84px, 72px" />
           <span className="sr-only">Thomas and Leanne — Home</span>
         </a>
 
@@ -70,15 +70,15 @@ export function SiteNav() {
         <nav
           id="mobile-nav"
           aria-label="Mobile navigation"
-          className="md:hidden bg-ink/95 backdrop-blur-sm border-t border-ivory/10 px-4 py-4"
+          className="md:hidden bg-ivory border-t border-hairline shadow-md px-4 py-2"
         >
-          <ul className="flex flex-col">
+          <ul className="flex flex-col divide-y divide-hairline">
             {links.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block font-sans text-sm tracking-widest uppercase text-ivory hover:text-gold-highlight transition-colors duration-200 py-3 min-h-[44px] flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base rounded-sm"
+                  className="block font-sans text-sm tracking-widest uppercase text-ink hover:text-gold-base transition-colors duration-200 py-3.5 min-h-[44px] flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-ivory rounded-sm"
                 >
                   {link.label}
                 </a>

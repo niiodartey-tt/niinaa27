@@ -8,7 +8,7 @@ const DIRECTIONS_URL =
   "https://www.google.com/maps/dir/?api=1&destination=5.6506614326887075,-0.07227142411697524"
 
 const linkClass =
-  "inline-flex items-center gap-1.5 mt-3 min-h-[44px] font-sans text-sm text-ink hover:text-gold-base transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 rounded-sm"
+  "inline-flex items-center justify-center gap-1.5 mt-4 min-h-[44px] rounded-full border border-gold-base bg-transparent px-6 py-2.5 font-sans text-sm text-ink transition-colors duration-200 hover:bg-gold-highlight/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-blush"
 
 const labelClass =
   "font-sans text-base tracking-widest uppercase font-semibold text-gold-base mb-3"
