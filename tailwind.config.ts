@@ -28,6 +28,7 @@ const config: Config = {
         "fade-up":       "fade-up 0.8s ease-out forwards",
         "fade-up-delay": "fade-up 0.8s ease-out 0.3s forwards",
         "fade-in":       "fade-in 0.6s ease-out forwards",
+        "curtain-out":   "curtain-out 1400ms ease-in-out forwards",
       },
       keyframes: {
         "fade-up": {
@@ -37,6 +38,11 @@ const config: Config = {
         "fade-in": {
           "0%":   { opacity: "0" },
           "100%": { opacity: "1" },
+        },
+        "curtain-out": {
+          "0%":   { opacity: "1" },
+          "28%":  { opacity: "1" },
+          "100%": { opacity: "0" },
         },
       },
       backgroundImage: {

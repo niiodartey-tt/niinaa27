@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Imperial_Script, Cormorant_Garamond } from "next/font/google"
 import { SiteNav } from "@/components/layout/SiteNav"
+import { SiteReveal } from "@/components/layout/SiteReveal"
 import { LenisProvider } from "@/components/providers/LenisProvider"
 import GoldGradientDefs from "@/components/shared/GoldGradientDefs"
 import "./globals.css"
@@ -41,6 +42,7 @@ export default function RootLayout({
       className={`${imperialScript.variable} ${cormorantGaramond.variable}`}
     >
       <body>
+        <SiteReveal />
         <GoldGradientDefs />
         <a
           href="#main-content"

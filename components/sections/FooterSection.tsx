@@ -1,5 +1,6 @@
 import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { Monogram } from "@/components/illustrations/Monogram"
+import { RevealWrapper } from "@/components/layout/RevealWrapper"
 import type { CoupleInfo } from "@/types/sanity"
 
 // Use local-time Date constructor (not ISO string) to avoid UTC-midnight
@@ -39,7 +40,7 @@ export function FooterSection({ couple }: FooterSectionProps) {
         feather
         sizes="(min-width: 1024px) 26vw, (min-width: 768px) 240px, (min-width: 640px) 200px, 160px"
       />
-      <div className="relative z-[1] max-w-md mx-auto flex flex-col items-center text-center gap-6">
+      <RevealWrapper className="relative z-[1] max-w-md mx-auto flex flex-col items-center text-center gap-6">
         <Monogram
           alt="Thomas and Leanne"
           className="w-40 md:w-52"
@@ -51,7 +52,7 @@ export function FooterSection({ couple }: FooterSectionProps) {
         <p className="font-serif text-base text-taupe">
           {formatDate(couple.weddingDate)} · {couple.locationName}
         </p>
-      </div>
+      </RevealWrapper>
     </footer>
   )
 }

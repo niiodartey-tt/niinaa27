@@ -1,11 +1,12 @@
 import { ExternalLink } from "lucide-react"
 import { PlaneIcon } from "@/components/illustrations/SiteIconsSection"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
+import { RevealWrapper } from "@/components/layout/RevealWrapper"
 
 export function TravelStaySection() {
   return (
     <SectionWrapper id="travel-stay" className="relative overflow-hidden">
-      <div className="max-w-5xl mx-auto relative z-[1]">
+      <RevealWrapper className="max-w-5xl mx-auto relative z-[1]">
         <div className="text-center mb-12 md:mb-16">
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             Getting there
@@ -71,7 +72,7 @@ export function TravelStaySection() {
             </div>
           </div>
         </div>
-      </div>
+      </RevealWrapper>
     </SectionWrapper>
   )
 }

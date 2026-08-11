@@ -2,6 +2,7 @@ import { ExternalLink } from "lucide-react"
 import { CalendarIcon } from "@/components/illustrations/SiteIconsSection"
 import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
+import { RevealWrapper } from "@/components/layout/RevealWrapper"
 import type { ItineraryItem } from "@/types/sanity"
 
 const DIRECTIONS_URL =
@@ -35,7 +36,7 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
         feather
         sizes="(min-width: 1024px) 26vw, (min-width: 768px) 240px, (min-width: 640px) 200px, 160px"
       />
-      <div className="max-w-lg mx-auto text-center relative z-[1]">
+      <RevealWrapper className="max-w-lg mx-auto text-center relative z-[1]">
 
         <div className="mb-12 md:mb-16">
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
@@ -96,7 +97,7 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
           </p>
         </div>
 
-      </div>
+      </RevealWrapper>
     </SectionWrapper>
   )
 }
