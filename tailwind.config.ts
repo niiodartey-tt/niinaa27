@@ -38,7 +38,8 @@ const config: Config = {
         },
       },
       backgroundImage: {
-        "floral-tile": "url('/floral-pattern.png')",
+        "floral-tile":  "url('/floral-pattern.png')",
+        "gold-shimmer": "linear-gradient(135deg, #7A5C2E 0%, #D4AF6A 25%, #F5E1A4 50%, #D4AF6A 75%, #7A5C2E 100%)",
       },
       borderRadius: {
         card: "28px",

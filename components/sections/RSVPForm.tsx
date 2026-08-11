@@ -19,9 +19,12 @@ function isApiError(val: unknown): val is { error: string } {
 }
 
 const inputClass =
-  "w-full rounded-xl border border-hairline bg-ivory px-4 py-3 font-sans text-sm text-ink placeholder:text-taupe/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-ivory min-h-[44px]"
+  "w-full rounded-[11px] border-0 bg-ivory px-4 py-3 font-sans text-sm text-ink placeholder:text-taupe/60 focus:outline-none min-h-[44px]"
 
 const labelClass = "block font-sans text-xs text-taupe tracking-widest uppercase mb-2"
+
+const fieldWrapClass =
+  "p-px rounded-xl bg-gold-shimmer focus-within:ring-2 focus-within:ring-rose focus-within:ring-offset-2 focus-within:ring-offset-ivory"
 
 export function RSVPForm() {
   const [status, setStatus] = useState<FormStatus>("idle")
@@ -113,16 +116,18 @@ export function RSVPForm() {
       {/* Name */}
       <div>
         <label htmlFor="rsvp-name" className={labelClass}>Full name</label>
-        <input
-          id="rsvp-name"
-          type="text"
-          autoComplete="name"
-          aria-describedby={errors.name ? "rsvp-name-error" : undefined}
-          aria-invalid={!!errors.name}
-          {...register("name")}
-          className={cn(inputClass, errors.name && "border-rose")}
-          placeholder="Your full name"
-        />
+        <div className={cn(fieldWrapClass, errors.name && "bg-rose/60")}>
+          <input
+            id="rsvp-name"
+            type="text"
+            autoComplete="name"
+            aria-describedby={errors.name ? "rsvp-name-error" : undefined}
+            aria-invalid={!!errors.name}
+            {...register("name")}
+            className={inputClass}
+            placeholder="Your full name"
+          />
+        </div>
         {errors.name && (
           <p id="rsvp-name-error" role="alert" className="mt-1 font-sans text-xs text-rose">
             {errors.name.message}
@@ -133,16 +138,18 @@ export function RSVPForm() {
       {/* Email */}
       <div>
         <label htmlFor="rsvp-email" className={labelClass}>Email address</label>
-        <input
-          id="rsvp-email"
-          type="email"
-          autoComplete="email"
-          aria-describedby={errors.email ? "rsvp-email-error" : undefined}
-          aria-invalid={!!errors.email}
-          {...register("email")}
-          className={cn(inputClass, errors.email && "border-rose")}
-          placeholder="your@email.com"
-        />
+        <div className={cn(fieldWrapClass, errors.email && "bg-rose/60")}>
+          <input
+            id="rsvp-email"
+            type="email"
+            autoComplete="email"
+            aria-describedby={errors.email ? "rsvp-email-error" : undefined}
+            aria-invalid={!!errors.email}
+            {...register("email")}
+            className={inputClass}
+            placeholder="your@email.com"
+          />
+        </div>
         {errors.email && (
           <p id="rsvp-email-error" role="alert" className="mt-1 font-sans text-xs text-rose">
             {errors.email.message}
@@ -196,15 +203,17 @@ export function RSVPForm() {
           <label htmlFor="rsvp-guest-count" className={labelClass}>
             Number of guests (including yourself)
           </label>
-          <select
-            id="rsvp-guest-count"
-            {...register("guestCount", { valueAsNumber: true })}
-            className={cn(inputClass, "cursor-pointer")}
-          >
-            {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
-              <option key={n} value={n}>{n}</option>
-            ))}
-          </select>
+          <div className={fieldWrapClass}>
+            <select
+              id="rsvp-guest-count"
+              {...register("guestCount", { valueAsNumber: true })}
+              className={cn(inputClass, "cursor-pointer")}
+            >
+              {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
+                <option key={n} value={n}>{n}</option>
+              ))}
+            </select>
+          </div>
         </div>
       )}
 
@@ -213,13 +222,15 @@ export function RSVPForm() {
         <label htmlFor="rsvp-dietary" className={labelClass}>
           Dietary requirements <span className="normal-case tracking-normal text-taupe">(optional)</span>
         </label>
-        <textarea
-          id="rsvp-dietary"
-          rows={2}
-          {...register("dietaryNotes")}
-          className={cn(inputClass, "resize-none")}
-          placeholder="Any allergies or dietary needs"
-        />
+        <div className={fieldWrapClass}>
+          <textarea
+            id="rsvp-dietary"
+            rows={2}
+            {...register("dietaryNotes")}
+            className={cn(inputClass, "resize-none")}
+            placeholder="Any allergies or dietary needs"
+          />
+        </div>
       </div>
 
       {/* Message */}
@@ -227,13 +238,15 @@ export function RSVPForm() {
         <label htmlFor="rsvp-message" className={labelClass}>
           Message <span className="normal-case tracking-normal text-taupe">(optional)</span>
         </label>
-        <textarea
-          id="rsvp-message"
-          rows={3}
-          {...register("message")}
-          className={cn(inputClass, "resize-none")}
-          placeholder="A note for the couple"
-        />
+        <div className={fieldWrapClass}>
+          <textarea
+            id="rsvp-message"
+            rows={3}
+            {...register("message")}
+            className={cn(inputClass, "resize-none")}
+            placeholder="A note for the couple"
+          />
+        </div>
       </div>
 
       {/* Error banner */}

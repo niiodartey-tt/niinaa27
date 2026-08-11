@@ -17,11 +17,14 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
   }
 
   return (
-    <div className="border-t border-hairline divide-y divide-hairline">
+    <div className="border-t [border-image:linear-gradient(90deg,transparent,#C9A45E,#F5E1A4,#C9A45E,transparent)_1]">
       {items.map((item, i) => {
         const open = openIndex === i
         return (
-          <article key={item._id}>
+          <article
+            key={item._id}
+            className={i > 0 ? "border-t [border-image:linear-gradient(90deg,transparent,#C9A45E,#F5E1A4,#C9A45E,transparent)_1]" : undefined}
+          >
             <h3>
               <button
                 id={`faq-trigger-${item._id}`}
