@@ -1,44 +1,10 @@
 import { ExternalLink } from "lucide-react"
 import { PlaneIcon } from "@/components/illustrations/SiteIconsSection"
-import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
 
 export function TravelStaySection() {
   return (
     <SectionWrapper id="travel-stay" className="relative overflow-hidden">
-      <FloralAccent
-        src="/allium-double.png"
-        width={365}
-        height={547}
-        position="top-left"
-        className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
-        rotation={-10}
-        opacity={0.58}
-        feather
-        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
-      />
-      <FloralAccent
-        src="/rosebud-3.png"
-        width={554}
-        height={554}
-        position="top-right"
-        className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
-        rotation={15}
-        opacity={0.52}
-        feather
-        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
-      />
-      <FloralAccent
-        src="/rose.png"
-        width={391}
-        height={511}
-        position="bottom-right"
-        className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
-        rotation={12}
-        opacity={0.58}
-        feather
-        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
-      />
       <div className="max-w-5xl mx-auto relative z-[1]">
         <div className="text-center mb-12 md:mb-16">
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">

@@ -1,5 +1,4 @@
 import { Gift } from "lucide-react"
-import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
 
 // Gift Guide is currently hardcoded — not wired to Sanity.
@@ -7,50 +6,6 @@ import { SectionWrapper } from "@/components/layout/SectionWrapper"
 export function RegistrySection() {
   return (
     <SectionWrapper id="gift-guide" className="relative overflow-hidden">
-      <FloralAccent
-        src="/allium-single.png"
-        width={480}
-        height={640}
-        position="top-left"
-        className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[26vw] max-w-[460px] z-0"
-        rotation={-8}
-        opacity={0.60}
-        feather
-        sizes="(min-width: 1024px) 26vw, (min-width: 768px) 240px, (min-width: 640px) 200px, 160px"
-      />
-      <FloralAccent
-        src="/rosebud-2.png"
-        width={447}
-        height={447}
-        position="top-right"
-        className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
-        rotation={12}
-        opacity={0.55}
-        feather
-        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
-      />
-      <FloralAccent
-        src="/rose.png"
-        width={391}
-        height={511}
-        position="bottom-left"
-        className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
-        rotation={-12}
-        opacity={0.60}
-        feather
-        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
-      />
-      <FloralAccent
-        src="/rosebud-3.png"
-        width={554}
-        height={554}
-        position="bottom-right"
-        className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
-        rotation={10}
-        opacity={0.50}
-        feather
-        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
-      />
       <div className="max-w-2xl mx-auto text-center relative z-[1]">
         <Gift size={22} aria-hidden="true" stroke="url(#gold-shimmer)" className="mx-auto mb-3" />
         <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">
