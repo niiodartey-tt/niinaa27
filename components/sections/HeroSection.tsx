@@ -86,12 +86,6 @@ export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroS
           {couple.locationName}
         </p>
 
-        {couple.bio && (
-          <p className="font-serif text-sm md:text-base text-ink italic mt-5 max-w-sm leading-relaxed">
-            {couple.bio}
-          </p>
-        )}
-
         <CountdownTimer weddingDate={couple.weddingDate} />
 
         <a

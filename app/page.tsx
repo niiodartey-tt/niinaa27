@@ -21,7 +21,7 @@ export default function HomePage() {
           couple={placeholderCoupleInfo}
           heroImageSrc="/hero-bg.jpg"
         />
-        <OurStorySection milestones={placeholderMilestones} />
+        <OurStorySection milestones={placeholderMilestones} bio={placeholderCoupleInfo.bio} />
         <div className="flex justify-center py-6 md:py-8" aria-hidden="true">
           <VineDivider className="w-64 md:w-80 text-taupe" />
         </div>

@@ -7,9 +7,10 @@ import type { StoryMilestone } from "@/types/sanity"
 
 interface OurStorySectionProps {
   milestones: StoryMilestone[]
+  bio?: string
 }
 
-export function OurStorySection({ milestones }: OurStorySectionProps) {
+export function OurStorySection({ milestones, bio }: OurStorySectionProps) {
   return (
     <SectionWrapper id="our-story" className="relative overflow-hidden">
       <div
@@ -34,6 +35,11 @@ export function OurStorySection({ milestones }: OurStorySectionProps) {
           </p>
           <Heart1Icon className="w-[22px] h-[22px] mx-auto mb-3 block" />
           <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">Our Story</h2>
+          {bio && (
+            <p className="font-serif text-base md:text-lg text-taupe italic leading-relaxed mt-5 max-w-sm mx-auto">
+              {bio}
+            </p>
+          )}
         </div>
 
         <OurStoryTimeline milestones={milestones} />
