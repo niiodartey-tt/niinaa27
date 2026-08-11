@@ -91,7 +91,7 @@ export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroS
 
         <a
           href="#rsvp"
-          className="mt-8 inline-flex items-center rounded-full bg-rose hover:bg-rose-dark text-ivory font-sans text-sm tracking-widest uppercase px-8 py-3 min-h-[44px] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+          className="mt-8 inline-flex items-center rounded-full border border-gold-base bg-transparent hover:bg-gold-base/20 text-ivory font-sans text-sm tracking-widest uppercase px-8 py-3 min-h-[44px] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
         >
           Kindly RSVP
         </a>
@@ -100,7 +100,7 @@ export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroS
       <a
         href="#our-story"
         aria-label="Scroll to Our Story"
-        className="absolute bottom-8 md:bottom-12 flex flex-col items-center gap-1 text-ink hover:text-taupe transition-colors duration-300 min-h-[44px] justify-end focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 rounded-sm [text-shadow:_0_0_8px_rgba(255,255,255,0.7)]"
+        className="absolute bottom-8 md:bottom-12 flex flex-col items-center gap-1 text-ivory hover:text-gold-highlight transition-colors duration-300 min-h-[44px] justify-end focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 rounded-sm"
       >
         <span className="font-sans text-xs tracking-widest uppercase">Scroll</span>
         <ChevronDown size={20} className="animate-bounce" aria-hidden="true" />

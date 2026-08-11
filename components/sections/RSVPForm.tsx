@@ -24,7 +24,7 @@ const inputClass =
 const labelClass = "block font-sans text-xs text-taupe tracking-widest uppercase mb-2"
 
 const fieldWrapClass =
-  "p-px rounded-xl bg-gold-shimmer focus-within:ring-2 focus-within:ring-rose focus-within:ring-offset-2 focus-within:ring-offset-ivory"
+  "p-px rounded-xl bg-gold-shimmer focus-within:ring-2 focus-within:ring-gold-base focus-within:ring-offset-2 focus-within:ring-offset-ivory"
 
 export function RSVPForm() {
   const [status, setStatus] = useState<FormStatus>("idle")
@@ -176,10 +176,10 @@ export function RSVPForm() {
                 aria-pressed={selected}
                 onClick={() => setValue("attending", opt === "yes", { shouldValidate: true })}
                 className={cn(
-                  "flex-1 min-h-[44px] rounded-full border font-sans text-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-ivory",
+                  "flex-1 min-h-[44px] rounded-full border font-sans text-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-ivory",
                   selected
-                    ? "border-rose bg-rose text-ivory"
-                    : "border-hairline bg-ivory text-taupe hover:border-rose hover:text-rose"
+                    ? "border-gold-base bg-gold-highlight/20 text-ink"
+                    : "border-hairline bg-ivory text-taupe hover:border-gold-base hover:text-ink"
                 )}
               >
                 {selected && (
@@ -260,7 +260,7 @@ export function RSVPForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full min-h-[44px] rounded-full bg-rose px-8 py-3 font-sans text-sm text-ivory transition-colors duration-200 hover:bg-rose-dark disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-ivory"
+        className="w-full min-h-[44px] rounded-full border border-gold-base bg-transparent px-8 py-3 font-sans text-sm text-ink transition-colors duration-200 hover:bg-gold-highlight/15 disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-ivory"
       >
         {status === "loading" ? (
           "Sending…"

@@ -8,10 +8,10 @@ const DIRECTIONS_URL =
   "https://www.google.com/maps/dir/?api=1&destination=5.6506614326887075,-0.07227142411697524"
 
 const linkClass =
-  "inline-flex items-center gap-1.5 mt-3 min-h-[44px] font-sans text-sm text-rose hover:text-rose-dark transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 rounded-sm"
+  "inline-flex items-center gap-1.5 mt-3 min-h-[44px] font-sans text-sm text-ink hover:text-gold-base transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 rounded-sm"
 
 const labelClass =
-  "font-sans text-base tracking-widest uppercase font-semibold text-rose mb-3"
+  "font-sans text-base tracking-widest uppercase font-semibold text-gold-base mb-3"
 
 interface EventDetailsSectionProps {
   items: ItineraryItem[]
@@ -25,9 +25,9 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
   return (
     <SectionWrapper id="event-details" className="bg-blush relative overflow-hidden">
       <FloralAccent
-        src="/rosebud-2.png"
-        width={447}
-        height={447}
+        src="/bloom-2.png"
+        width={453}
+        height={676}
         position="top-left"
         className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
         rotation={-10}
@@ -36,9 +36,9 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
         sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
       />
       <FloralAccent
-        src="/rose.png"
-        width={391}
-        height={511}
+        src="/bloom-3.png"
+        width={170}
+        height={297}
         position="top-right"
         className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[26vw] max-w-[460px] z-0"
         rotation={18}
@@ -47,9 +47,9 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
         sizes="(min-width: 1024px) 26vw, (min-width: 768px) 240px, (min-width: 640px) 200px, 160px"
       />
       <FloralAccent
-        src="/dahlia.png"
-        width={469}
-        height={426}
+        src="/bloom-1.png"
+        width={495}
+        height={619}
         position="bottom-left"
         className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[26vw] max-w-[460px] z-0"
         rotation={-14}
@@ -58,9 +58,9 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
         sizes="(min-width: 1024px) 26vw, (min-width: 768px) 240px, (min-width: 640px) 200px, 160px"
       />
       <FloralAccent
-        src="/allium-single.png"
-        width={480}
-        height={640}
+        src="/bloom-2.png"
+        width={453}
+        height={676}
         position="bottom-right"
         className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
         rotation={8}

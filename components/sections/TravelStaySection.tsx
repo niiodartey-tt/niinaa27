@@ -7,9 +7,9 @@ export function TravelStaySection() {
   return (
     <SectionWrapper id="travel-stay" className="relative overflow-hidden">
       <FloralAccent
-        src="/allium-double.png"
-        width={365}
-        height={547}
+        src="/bloom-3.png"
+        width={170}
+        height={297}
         position="top-left"
         className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
         rotation={-10}
@@ -18,9 +18,9 @@ export function TravelStaySection() {
         sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
       />
       <FloralAccent
-        src="/rosebud-3.png"
-        width={554}
-        height={554}
+        src="/bloom-1.png"
+        width={495}
+        height={619}
         position="top-right"
         className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
         rotation={15}
@@ -29,9 +29,9 @@ export function TravelStaySection() {
         sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
       />
       <FloralAccent
-        src="/rose.png"
-        width={391}
-        height={511}
+        src="/bloom-2.png"
+        width={453}
+        height={676}
         position="bottom-right"
         className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
         rotation={12}
