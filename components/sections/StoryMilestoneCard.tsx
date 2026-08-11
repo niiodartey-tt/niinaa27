@@ -34,7 +34,7 @@ export function StoryMilestoneCard({
         )}
       >
         <p className={cn(
-          "font-sans text-[10px] tracking-widest uppercase mb-1.5",
+          "font-sans text-xs sm:text-sm tracking-widest uppercase mb-1.5",
           isLast ? "text-ivory/70" : "text-taupe"
         )}>
           {milestone.date}
