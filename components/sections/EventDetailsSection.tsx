@@ -25,28 +25,50 @@ export function EventDetailsSection({ items }: EventDetailsSectionProps) {
   return (
     <SectionWrapper id="event-details" className="bg-blush relative overflow-hidden">
       <FloralAccent
-        src="/peony-2.png"
-        width={1000}
-        height={666}
-        position="top-right"
-        className="w-[24vw] max-w-[360px] z-0"
-        rotation={15}
-        opacity={0.65}
+        src="/rosebud-2.png"
+        width={447}
+        height={447}
+        position="top-left"
+        className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
+        rotation={-10}
+        opacity={0.55}
         feather
-        sizes="(max-width: 1280px) 24vw, 360px"
+        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
+      />
+      <FloralAccent
+        src="/rose.png"
+        width={391}
+        height={511}
+        position="top-right"
+        className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[26vw] max-w-[460px] z-0"
+        rotation={18}
+        opacity={0.62}
+        feather
+        sizes="(min-width: 1024px) 26vw, (min-width: 768px) 240px, (min-width: 640px) 200px, 160px"
       />
       <FloralAccent
         src="/dahlia.png"
         width={469}
         height={426}
         position="bottom-left"
-        className="w-[26vw] max-w-[400px] z-0"
-        rotation={-12}
-        opacity={0.72}
+        className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[26vw] max-w-[460px] z-0"
+        rotation={-14}
+        opacity={0.65}
         feather
-        sizes="(max-width: 1280px) 26vw, 400px"
+        sizes="(min-width: 1024px) 26vw, (min-width: 768px) 240px, (min-width: 640px) 200px, 160px"
       />
-      <div className="max-w-lg mx-auto text-center">
+      <FloralAccent
+        src="/allium-single.png"
+        width={480}
+        height={640}
+        position="bottom-right"
+        className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
+        rotation={8}
+        opacity={0.55}
+        feather
+        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
+      />
+      <div className="max-w-lg mx-auto text-center relative z-[1]">
 
         <div className="mb-12 md:mb-16">
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">

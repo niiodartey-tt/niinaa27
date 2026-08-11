@@ -17,25 +17,47 @@ export function FAQSection({ items }: FAQSectionProps) {
         src="/dahlia.png"
         width={469}
         height={426}
-        position="top-right"
-        className="w-[22vw] max-w-[340px] z-0"
-        rotation={15}
-        opacity={0.68}
+        position="top-left"
+        className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
+        rotation={-10}
+        opacity={0.58}
         feather
-        sizes="(max-width: 1280px) 22vw, 340px"
+        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
       />
       <FloralAccent
         src="/rose.png"
         width={391}
         height={511}
-        position="bottom-left"
-        className="w-[20vw] max-w-[320px] z-0"
-        rotation={-12}
-        opacity={0.62}
+        position="top-right"
+        className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[26vw] max-w-[460px] z-0"
+        rotation={15}
+        opacity={0.65}
         feather
-        sizes="(max-width: 1280px) 20vw, 320px"
+        sizes="(min-width: 1024px) 26vw, (min-width: 768px) 240px, (min-width: 640px) 200px, 160px"
       />
-      <div className="max-w-2xl mx-auto">
+      <FloralAccent
+        src="/rosebud-1.png"
+        width={447}
+        height={447}
+        position="bottom-left"
+        className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
+        rotation={-20}
+        opacity={0.52}
+        feather
+        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
+      />
+      <FloralAccent
+        src="/allium-double.png"
+        width={365}
+        height={547}
+        position="bottom-right"
+        className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
+        rotation={8}
+        opacity={0.58}
+        feather
+        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
+      />
+      <div className="max-w-2xl mx-auto relative z-[1]">
         <div className="text-center mb-10 md:mb-12">
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             Questions
