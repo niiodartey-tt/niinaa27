@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  html,
+  body {
+    /* Prevent horizontal scroll from absolutely-positioned accents that overhang
+       section edges. clip (not hidden) avoids creating a scroll container, which
+       would break Lenis root-mode and position:sticky children. */
+    overflow-x: clip;
+  }
+
   body {
     @apply bg-ivory text-ink font-serif;
     -webkit-font-smoothing: antialiased;
