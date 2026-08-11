@@ -65,15 +65,16 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
               </div>
 
               {/* Photo cell — opposite column from text.
-                  No self-start: defaults to stretch so this div fills
-                  the full grid row height (set by the taller text card). */}
+                  Mobile: no self-start → stretches to grid row height (= text card height).
+                  Desktop (lg+): self-start + aspect-[3/2] gives a landscape crop
+                  roughly half the portrait height, independent of text card height. */}
               <div
                 className={cn(
-                  "row-start-1",
+                  "row-start-1 lg:self-start",
                   isRight ? "col-start-1 pr-3 sm:pr-6" : "col-start-3 pl-3 sm:pl-6"
                 )}
               >
-                <div className="rounded-card overflow-hidden h-full bg-blush">
+                <div className="rounded-card overflow-hidden h-full lg:h-auto lg:aspect-[3/2] bg-blush">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={photoSrc}
