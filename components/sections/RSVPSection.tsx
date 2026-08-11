@@ -22,39 +22,6 @@ export function RSVPSection() {
         feather
         sizes="(min-width: 1024px) 26vw, (min-width: 768px) 240px, (min-width: 640px) 200px, 160px"
       />
-      <FloralAccent
-        src="/bloom-1.png"
-        width={495}
-        height={619}
-        position="top-right"
-        className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
-        rotation={20}
-        opacity={0.58}
-        feather
-        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
-      />
-      <FloralAccent
-        src="/bloom-2.png"
-        width={453}
-        height={676}
-        position="bottom-left"
-        className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[26vw] max-w-[460px] z-0"
-        rotation={8}
-        opacity={0.62}
-        feather
-        sizes="(min-width: 1024px) 26vw, (min-width: 768px) 240px, (min-width: 640px) 200px, 160px"
-      />
-      <FloralAccent
-        src="/bloom-3.png"
-        width={170}
-        height={297}
-        position="bottom-right"
-        className="w-[120px] sm:w-[150px] md:w-[190px] lg:w-[20vw] max-w-[360px] z-0"
-        rotation={-8}
-        opacity={0.55}
-        feather
-        sizes="(min-width: 1024px) 20vw, (min-width: 768px) 190px, (min-width: 640px) 150px, 120px"
-      />
 
       <div className="relative z-[1] max-w-lg mx-auto">
         <div className="text-center mb-6 md:mb-8">
