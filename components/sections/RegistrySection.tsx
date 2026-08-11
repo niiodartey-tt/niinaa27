@@ -19,7 +19,7 @@ export function RegistrySection() {
         sizes="(max-width: 768px) 26vw, 120px"
       />
       <div className="max-w-2xl mx-auto text-center">
-        <Gift size={22} aria-hidden="true" className="text-rose mx-auto mb-3" />
+        <Gift size={22} aria-hidden="true" stroke="url(#gold-shimmer)" className="mx-auto mb-3" />
         <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">
           Gift Guide
         </h2>
