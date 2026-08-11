@@ -73,7 +73,7 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
                   isRight ? "col-start-1 pr-3 sm:pr-6" : "col-start-3 pl-3 sm:pl-6"
                 )}
               >
-                <div className="rounded-card overflow-hidden h-full min-h-[160px] bg-blush">
+                <div className="rounded-card overflow-hidden h-full bg-blush">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={photoSrc}
