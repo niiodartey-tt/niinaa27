@@ -1,6 +1,7 @@
 import { Heart1Icon } from "@/components/illustrations/SiteIconsSection"
 import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
+import { RevealWrapper } from "@/components/layout/RevealWrapper"
 import { OurStoryTimeline } from "@/components/sections/OurStoryTimeline"
 import type { StoryMilestone } from "@/types/sanity"
 
@@ -26,7 +27,7 @@ export function OurStorySection({ milestones }: OurStorySectionProps) {
         feather
         sizes="(min-width: 1024px) 26vw, (min-width: 768px) 240px, (min-width: 640px) 200px, 160px"
       />
-      <div className="max-w-4xl mx-auto relative z-[1]">
+      <RevealWrapper className="max-w-4xl mx-auto relative z-[1]">
         <div className="text-center mb-12 md:mb-16">
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             How it began
@@ -37,7 +38,7 @@ export function OurStorySection({ milestones }: OurStorySectionProps) {
 
         <OurStoryTimeline milestones={milestones} />
 
-      </div>
+      </RevealWrapper>
     </SectionWrapper>
   )
 }

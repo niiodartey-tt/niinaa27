@@ -1,12 +1,13 @@
 import { Gift } from "lucide-react"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
+import { RevealWrapper } from "@/components/layout/RevealWrapper"
 
 // Gift Guide is currently hardcoded — not wired to Sanity.
 // See overview.md Scoped Exceptions for Sprint 3 context.
 export function RegistrySection() {
   return (
     <SectionWrapper id="gift-guide" className="relative overflow-hidden">
-      <div className="max-w-2xl mx-auto text-center relative z-[1]">
+      <RevealWrapper className="max-w-2xl mx-auto text-center relative z-[1]">
         <Gift size={22} aria-hidden="true" stroke="url(#gold-shimmer)" className="mx-auto mb-3" />
         <h2 className="font-serif text-3xl md:text-4xl text-ink uppercase">
           Gift Guide
@@ -49,7 +50,7 @@ export function RegistrySection() {
           </div>
         </div>
         </div>
-      </div>
+      </RevealWrapper>
     </SectionWrapper>
   )
 }

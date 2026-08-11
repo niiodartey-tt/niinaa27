@@ -1,6 +1,7 @@
 import { EnvelopeIcon } from "@/components/illustrations/SiteIconsSection"
 import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
+import { RevealWrapper } from "@/components/layout/RevealWrapper"
 import { RSVPForm } from "@/components/sections/RSVPForm"
 
 export function RSVPSection() {
@@ -23,7 +24,7 @@ export function RSVPSection() {
         sizes="(min-width: 1024px) 26vw, (min-width: 768px) 240px, (min-width: 640px) 200px, 160px"
       />
 
-      <div className="relative z-[1] max-w-lg mx-auto">
+      <RevealWrapper className="relative z-[1] max-w-lg mx-auto">
         <div className="text-center mb-6 md:mb-8">
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             Kindly reply by 1 December 2026
@@ -35,7 +36,7 @@ export function RSVPSection() {
           </p>
         </div>
         <RSVPForm />
-      </div>
+      </RevealWrapper>
     </SectionWrapper>
   )
 }

@@ -1,6 +1,7 @@
 import { QuestionCircleIcon } from "@/components/illustrations/SiteIconsSection"
 import { FloralAccent } from "@/components/illustrations/FloralAccent"
 import { SectionWrapper } from "@/components/layout/SectionWrapper"
+import { RevealWrapper } from "@/components/layout/RevealWrapper"
 import { FAQAccordion } from "@/components/sections/FAQAccordion"
 import type { FaqItem } from "@/types/sanity"
 
@@ -24,7 +25,7 @@ export function FAQSection({ items }: FAQSectionProps) {
         feather
         sizes="(min-width: 1024px) 26vw, (min-width: 768px) 240px, (min-width: 640px) 200px, 160px"
       />
-      <div className="max-w-2xl mx-auto relative z-[1]">
+      <RevealWrapper className="max-w-2xl mx-auto relative z-[1]">
         <div className="text-center mb-10 md:mb-12">
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mb-3">
             Questions
@@ -35,7 +36,7 @@ export function FAQSection({ items }: FAQSectionProps) {
           </h2>
         </div>
         <FAQAccordion items={items} />
-      </div>
+      </RevealWrapper>
     </SectionWrapper>
   )
 }
