@@ -2,7 +2,6 @@ import type {
   CoupleInfo,
   StoryMilestone,
   ItineraryItem,
-  Hotel,
   FaqItem,
   RegistryInfo,
 } from "@/types/sanity"
@@ -98,35 +97,6 @@ export const placeholderItinerary: ItineraryItem[] = [
     address: "Lashibi, Accra, Ghana",
     notes: "Cocktail hour from 5:00 PM, seated dinner at 6:30 PM.",
     order: 2,
-  },
-]
-
-export const placeholderHotels: Hotel[] = [
-  {
-    _id: "hotel-1",
-    _type: "hotel",
-    name: "Kempinski Hotel Gold Coast City",
-    distance: "15 minutes from venue",
-    rate: "From $180 / night",
-    bookingUrl: "https://www.kempinski.com/accra",
-    notes: "Mention the Thomas & Leanne wedding for a preferred rate.",
-  },
-  {
-    _id: "hotel-2",
-    _type: "hotel",
-    name: "Labadi Beach Hotel",
-    distance: "20 minutes from venue",
-    rate: "From $120 / night",
-    bookingUrl: "https://www.labadibeachhotel.com",
-  },
-  {
-    _id: "hotel-3",
-    _type: "hotel",
-    name: "African Regent Hotel",
-    distance: "10 minutes from venue",
-    rate: "From $95 / night",
-    bookingUrl: "https://www.africanregenthotel.com",
-    notes: "Boutique option with complimentary breakfast.",
   },
 ]
 

@@ -11,7 +11,6 @@ import {
   placeholderCoupleInfo,
   placeholderMilestones,
   placeholderItinerary,
-  placeholderHotels,
   placeholderFaqItems,
 } from "@/lib/placeholder-data"
 
@@ -31,7 +30,7 @@ export default function HomePage() {
         <div className="flex justify-center py-6 md:py-8" aria-hidden="true">
           <VineDivider className="w-64 md:w-80 text-taupe" />
         </div>
-        <TravelStaySection hotels={placeholderHotels} />
+        <TravelStaySection />
         <div className="flex justify-center py-6 md:py-8" aria-hidden="true">
           <VineDivider className="w-64 md:w-80 text-taupe" />
         </div>

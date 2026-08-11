@@ -29,16 +29,6 @@ export interface ItineraryItem {
   order: number
 }
 
-export interface Hotel {
-  _id: string
-  _type: "hotel"
-  name: string
-  distance: string
-  rate: string
-  bookingUrl: string
-  notes?: string
-}
-
 export interface FaqItem {
   _id: string
   _type: "faqItem"
