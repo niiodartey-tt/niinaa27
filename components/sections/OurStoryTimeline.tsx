@@ -16,8 +16,7 @@ type MilestonePhoto = {
 }
 
 const MILESTONE_PHOTOS: Record<number, MilestonePhoto> = {
-  // Portrait photo — contain so both faces show fully; blush bg fills the letterbox gap.
-  2: { src: "/our-story/2022.png", objectFit: "contain" },
+  2: { src: "/our-story/2022.png" },
 }
 
 interface OurStoryTimelineProps {
