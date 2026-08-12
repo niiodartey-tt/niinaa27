@@ -9,10 +9,15 @@ import type { StoryMilestone } from "@/types/sanity"
 // Drop the file in public/our-story/, add an entry here, and set objectPosition
 // if the default "center" crop cuts off faces or key detail.
 // TODO: replace with Sanity image field + GROQ projection when CMS wiring is done.
-type MilestonePhoto = { src: string; objectPosition?: string }
+type MilestonePhoto = {
+  src: string
+  objectFit?: React.CSSProperties["objectFit"]
+  objectPosition?: string
+}
 
 const MILESTONE_PHOTOS: Record<number, MilestonePhoto> = {
-  2: { src: "/our-story/2022.png", objectPosition: "center 20%" },
+  // Portrait photo — contain so both faces show fully; blush bg fills the letterbox gap.
+  2: { src: "/our-story/2022.png", objectFit: "contain" },
 }
 
 interface OurStoryTimelineProps {
@@ -31,6 +36,7 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
             milestone.imageUrl ??
             staticPhoto?.src ??
             (index % 2 === 0 ? "/peony-1.png" : "/peony-2.png")
+          const photoObjectFit = staticPhoto?.objectFit ?? "cover"
           const photoObjectPosition = staticPhoto?.objectPosition ?? "center"
           const photoAlt = milestone.imageUrl ? (milestone.imageAlt ?? "") : ""
 
@@ -84,8 +90,8 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
                   <img
                     src={photoSrc}
                     alt={photoAlt}
-                    className="w-full h-full object-cover"
-                    style={{ objectPosition: photoObjectPosition }}
+                    className="w-full h-full"
+                    style={{ objectFit: photoObjectFit, objectPosition: photoObjectPosition }}
                   />
                 </div>
               </div>
