@@ -6,10 +6,13 @@ import { StoryMilestoneCard } from "@/components/sections/StoryMilestoneCard"
 import type { StoryMilestone } from "@/types/sanity"
 
 // Temporary static photo map — keyed by milestone order (1-based).
-// Drop the file in public/our-story/ and add one line here to wire a new photo.
+// Drop the file in public/our-story/, add an entry here, and set objectPosition
+// if the default "center" crop cuts off faces or key detail.
 // TODO: replace with Sanity image field + GROQ projection when CMS wiring is done.
-const MILESTONE_PHOTOS: Record<number, string> = {
-  2: "/our-story/2022.png",
+type MilestonePhoto = { src: string; objectPosition?: string }
+
+const MILESTONE_PHOTOS: Record<number, MilestonePhoto> = {
+  2: { src: "/our-story/2022.png", objectPosition: "center 20%" },
 }
 
 interface OurStoryTimelineProps {
@@ -23,10 +26,12 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
         {milestones.map((milestone, index) => {
           const isRight = index % 2 !== 0
           const isLast = index === milestones.length - 1
+          const staticPhoto = MILESTONE_PHOTOS[milestone.order]
           const photoSrc =
             milestone.imageUrl ??
-            MILESTONE_PHOTOS[milestone.order] ??
+            staticPhoto?.src ??
             (index % 2 === 0 ? "/peony-1.png" : "/peony-2.png")
+          const photoObjectPosition = staticPhoto?.objectPosition ?? "center"
           const photoAlt = milestone.imageUrl ? (milestone.imageAlt ?? "") : ""
 
           return (
@@ -80,6 +85,7 @@ export function OurStoryTimeline({ milestones }: OurStoryTimelineProps) {
                     src={photoSrc}
                     alt={photoAlt}
                     className="w-full h-full object-cover"
+                    style={{ objectPosition: photoObjectPosition }}
                   />
                 </div>
               </div>
