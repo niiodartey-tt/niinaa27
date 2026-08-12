@@ -49,6 +49,11 @@ const config: Config = {
         "floral-tile":  "url('/floral-pattern.png')",
         "gold-shimmer": "linear-gradient(135deg, #7A5C2E 0%, #D4AF6A 25%, #F5E1A4 50%, #D4AF6A 75%, #7A5C2E 100%)",
       },
+      fontSize: {
+        xs:   ["1rem",   { lineHeight: "1.5" }],
+        sm:   ["1rem",   { lineHeight: "1.5" }],
+        base: ["1.2rem", { lineHeight: "1.75" }],
+      },
       borderRadius: {
         card: "28px",
       },
