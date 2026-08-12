@@ -74,9 +74,9 @@ export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroS
 
         <div className="w-16 h-px bg-ink/30 my-6 md:my-8" aria-hidden="true" />
 
-        <p className="font-serif text-sm italic text-ink/70 leading-relaxed max-w-xs mx-auto mb-6 md:mb-8">
+        <p className="font-serif text-sm italic text-ink leading-relaxed max-w-xs mx-auto mb-6 md:mb-8">
           &ldquo;Wherefore they are no more twain, but one flesh. What therefore God hath joined together, let not man put asunder.&rdquo;
-          <span className="block mt-1 not-italic text-xs text-ink/50 tracking-wide">— Matthew 19:6</span>
+          <span className="block mt-1 not-italic text-xs text-ink tracking-wide">— Matthew 19:6</span>
         </p>
 
         <p className="font-serif text-xl md:text-2xl text-ink">
