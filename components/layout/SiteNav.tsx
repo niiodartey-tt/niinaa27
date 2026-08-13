@@ -66,27 +66,31 @@ export function SiteNav() {
         </button>
       </div>
 
-      {open && (
-        <nav
-          id="mobile-nav"
-          aria-label="Mobile navigation"
-          className="md:hidden bg-ivory border-t border-hairline shadow-md px-4 py-2"
-        >
-          <ul className="flex flex-col divide-y divide-hairline">
-            {links.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="block font-sans text-sm tracking-widest uppercase text-ink hover:text-gold-base transition-colors duration-200 py-3.5 min-h-[44px] flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-ivory rounded-sm"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
+      <nav
+        id="mobile-nav"
+        aria-label="Mobile navigation"
+        aria-hidden={!open}
+        className={cn(
+          "md:hidden bg-ivory border-t border-hairline shadow-md px-4 overflow-hidden transition-[max-height,opacity]",
+          open
+            ? "max-h-[400px] opacity-100 duration-300 ease-in-out"
+            : "max-h-0 opacity-0 duration-200 ease-in-out pointer-events-none"
+        )}
+      >
+        <ul className="flex flex-col divide-y divide-hairline py-2">
+          {links.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="block font-sans text-sm tracking-widest uppercase text-ink hover:text-gold-base transition-colors duration-200 py-3.5 min-h-[44px] flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-ivory rounded-sm"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   )
 }

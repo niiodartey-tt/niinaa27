@@ -90,7 +90,7 @@ export function HeroSection({ couple, videoSrc, posterSrc, heroImageSrc }: HeroS
 
         <a
           href="#rsvp"
-          className="mt-8 inline-flex items-center rounded-full border border-gold-base bg-transparent hover:bg-gold-base/20 text-ivory font-sans text-sm tracking-widest uppercase px-8 py-3 min-h-[44px] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-ink [text-shadow:_0_2px_8px_rgba(0,0,0,0.9),_0_4px_16px_rgba(0,0,0,0.6)]"
+          className="mt-8 inline-flex items-center rounded-full border border-gold-base bg-ivory/15 backdrop-blur-sm hover:bg-ivory/25 text-ivory font-serif text-sm tracking-widest uppercase px-10 py-3.5 min-h-[44px] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-ink [text-shadow:_0_2px_8px_rgba(0,0,0,0.9),_0_4px_16px_rgba(0,0,0,0.6)]"
         >
           Kindly RSVP
         </a>
