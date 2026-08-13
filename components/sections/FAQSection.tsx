@@ -42,21 +42,21 @@ export function FAQSection({ items }: FAQSectionProps) {
           <p className="font-sans text-xs text-taupe tracking-widest uppercase mt-1">
             Still have a question?
           </p>
-          <p className="font-serif text-base text-ink">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0 font-serif text-base text-ink">
             <a
               href="mailto:niinaathompson@outlook.com"
               className="underline underline-offset-2 hover:text-taupe transition-colors duration-200"
             >
               niinaathompson@outlook.com
             </a>
-            {" · "}
+            <span className="hidden sm:inline mx-2">·</span>
             <a
               href="tel:+233559331276"
               className="underline underline-offset-2 hover:text-taupe transition-colors duration-200"
             >
               +233 55 933 1276
             </a>
-          </p>
+          </div>
         </div>
       </RevealWrapper>
     </SectionWrapper>
