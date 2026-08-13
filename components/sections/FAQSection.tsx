@@ -36,6 +36,28 @@ export function FAQSection({ items }: FAQSectionProps) {
           </h2>
         </div>
         <FAQAccordion items={items} />
+
+        <div className="mt-10 md:mt-12 flex flex-col items-center text-center gap-3">
+          <div className="w-12 h-px bg-hairline" aria-hidden="true" />
+          <p className="font-sans text-xs text-taupe tracking-widest uppercase mt-1">
+            Still have a question?
+          </p>
+          <p className="font-serif text-base text-ink">
+            <a
+              href="mailto:niinaathompson@outlook.com"
+              className="underline underline-offset-2 hover:text-taupe transition-colors duration-200"
+            >
+              niinaathompson@outlook.com
+            </a>
+            {" · "}
+            <a
+              href="tel:+233559331276"
+              className="underline underline-offset-2 hover:text-taupe transition-colors duration-200"
+            >
+              +233 55 933 1276
+            </a>
+          </p>
+        </div>
       </RevealWrapper>
     </SectionWrapper>
   )

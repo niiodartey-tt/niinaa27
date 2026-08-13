@@ -29,22 +29,9 @@ export function FooterSection() {
           #thomasandleanne2027
         </p>
         <div className="w-12 h-px bg-hairline" aria-hidden="true" />
-        {/* Phone number still TBD — swap before launch */}
-        <p className="font-serif text-sm text-taupe/80 leading-relaxed">
-          Questions?{" "}
-          <a
-            href="mailto:niinaathompson@outlook.com"
-            className="underline underline-offset-2 hover:text-ink transition-colors duration-200"
-          >
-            niinaathompson@outlook.com
-          </a>
-          {" · "}
-          <a
-            href="tel:+233XXXXXXXXX"
-            className="underline underline-offset-2 hover:text-ink transition-colors duration-200"
-          >
-            +233 XX XXX XXXX
-          </a>
+        <p className="font-serif italic text-base text-ink leading-relaxed">
+          Thank you for being part of our story.{" "}
+          <span className="block sm:inline">We cannot wait to celebrate with you.</span>
         </p>
       </RevealWrapper>
     </footer>
