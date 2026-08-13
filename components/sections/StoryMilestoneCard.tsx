@@ -22,32 +22,31 @@ export function StoryMilestoneCard({
       ref={ref}
       style={{ animationDelay: `${index * 100}ms` }}
       className={cn(
-        "p-px rounded-card",
+        "rounded-card",
         isInView ? "animate-fade-up opacity-0" : "opacity-0",
-        isLast ? "bg-rose" : "bg-gold-shimmer"
+        isLast ? "border-2 border-gold-base" : "p-px bg-gold-shimmer"
       )}
     >
       <div
         className={cn(
-          "rounded-[27px] overflow-hidden p-3 sm:p-5",
-          isLast ? "bg-rose" : "bg-ivory"
+          "overflow-hidden bg-ivory",
+          isLast ? "rounded-[26px] p-4 sm:p-6" : "rounded-[27px] p-3 sm:p-5"
         )}
       >
         <p className={cn(
           "font-sans text-xs sm:text-sm tracking-widest uppercase mb-1.5",
-          isLast ? "text-ivory/70" : "text-taupe"
+          isLast ? "text-ink" : "text-taupe"
         )}>
           {milestone.date}
         </p>
         <h3 className={cn(
-          "font-serif text-sm sm:text-xl uppercase mb-2",
-          isLast ? "text-ivory" : "text-ink"
+          "font-serif text-sm sm:text-xl uppercase mb-2 text-ink"
         )}>
           {milestone.title}
         </h3>
         <p className={cn(
           "font-serif text-sm sm:text-base leading-relaxed",
-          isLast ? "text-ivory" : "text-taupe"
+          isLast ? "text-ink" : "text-taupe"
         )}>
           {milestone.description}
         </p>
