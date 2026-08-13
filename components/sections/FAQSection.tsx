@@ -37,25 +37,28 @@ export function FAQSection({ items }: FAQSectionProps) {
         </div>
         <FAQAccordion items={items} />
 
-        <div className="mt-10 md:mt-12 flex flex-col items-center text-center gap-3">
-          <div className="w-12 h-px bg-hairline" aria-hidden="true" />
-          <p className="font-sans text-xs text-taupe tracking-widest uppercase mt-1">
-            Still have a question?
-          </p>
-          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0 font-serif text-base text-ink">
-            <a
-              href="mailto:niinaathompson@outlook.com"
-              className="underline underline-offset-2 hover:text-taupe transition-colors duration-200"
-            >
-              niinaathompson@outlook.com
-            </a>
-            <span className="hidden sm:inline mx-2">·</span>
-            <a
-              href="tel:+233559331276"
-              className="underline underline-offset-2 hover:text-taupe transition-colors duration-200"
-            >
-              +233 55 933 1276
-            </a>
+        <div className="mt-10 md:mt-12 max-w-sm mx-auto">
+          <div className="p-px bg-gold-shimmer rounded-card">
+            <div className="bg-ivory rounded-[27px] px-6 py-5 flex flex-col items-center text-center gap-3">
+              <p className="font-sans text-xs text-taupe tracking-widest uppercase">
+                Still have a question?
+              </p>
+              <div className="w-8 h-px bg-hairline" aria-hidden="true" />
+              <div className="flex flex-col gap-2">
+                <a
+                  href="mailto:niinaathompson@outlook.com"
+                  className="font-serif text-base text-ink hover:text-rose transition-colors duration-200"
+                >
+                  niinaathompson@outlook.com
+                </a>
+                <a
+                  href="tel:+233559331276"
+                  className="font-serif text-base text-ink hover:text-rose transition-colors duration-200"
+                >
+                  +233 55 933 1276
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </RevealWrapper>
