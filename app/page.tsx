@@ -7,6 +7,7 @@ import { RegistrySection } from "@/components/sections/RegistrySection"
 import { FAQSection } from "@/components/sections/FAQSection"
 import { FooterSection } from "@/components/sections/FooterSection"
 import { VineDivider } from "@/components/illustrations/VineDivider"
+import { EnvelopeGate } from "@/components/envelope/EnvelopeGate"
 import {
   placeholderCoupleInfo,
   placeholderMilestones,
@@ -15,7 +16,7 @@ import {
 
 export default function HomePage() {
   return (
-    <>
+    <EnvelopeGate>
       <main id="main-content">
         <HeroSection
           couple={placeholderCoupleInfo}
@@ -44,6 +45,6 @@ export default function HomePage() {
         <FAQSection items={placeholderFaqItems} />
       </main>
       <FooterSection />
-    </>
+    </EnvelopeGate>
   )
 }
