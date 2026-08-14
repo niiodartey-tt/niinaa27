@@ -8,31 +8,62 @@ interface Props { state: EnvelopeState }
 
 export function WaxSeal({ state }: Props) {
   const isTriggered = state === 'triggered'
-  const isGone = state === 'opening' || state === 'revealed'
+  const isOpen = state === 'opening'
+  const isGone = state === 'revealed'
 
   return (
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      {/* Hourglass glow aura — taller ellipse, brightest at center */}
+      {/* ── Hourglass / lantern glow — erupts from center on trigger ── */}
+      <motion.div
+        className="absolute inset-0 rounded-[16px]"
+        style={{
+          background: [
+            'radial-gradient(ellipse 80% 60% at 50% 0%,   rgba(255,205,70,0.96) 0%, rgba(240,175,40,0.55) 38%, transparent 68%)',
+            'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,205,70,0.96) 0%, rgba(240,175,40,0.55) 38%, transparent 68%)',
+            'radial-gradient(circle at 50% 50%,           rgba(255,230,120,0.85) 0%, transparent 18%)',
+          ].join(', '),
+          mixBlendMode: 'multiply',
+        }}
+        initial={{ opacity: 0, scale: 0.4 }}
+        animate={
+          isGone
+            ? { opacity: 0, scale: 1.1 }
+            : isOpen
+            ? { opacity: 0.88, scale: 1 }
+            : isTriggered
+            ? { opacity: 0.72, scale: 1 }
+            : { opacity: 0, scale: 0.4 }
+        }
+        transition={
+          isGone
+            ? { duration: 0.35 }
+            : isTriggered
+            ? { duration: 0.5, ease: 'easeOut' }
+            : isOpen
+            ? { duration: 0.4, ease: 'easeOut' }
+            : { duration: 0.3 }
+        }
+      />
+
+      {/* Soft inner glow around seal (idle pulse) */}
       <motion.div
         className="absolute rounded-full"
         style={{
-          width: 90,
-          height: 130,
+          width: 110,
+          height: 150,
           background:
-            'radial-gradient(ellipse 60% 80% at 50% 50%, rgba(212,175,106,0.75) 0%, rgba(212,175,106,0.25) 50%, transparent 75%)',
+            'radial-gradient(ellipse 60% 80% at 50% 50%, rgba(212,175,106,0.6) 0%, rgba(212,175,106,0.18) 55%, transparent 75%)',
         }}
         animate={
           isGone
             ? { scale: 0, opacity: 0 }
-            : isTriggered
-            ? { scale: [1, 3.2, 2.4], opacity: [0.5, 1, 0.75] }
-            : { scale: [0.85, 1.1, 0.85], opacity: [0.25, 0.55, 0.25] }
+            : isTriggered || isOpen
+            ? { scale: 0, opacity: 0 }
+            : { scale: [0.85, 1.1, 0.85], opacity: [0.3, 0.65, 0.3] }
         }
         transition={
-          isGone
-            ? { duration: 0.25 }
-            : isTriggered
-            ? { duration: 0.55, ease: 'easeOut' }
+          isGone || isTriggered || isOpen
+            ? { duration: 0.2 }
             : { duration: 3, repeat: Infinity, ease: 'easeInOut' }
         }
       />
@@ -41,30 +72,33 @@ export function WaxSeal({ state }: Props) {
       <motion.div
         className="relative flex items-center justify-center rounded-full"
         style={{
-          width: 64,
-          height: 64,
+          width: 80,
+          height: 80,
           background:
             'radial-gradient(circle at 38% 35%, #F5E1A4 0%, #D4AF6A 45%, #9A7040 100%)',
           boxShadow:
-            '0 2px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.22)',
+            '0 3px 14px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.25)',
         }}
         animate={
           isGone
             ? { scale: 0, opacity: 0 }
             : isTriggered
-            ? { scale: [1, 1.14, 1.06] }
+            ? { scale: [1, 1.18, 1.08] }
+            : isOpen
+            ? { scale: 0.85, opacity: 0.5 }
             : { scale: 1 }
         }
         transition={
           isGone
-            ? { duration: 0.2, delay: 0.05 }
+            ? { duration: 0.2 }
             : isTriggered
             ? { duration: 0.5, ease: 'easeOut' }
+            : isOpen
+            ? { duration: 0.4 }
             : {}
         }
       >
-        {/* Ivory monogram impression on gold */}
-        <Monogram alt="" className="w-10 h-10 invert opacity-80" sizes="40px" />
+        <Monogram alt="" className="w-12 h-12 invert opacity-80" sizes="48px" />
       </motion.div>
     </div>
   )

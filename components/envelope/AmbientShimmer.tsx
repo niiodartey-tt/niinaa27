@@ -12,6 +12,25 @@ interface Particle {
   size: number
 }
 
+// Spawn only in bottom-left and bottom-right corner zones of the envelope
+function spawnCornerParticle(W: number, H: number): Particle {
+  const side = Math.random() < 0.5 ? 'left' : 'right'
+  const zoneW = W * 0.28
+  const zoneH = H * 0.35
+  const x = side === 'left'
+    ? Math.random() * zoneW
+    : W - Math.random() * zoneW
+  const y = H - Math.random() * zoneH
+  return {
+    x, y,
+    vx: (Math.random() - 0.5) * 0.5,
+    vy: -Math.random() * 0.7 - 0.2,
+    life: 0,
+    maxLife: 60 + Math.random() * 50,
+    size: Math.random() * 1.8 + 0.5,
+  }
+}
+
 export function AmbientShimmer() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -22,33 +41,22 @@ export function AmbientShimmer() {
     if (!ctx) return
 
     const dpr = window.devicePixelRatio || 1
-    const width = canvas.offsetWidth
-    const height = canvas.offsetHeight
-    canvas.width = width * dpr
-    canvas.height = height * dpr
+    const W = canvas.offsetWidth
+    const H = canvas.offsetHeight
+    canvas.width = W * dpr
+    canvas.height = H * dpr
     ctx.scale(dpr, dpr)
 
     const particles: Particle[] = []
     let rafId: number
 
-    function spawnParticle() {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: -Math.random() * 0.5 - 0.1,
-        life: 0,
-        maxLife: 80 + Math.random() * 60,
-        size: Math.random() * 1.6 + 0.4,
-      })
-    }
-
-    for (let i = 0; i < 20; i++) spawnParticle()
+    // Seed initial particles
+    for (let i = 0; i < 12; i++) particles.push(spawnCornerParticle(W, H))
 
     function draw() {
-      ctx!.clearRect(0, 0, width, height)
+      ctx!.clearRect(0, 0, W, H)
 
-      if (Math.random() < 0.15) spawnParticle()
+      if (Math.random() < 0.12) particles.push(spawnCornerParticle(W, H))
 
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i]!
@@ -57,15 +65,15 @@ export function AmbientShimmer() {
         p.life++
 
         const progress = p.life / p.maxLife
-        const alpha = progress < 0.3
-          ? progress / 0.3
-          : progress > 0.7
-          ? (1 - progress) / 0.3
+        const alpha = progress < 0.25
+          ? progress / 0.25
+          : progress > 0.65
+          ? (1 - progress) / 0.35
           : 1
 
         ctx!.beginPath()
         ctx!.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx!.fillStyle = `rgba(212,175,106,${alpha * 0.55})`
+        ctx!.fillStyle = `rgba(180,140,60,${alpha * 0.65})`
         ctx!.fill()
 
         if (p.life >= p.maxLife) particles.splice(i, 1)
