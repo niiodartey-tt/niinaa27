@@ -14,9 +14,10 @@ export function RegistrySection() {
         </h2>
 
         <p className="font-serif text-base text-taupe leading-relaxed mt-4 max-w-sm mx-auto">
-          Your presence and your prayers are the greatest gift you could give us.
-          If you would still like to mark the occasion, a monetary contribution
-          would be warmly and gratefully received.
+          Your presence means more to us than any gift. If you&apos;d like to
+          help us start this next chapter, we&apos;re saving toward our first
+          home together and a honeymoon to remember — any contribution would be
+          received with so much gratitude.
         </p>
 
         <div className="mt-10 md:mt-12 p-px rounded-card bg-gold-shimmer max-w-xs mx-auto">

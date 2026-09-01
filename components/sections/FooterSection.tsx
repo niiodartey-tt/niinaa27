@@ -26,7 +26,7 @@ export function FooterSection() {
           className="w-44 md:w-56"
         />
         <p className="font-sans font-bold text-xl md:text-2xl text-ink tracking-wide">
-          #thomasandleanne2027
+          #niinaa27
         </p>
         <div className="w-12 h-px bg-hairline" aria-hidden="true" />
         <p className="font-serif italic text-base text-ink leading-relaxed">
