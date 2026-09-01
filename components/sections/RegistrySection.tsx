@@ -20,38 +20,59 @@ export function RegistrySection() {
           received with so much gratitude.
         </p>
 
-        <div className="mt-10 md:mt-12 p-px rounded-card bg-gold-shimmer max-w-xs mx-auto">
-        <div className="rounded-[27px] bg-ivory p-6 text-left">
-          <p className="font-sans text-xs tracking-widest uppercase text-taupe mb-4">
-            Bank Transfer Details
-          </p>
-          <div className="space-y-4">
-            <div>
-              <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">
-                Account Name
+        <div className="mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
+
+          {/* Ghana */}
+          <div className="p-px rounded-card bg-gold-shimmer">
+            <div className="rounded-[27px] bg-ivory p-6 text-left h-full">
+              <p className="font-sans text-xs tracking-widest uppercase text-taupe mb-4">
+                Ghana
               </p>
-              <p className="font-serif text-base text-ink">Thomas Nii Odartey Thompson</p>
-            </div>
-            <div>
-              <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">
-                Bank
-              </p>
-              <p className="font-serif text-base text-ink">Access Bank Plc</p>
-            </div>
-            <div>
-              <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">
-                Account Number
-              </p>
-              <p className="font-serif text-base text-ink font-mono tracking-wider">
-                0381625513101
-              </p>
+              <div className="space-y-4">
+                <div>
+                  <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">Account Name</p>
+                  <p className="font-serif text-base text-ink">Thomas Nii Odartey Thompson</p>
+                </div>
+                <div>
+                  <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">Bank</p>
+                  <p className="font-serif text-base text-ink">GCB Bank</p>
+                </div>
+                <div>
+                  <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">Account Number</p>
+                  <p className="font-serif text-base text-ink font-mono tracking-wider">1011101834312</p>
+                </div>
+              </div>
             </div>
           </div>
-          <p className="font-serif text-sm text-taupe italic leading-relaxed mt-5 border-t border-hairline pt-4">
-            Please include your name as the payment reference so we can send our thanks.
-          </p>
+
+          {/* UK */}
+          <div className="p-px rounded-card bg-gold-shimmer">
+            <div className="rounded-[27px] bg-ivory p-6 text-left h-full">
+              <p className="font-sans text-xs tracking-widest uppercase text-taupe mb-4">
+                United Kingdom
+              </p>
+              <div className="space-y-4">
+                <div>
+                  <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">Account Name</p>
+                  <p className="font-serif text-base text-ink">Leanne Crabbe</p>
+                </div>
+                <div>
+                  <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">Sort Code</p>
+                  <p className="font-serif text-base text-ink font-mono tracking-wider">04-00-04</p>
+                </div>
+                <div>
+                  <p className="font-sans text-xs text-taupe uppercase tracking-wide mb-0.5">Account Number</p>
+                  <p className="font-serif text-base text-ink font-mono tracking-wider">68481961</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-        </div>
+
+        <p className="font-serif text-sm text-taupe italic leading-relaxed mt-5 max-w-sm mx-auto">
+          Please include your name as the payment reference so we can send our thanks.
+        </p>
 
         <p className="font-serif text-sm text-taupe italic leading-relaxed mt-5 max-w-xs mx-auto">
           Physical gifts will be warmly received at the event.
