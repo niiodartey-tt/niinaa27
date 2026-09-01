@@ -22,10 +22,7 @@ function checkRateLimit(ip: string): boolean {
 
 const COUPLE_EMAIL = "niinaathompson@outlook.com"
 
-// FROM address: swap to a verified Resend domain sender before real guests use this.
-// Until then, only Resend sandbox behaviour applies — guests may not receive the email
-// unless you verify a sending domain at resend.com/domains.
-const FROM_ADDRESS = "Thomas & Leanne <onboarding@resend.dev>"
+const FROM_ADDRESS = "Thomas & Leanne <rsvp@thomasandleanne.com>"
 
 export async function POST(request: Request): Promise<Response> {
   try {
