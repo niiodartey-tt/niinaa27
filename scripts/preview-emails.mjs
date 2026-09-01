@@ -228,7 +228,7 @@ function buildListEmail(rows, siteUrl) {
 
 // ── Mock data ─────────────────────────────────────────────────────────────────
 
-const MOCK_SITE_URL = "http://localhost:3000"
+const MOCK_SITE_URL = "https://thomasandleanne.com"
 
 const mockRows = [
   {
