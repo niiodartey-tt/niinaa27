@@ -23,9 +23,12 @@ No prefix     → server only (API routes, server components)
 ```
 NEXT_PUBLIC_SANITY_PROJECT_ID  → safe to expose (Sanity public API)
 NEXT_PUBLIC_SANITY_DATASET     → safe to expose
-SUPABASE_URL                   → server-only (RSVP API route)
-SUPABASE_ANON_KEY              → server-only (RSVP API route)
+NEXT_PUBLIC_SUPABASE_URL       → intentionally public — Supabase project URLs are designed
+                                   to be client-visible; used in API routes only, never in
+                                   client components. NEXT_PUBLIC_ prefix is accurate.
+SUPABASE_SERVICE_ROLE_KEY      → server-only — never NEXT_PUBLIC_ ever
 RESEND_API_KEY                 → server-only — never NEXT_PUBLIC_ ever
+CRON_SECRET                    → server-only — protects /api/keep-alive from public access
 NEXT_PUBLIC_SITE_URL           → safe to expose
 ```
 

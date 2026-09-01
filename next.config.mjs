@@ -2,11 +2,11 @@
 
 const cspHeader = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://vercel.live",
+  "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' cdn.sanity.io data: blob:",
   "font-src 'self'",
-  "connect-src 'self' api.sanity.io cdn.sanity.io https://vercel.live wss://ws-us3.pusher.com",
+  "connect-src 'self' api.sanity.io cdn.sanity.io",
   "frame-ancestors 'none'",
   "upgrade-insecure-requests",
 ].join("; ")
