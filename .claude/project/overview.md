@@ -176,6 +176,26 @@ All illustration components:
 
 ---
 
+## Scheduled Jobs
+
+### Supabase Keep-Alive (`/api/keep-alive`)
+
+Supabase free-tier projects pause after 7 days of inactivity. This route issues a minimal HEAD-style count query against the `rsvps` table to register real database activity before that threshold is reached.
+
+| Property | Value |
+|---|---|
+| Route | `app/api/keep-alive/route.ts` |
+| Method | `GET` |
+| Schedule | `0 8 * * 0,3` — 8am UTC, Sunday and Wednesday (max gap: 4 days) |
+| Cron config | `vercel.json` → `crons[0]` |
+| Query | `SELECT id FROM rsvps` with `head: true` (count only, no rows returned) |
+| Auth | `Authorization: Bearer $CRON_SECRET` header — Vercel sends this automatically; route returns 401 for any other caller |
+| Env var | `CRON_SECRET` — set in Vercel dashboard, server-only, never committed |
+
+**This is intentional infrastructure, not dead code.** If the schedule or route is ever removed, the Supabase project will pause within 7 days of the last real query.
+
+---
+
 ## Third-Party Integrations
 
 | Service | Purpose | Notes |
