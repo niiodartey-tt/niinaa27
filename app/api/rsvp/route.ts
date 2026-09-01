@@ -64,22 +64,45 @@ export async function POST(request: Request): Promise<Response> {
       process.env.SUPABASE_SERVICE_ROLE_KEY,
     )
 
-    // Upsert by email — one row per person, latest answer always wins.
-    const { error: upsertError } = await supabase.from("rsvps").upsert(
-      {
-        full_name: name,
-        email,
-        attending,
-        guest_count: attending ? (guestCount ?? null) : null,
-        dietary_notes: dietaryNotes ?? null,
-        message: message ?? null,
-        updated_at: new Date().toISOString(),
-      },
-      { onConflict: "email" },
-    )
+    const DUPLICATE_MSG =
+      "You've already RSVP'd with this email. If you need to make changes, please contact us directly at niinaathompson@outlook.com."
 
-    if (upsertError) {
-      console.error("RSVP upsert error:", upsertError.code, upsertError.message)
+    // Common-case check: fast SELECT before attempting a write.
+    const { data: existing, error: checkError } = await supabase
+      .from("rsvps")
+      .select("id")
+      .eq("email", email)
+      .maybeSingle()
+
+    if (checkError) {
+      console.error("RSVP check error:", checkError.code)
+      return NextResponse.json(
+        { error: "Submission failed. Please try again." },
+        { status: 500 },
+      )
+    }
+
+    if (existing) {
+      return NextResponse.json({ error: DUPLICATE_MSG }, { status: 409 })
+    }
+
+    // INSERT (not upsert) — UNIQUE constraint on email is the hard guarantee.
+    // If two concurrent requests both pass the SELECT above, the second INSERT
+    // will fail with Postgres error 23505; we catch that and return the same 409.
+    const { error: insertError } = await supabase.from("rsvps").insert({
+      full_name: name,
+      email,
+      attending,
+      guest_count: attending ? (guestCount ?? null) : null,
+      dietary_notes: dietaryNotes ?? null,
+      message: message ?? null,
+    })
+
+    if (insertError) {
+      if (insertError.code === "23505") {
+        return NextResponse.json({ error: DUPLICATE_MSG }, { status: 409 })
+      }
+      console.error("RSVP insert error:", insertError.code, insertError.message)
       return NextResponse.json(
         { error: "Submission failed. Please try again." },
         { status: 500 },

@@ -7,7 +7,7 @@ import { Check, Send } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { rsvpSchema, type RSVPFormValues } from "@/lib/rsvp-schema"
 
-type FormStatus = "idle" | "loading" | "success" | "error"
+type FormStatus = "idle" | "loading" | "success" | "duplicate" | "error"
 
 function isApiError(val: unknown): val is { error: string } {
   return (
@@ -60,6 +60,12 @@ export function RSVPForm() {
       }
 
       const payload: unknown = await res.json().catch(() => null)
+
+      if (res.status === 409) {
+        setStatus("duplicate")
+        return
+      }
+
       let msg = "Something went wrong. Please try again."
 
       if (res.status === 429) {
@@ -92,6 +98,31 @@ export function RSVPForm() {
         </p>
         <p className="font-serif text-base text-taupe italic">
           We look forward to celebrating with you.
+        </p>
+      </div>
+    )
+  }
+
+  if (status === "duplicate") {
+    return (
+      <div
+        role="status"
+        aria-live="polite"
+        className="text-center py-12 px-4"
+      >
+        <p className="font-serif text-2xl md:text-3xl text-ink mb-3">
+          You&apos;ve already responded.
+        </p>
+        <p className="font-serif text-base text-taupe italic leading-relaxed max-w-xs mx-auto">
+          We already have your RSVP on file. If you need to make changes,
+          please reach us at{" "}
+          <a
+            href="mailto:niinaathompson@outlook.com"
+            className="text-ink underline underline-offset-2 hover:text-rose transition-colors duration-200"
+          >
+            niinaathompson@outlook.com
+          </a>
+          .
         </p>
       </div>
     )
