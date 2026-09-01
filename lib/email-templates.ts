@@ -123,6 +123,11 @@ export function buildGuestEmail(
                         font-size:18px;font-weight:600;color:#3A2A22;">
                Skybox Event Centre, Lashibi, Accra, Ghana
              </p>
+             <a href="https://maps.app.goo.gl/AG2VCBrt5tz5nQa1A"
+                style="font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;
+                       color:#D4AF6A;text-decoration:underline;display:inline-block;margin-top:8px;">
+               Get directions →
+             </a>
            </td>
          </tr>
        </table>
