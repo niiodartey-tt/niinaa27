@@ -55,15 +55,20 @@ export function FAQSection({ items }: FAQSectionProps) {
                   </svg>
                   niinaathompson@outlook.com
                 </a>
-                <a
-                  href="tel:+233559331276"
-                  className="flex items-center gap-2 font-serif text-base text-ink hover:text-rose active:text-rose transition-colors duration-200"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0" aria-hidden="true">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.38 2 2 0 0 1 3.6 1.19h3a2 2 0 0 1 2 1.72c.12.98.34 1.95.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l.91-.91a2 2 0 0 1 2.11-.45c.86.36 1.83.58 2.81.7A2 2 0 0 1 22 16.92z" />
-                  </svg>
-                  +233 55 933 1276
-                </a>
+                <div className="flex flex-col items-start gap-0.5">
+                  <a
+                    href="tel:+233553231996"
+                    className="flex items-center gap-2 font-serif text-base text-ink hover:text-rose active:text-rose transition-colors duration-200"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0" aria-hidden="true">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.38 2 2 0 0 1 3.6 1.19h3a2 2 0 0 1 2 1.72c.12.98.34 1.95.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l.91-.91a2 2 0 0 1 2.11-.45c.86.36 1.83.58 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    +233 55 323 1996
+                  </a>
+                  <p className="font-sans text-xs text-taupe italic pl-[22px]">
+                    WhatsApp calls &amp; messages only
+                  </p>
+                </div>
               </div>
             </div>
           </div>
