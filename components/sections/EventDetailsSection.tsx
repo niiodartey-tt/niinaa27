@@ -43,7 +43,6 @@ export function EventDetailsSection() {
           <p className="font-serif text-base text-ink mb-4">Saturday, 2 January 2027</p>
           <div className="space-y-2 inline-flex flex-col items-start text-left">
             {[
-              { time: "8:00 AM", event: "Engagement" },
               { time: "2:00 PM", event: "Blessing of the Marriage" },
               { time: "4:00 PM", event: "Reception" },
             ].map(({ time, event }) => (
