@@ -57,7 +57,9 @@ export function FAQSection({ items }: FAQSectionProps) {
                 </a>
                 <div className="flex flex-col items-start gap-0.5">
                   <a
-                    href="tel:+233553231996"
+                    href="https://wa.me/233553231996"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-2 font-serif text-base text-ink hover:text-rose active:text-rose transition-colors duration-200"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 shrink-0" aria-hidden="true">
