@@ -24,18 +24,17 @@ const cormorantGaramond = Cormorant_Garamond({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? ""
 
 export const metadata: Metadata = {
-  title: "Thomas & Leanne — Wedding Invitation",
+  title: "T&L | Wedding Invitation",
   description: "You are invited to celebrate the wedding of Thomas & Leanne on 2 January 2027.",
   metadataBase: new URL(siteUrl || "https://localhost:3000"),
   alternates: {
     canonical: "/",
   },
   icons: {
-    icon: "/logo-tl.png",
     apple: "/logo-tl.png",
   },
   openGraph: {
-    title: "Thomas & Leanne — Wedding Invitation",
+    title: "T&L | Wedding Invitation",
     description: "You are invited to celebrate the wedding of Thomas & Leanne on 2 January 2027.",
     type: "website",
     url: "/",
@@ -50,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Thomas & Leanne — Wedding Invitation",
+    title: "T&L | Wedding Invitation",
     description: "You are invited to celebrate the wedding of Thomas & Leanne on 2 January 2027.",
     images: ["/hero-bg.jpg"],
   },
