@@ -42,16 +42,14 @@ export function EventDetailsSection() {
           <p className={labelClass}>Date &amp; Time</p>
           <p className="font-serif text-base text-ink mb-4">Saturday, 2 January 2027</p>
           <div className="space-y-2 inline-flex flex-col items-start text-left">
-            {[
-              { time: "2:00 PM", event: "Blessing of the Marriage" },
-              { time: "4:00 PM", event: "Reception" },
-            ].map(({ time, event }) => (
-              <div key={event} className="flex items-baseline gap-3">
-                <span className="font-sans text-xs text-taupe tabular-nums w-16 shrink-0">{time}</span>
-                <span className="font-serif text-base text-ink">{event}</span>
-              </div>
-            ))}
+            <div className="flex items-baseline gap-3">
+              <span className="font-sans text-xs text-taupe tabular-nums w-16 shrink-0">1:00 PM</span>
+              <span className="font-serif text-base text-ink">Blessing of the Marriage</span>
+            </div>
           </div>
+          <p className="font-serif text-xl md:text-2xl text-ink italic mt-5">
+            Reception to follow
+          </p>
           <p className="font-serif text-sm text-taupe italic mt-3">All at the same venue.</p>
         </div>
 
