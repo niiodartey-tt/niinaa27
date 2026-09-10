@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { Monogram } from "@/components/illustrations/Monogram"
 import { DIRECTIONS_URL } from "@/lib/constants"
 
 export const metadata: Metadata = {
@@ -14,10 +15,12 @@ export default function QRPage() {
       <div className="flex flex-col items-center gap-6 w-full max-w-xs">
 
         {/* Monogram */}
-        <div className="flex flex-col items-center gap-1">
-          <span className="font-script text-6xl text-rose leading-none select-none">
-            T &amp; L
-          </span>
+        <div className="flex flex-col items-center gap-2">
+          <Monogram
+            alt="Thomas and Leanne monogram"
+            className="w-24"
+            sizes="96px"
+          />
           <p className="font-cormorant italic text-lg text-taupe tracking-widest">
             Thomas &amp; Leanne
           </p>
