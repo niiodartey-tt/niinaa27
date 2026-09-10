@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Imperial_Script, Cormorant_Garamond } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
 import { SiteNav } from "@/components/layout/SiteNav"
 import { SiteReveal } from "@/components/layout/SiteReveal"
 import { LenisProvider } from "@/components/providers/LenisProvider"
@@ -78,6 +79,7 @@ export default function RootLayout({
           <SiteNav />
           {children}
         </LenisProvider>
+        <Analytics />
       </body>
     </html>
   )
