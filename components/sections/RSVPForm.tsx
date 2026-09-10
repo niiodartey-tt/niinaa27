@@ -240,7 +240,7 @@ export function RSVPForm() {
               {...register("guestCount", { valueAsNumber: true })}
               className={cn(inputClass, "cursor-pointer")}
             >
-              {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
+              {Array.from({ length: 2 }, (_, i) => i + 1).map((n) => (
                 <option key={n} value={n}>{n}</option>
               ))}
             </select>
